@@ -31,9 +31,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym $mod+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym $mod+Shift+underscore exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym $mod+Shift+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bindsym $mod+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+#bindsym $mod+Shift+underscore exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+#bindsym $mod+Shift+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Window thingies
 
@@ -220,7 +220,7 @@ exec feh --bg-scale ~/Wallpapers/rioluwave.png
 
 # Compositor
 
-exec --no-startup-id compton -b --respect-prop-shadow -f
+exec_always --no-startup-id /home/dialga/.config/compton_launch.sh
 
 # Policy kity
 

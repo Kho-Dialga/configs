@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/dialga/Pictures/dimensional_war_by_spacesmilodon_d7ui1iw-fullview2.jpg"
+let background = "#080810"
+let foreground = "#d9c9de"
+let cursor     = "#d9c9de"
+
+" Colors
+let color0  = "#080810"
+let color1  = "#62609C"
+let color2  = "#5963E5"
+let color3  = "#BC68CD"
+let color4  = "#6589B3"
+let color5  = "#6198E9"
+let color6  = "#9F9AE5"
+let color7  = "#d9c9de"
+let color8  = "#978c9b"
+let color9  = "#62609C"
+let color10 = "#5963E5"
+let color11 = "#BC68CD"
+let color12 = "#6589B3"
+let color13 = "#6198E9"
+let color14 = "#9F9AE5"
+let color15 = "#d9c9de"

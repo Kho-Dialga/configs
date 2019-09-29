@@ -9,9 +9,9 @@ configuration {
 * {
     lines: 15;
     columns: 1;
-    background-color: #33165E80;
+    background-color: #656589B3;
     border-color: #00000000;
-    text-color: #EFEFEF;
+    text-color: #D0D6D9;
     font: "Hack 11";
 }
 
@@ -51,8 +51,8 @@ configuration {
 }
 
 #element selected {
-    background-color: #B84D91;
-    text-color: #EFEFEF;
+    background-color: #9F9AE5;
+    text-color: #D0D6D9;
 }
 
 

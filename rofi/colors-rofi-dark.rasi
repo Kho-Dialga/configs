@@ -1,9 +1,9 @@
 * {
-    active-background: #B84D91;
+    active-background: #338868CC;
     active-foreground: @foreground;
     normal-background: @background;
     normal-foreground: @foreground;
-    urgent-background: #A425A3;
+    urgent-background: #33A5CF76;
     urgent-foreground: @foreground;
 
     alternate-active-background: @background;
@@ -13,20 +13,18 @@
     alternate-urgent-background: @background;
     alternate-urgent-foreground: @foreground;
 
-    selected-active-background: #A425A3;
+    selected-active-background: #A5CF76;
     selected-active-foreground: @foreground;
-    selected-normal-background: #B84D91;
+    selected-normal-background: #8868CC;
     selected-normal-foreground: @foreground;
-    selected-urgent-background: #B76CAF;
+    selected-urgent-background: #5F9E9A;
     selected-urgent-foreground: @foreground;
 
     background-color: @background;
-    background: #33195e80;
-    foreground: #b8c9da;
+    background: #121313;
+    foreground: #d0d6d9;
     border-color: @background;
-    spacing: 10px;
-    lines: 15;
-    font: "Hack 11";
+    spacing: 2;
 }
 
 #window {
@@ -38,7 +36,6 @@
 #mainbox {
     border: 0;
     padding: 0;
-    lines: 15;
 }
 
 #message {

@@ -53,7 +53,7 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 =  Cascadia Code:bold:size=10;1.5
+font-0 = Hack:bold:size=10;1.5
 font-1 = FontAwesome5Free:style=Solid:size=10;0.5
 
 
@@ -107,7 +107,7 @@ interval = 25
 mount-0 = /
 mount-1 = /home
 
-label-mounted = %{F#B83AAB}%mountpoint%%{F-}: %percentage_used%%
+label-mounted = %{F#6198E9}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -235,7 +235,7 @@ interval = 0.5
 
 label =  %percentage%%
 
-label-foreground = #27D5EA
+label-foreground = #9F9AE5
 label-padding-right = 1
 
 [module/memory]
@@ -266,7 +266,7 @@ format = <label>
 
 label =  %gb_used%
 
-label-foreground = #353AAA
+label-foreground = #6589B3
 
 
 [module/wlan]
@@ -336,18 +336,18 @@ type = internal/pulseaudio
 format-volume = <ramp-volume>  <label-volume>
 label-volume = %percentage%%
 format-volume-padding = <ramp-volume> <label-volume>
-label-volume-foreground = #EBC355
+label-volume-foreground = #BC68CD
 
 label-muted =  
-label-muted-foreground = #EBC355
-label-foreground = #EBC355
+label-muted-foreground = #BC68CD
+label-foreground = #BC68CD
 format-muted-padding = ${self.format-volume-padding}
 
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-ramp-volume-foreground = #EBC355
-label-ramp-volume-foreground = #EBC355
+ramp-volume-foreground = #BC68CD
+label-ramp-volume-foreground = #BC68CD
 
 
 [module/alsa]
@@ -429,7 +429,7 @@ thermal-zone = 0
 ; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
 ; to find path to desired file
 ; Default reverts to thermal zone setting
-hwmon-path = /sys/devices/pci0000:00/0000:00:08.1/0000:07:00.0/hwmon/hwmon2/temp1_input
+hwmon-path = /sys/devices/pci0000:00/0000:00:08.1/0000:07:00.0/hwmon/hwmon1/temp1_input
 
 ; Threshold temperature to display warning label (in degrees celsius)
 ; Default: 80

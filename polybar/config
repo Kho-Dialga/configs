@@ -18,7 +18,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #991b1d1e
+background = #99080810
 ;foreground = ${xrdb:color7:#222}
 foreground = #fff
 foreground-alt = #555
@@ -107,7 +107,7 @@ interval = 25
 mount-0 = /
 mount-1 = /home
 
-label-mounted = %{F#6198E9}%mountpoint%%{F-}: %percentage_used%%
+label-mounted = %{F#515651}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -183,12 +183,12 @@ label-unfocused-foreground = #ffffff
 label-focused = %index%
 label-focused-foreground = #fff
 label-focused-background = #465457
-label-focused-underline = #fba922
+label-focused-underline = #6589B3
 label-focused-padding = 2
 
 label-urgent = %index%
 label-urgent-foreground = #FFF
-label-urgent-background = #BD4A85
+label-urgent-background = #BE4844
 label-urgent-padding = 2
 
 [module/mpd]
@@ -235,7 +235,7 @@ interval = 0.5
 
 label =  %percentage%%
 
-label-foreground = #9F9AE5
+label-foreground = #50ACFC
 label-padding-right = 1
 
 [module/memory]
@@ -266,7 +266,7 @@ format = <label>
 
 label =  %gb_used%
 
-label-foreground = #6589B3
+label-foreground = #39366F
 
 
 [module/wlan]
@@ -436,6 +436,7 @@ hwmon-path = /sys/devices/pci0000:00/0000:00:08.1/0000:07:00.0/hwmon/hwmon1/temp
 warn-temperature = 60
 
 format = <label>
+label-warn-forehround = #69273C
 
 ; Available tags:
 ;   <label-warn> (default)
@@ -447,7 +448,7 @@ format = <label>
 ;   %temperature-f%   (temperature in °F)
 label =  %temperature-c%
 
-label-foreground = #C04755
+label-foreground = #BE4844
 [module/powermenu]
 type = custom/menu
 

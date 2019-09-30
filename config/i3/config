@@ -229,19 +229,40 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Extra stuffs
 
+# MORE VARIABLES
+
+set $TERMINAL kitty
+set $BROWSER  firefox
+set $FILEMGR  thunar
+set $MUSIC    ncmpcpp
+set $SYSMON   gotop
+set $IMGED    krita
+
+# Commands
+
 exec discord
+
 exec whatsapp-nativefier
+
 exec --no-startup-id redshift
 
 exec_always --no-startup-id xboxdrv --detach-kernel-driver
 
 exec_always --no-startup-id xrdb ~/.Xresources
 
-bindsym $mod+a exec ddspawn dropdowncalc -f mono:pixelsize=24
+bindsym $mod+a ddspawn dropdowncalc -f mono:pixelsize=24
 
 bindsym $mod+Shift+a alsamixer; refbar
 
-bindsym $mod+Shift+w exec firefox
+bindsym $mod+Shift+w $BROWSER
+
+bindsym $mod+Shift+g $IMGED
+
+bindsym $mod+Shift+f $FILEMGR
+
+bindsym $mod+Shift+i $TERMINAL -e $SYSMON
+
+bindsym $mod+m $MUSIC
 
 # Notifications
 

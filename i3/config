@@ -245,7 +245,7 @@ bindsym $mod+Shift+w exec firefox
 
 # Notifications
 
-exec_always --no-startup-id ~/home/dialga/.config/dunst/launch.sh
+exec_always --no-startup-id /home/dialga/.config/dunst/launch.sh
 
 # Mount external drives such as USBs
 

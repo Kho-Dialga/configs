@@ -58,7 +58,13 @@ client.urgent			$urgent-bg-color	$urgent-bg-color	$text-color		#00ff00
 # Gaps!
 
 gaps inner 15
-gaps outer 15
+gaps outer 25
+
+bindsym $mod+z			gaps outer current plus 5
+bindsym $mod+Shift+z		gaps outer current minus 5
+
+bindsym $mod+s			gaps inner current plus 5
+bindsym $mod+Shift+s		gaps inner current minus 5
 
 # Round corners ooooo
 
@@ -114,8 +120,6 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -181,7 +185,7 @@ bindsym $mod+F3 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+F2 restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+Escape #exec --no-startup-id prompt "Wanna exit i3?"  "i3-msg exit"
+bindsym $mod+Shift+Escape exec --no-startup-id prompt "Wanna exit i3?"  "i3-msg exit"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -250,17 +254,17 @@ exec_always --no-startup-id xboxdrv --detach-kernel-driver
 
 exec_always --no-startup-id xrdb ~/.Xresources
 
-bindsym $mod+a ddspawn dropdowncalc -f mono:pixelsize=24
+bindsym $mod+a exec --no-startup-id ddspawn dropdowncalc -f mono:pixelsize=24
 
-bindsym $mod+Shift+a alsamixer; refbar
+bindsym $mod+Shift+a exec alsamixer; refbar
 
-bindsym $mod+Shift+w $BROWSER
+bindsym $mod+Shift+w exec $BROWSER
 
-bindsym $mod+Shift+g $IMGED
+bindsym $mod+Shift+g exec $IMGED
 
-bindsym $mod+Shift+f $FILEMGR
+bindsym $mod+Shift+f exec $FILEMGR
 
-bindsym $mod+Shift+i $TERMINAL -e $SYSMON
+bindsym $mod+Shift+i exec $TERMINAL -e $SYSMON
 
 bindsym $mod+m $MUSIC
 

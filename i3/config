@@ -62,7 +62,7 @@ gaps outer 15
 
 # Round corners ooooo
 
-border_radius 15
+border_radius 25
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

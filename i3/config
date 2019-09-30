@@ -237,8 +237,6 @@ exec_always --no-startup-id xboxdrv --detach-kernel-driver
 
 exec_always --no-startup-id xrdb ~/.Xresources
 
-exec steam
-
 bindsym $mod+a exec ddspawn dropdowncalc -f mono:pixelsize=24
 
 bindsym $mod+Shift+a alsamixer; refbar
@@ -247,7 +245,7 @@ bindsym $mod+Shift+w exec firefox
 
 # Notifications
 
-exec_always --no-startup-id dunst
+exec_always --no-startup-id ~/home/dialga/.config/dunst/launch.sh
 
 # Mount external drives such as USBs
 

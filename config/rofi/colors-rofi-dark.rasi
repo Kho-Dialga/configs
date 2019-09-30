@@ -15,13 +15,13 @@
 
     selected-active-background: #A5CF76;
     selected-active-foreground: @foreground;
-    selected-normal-background: #8868CC;
+    selected-normal-background: #BE4844;
     selected-normal-foreground: @foreground;
     selected-urgent-background: #5F9E9A;
     selected-urgent-foreground: @foreground;
 
     background-color: @background;
-    background: #121313;
+    background: #33080810;
     foreground: #d0d6d9;
     border-color: @background;
     spacing: 2;

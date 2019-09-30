@@ -5,16 +5,16 @@ configuration {
     show-icons:true;
     icon-theme:                     "McMojave-circle";
 }
-
+ 
 * {
     lines: 15;
     columns: 1;
-    background-color: #656589B3;
+    background-color: #00000065;
     border-color: #00000000;
-    text-color: #D0D6D9;
+    text-color: #EFEFEF;
     font: "Hack 11";
 }
-
+ 
 #window {
     border: 0;
     border-radius: 4px;
@@ -22,7 +22,7 @@ configuration {
     width: 40%;
     height: 60%;
 }
-
+ 
 #mainbox {
     background-color: #00000000;
     children: [inputbar, listview];
@@ -32,8 +32,8 @@ configuration {
     border: 1px;
     border-color: @base0D;
 }
-
-
+ 
+ 
 #listview {
     background-color: #00000000;
     fixed-height: 0;
@@ -42,25 +42,25 @@ configuration {
     scrollbar: false;
     padding: 10px 10px 0px;
 }
-
+ 
 #element {
     background-color: #00000000;
     border: 0;
     border-radius: 15px;
     padding: 3 0  3 4 ;
 }
-
+ 
 #element selected {
-    background-color: #9F9AE5;
-    text-color: #D0D6D9;
+    background-color: #39366F;
+    text-color: #EFEFEF;
 }
-
-
+ 
+ 
 #inputbar {
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
     background-color: #00000000;
 }
-
+ 
 #case-indicator {
     background-color: #00000000;
     spacing:    0;
@@ -73,7 +73,7 @@ configuration {
     background-color: #00000000;
     spacing:    0;
 }
-
+ 
 #textbox-prompt-colon {
     background-color: #00000000;
     expand:     false;

@@ -217,7 +217,7 @@ exec_always --no-startup-id /home/dialga/.config/polybar/launch.sh
 # Wallpapers
 
 #exec xwinwrap -g 1600x900 -ni -b -ov -nf -- mplayer -wid WID ~/Pictures/rioluwave.mp4 -loop 0
-exec_always feh --bg-scale ~/Wallpapers/dialgavspalkia.png
+exec_always feh --bg-scale ~/Wallpapers_n_Pics/dialgavspalkia.png
 
 # Compositor
 
@@ -236,6 +236,8 @@ exec --no-startup-id redshift
 exec_always --no-startup-id xboxdrv --detach-kernel-driver
 
 exec_always --no-startup-id xrdb ~/.Xresources
+
+exec steam
 
 bindsym $mod+a exec ddspawn dropdowncalc -f mono:pixelsize=24
 

@@ -8,7 +8,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bars
 
-polybar example
+polybar -c ~/.config/polybar/config.ini main &
 
 
 echo "Bars launched..."

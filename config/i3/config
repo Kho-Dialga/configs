@@ -227,7 +227,7 @@ exec_always feh --bg-scale ~/Wallpapers_n_Pics/dialgavspalkia.png
 
 exec_always --no-startup-id /home/dialga/.config/compton_launch.sh
 
-# Policy kity
+# Policy kit
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
@@ -275,3 +275,8 @@ exec_always --no-startup-id /home/dialga/.config/dunst/launch.sh
 # Mount external drives such as USBs
 
 exec_always udisksctl mount -b /dev/sdb1
+
+# Screenshots
+
+bindsym Print exec scrot && notify-send "Screenshot taken"
+bindsym $mod+Shift+Print exec scrot -sf && notify-send "Screenshot taken"

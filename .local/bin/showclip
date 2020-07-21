@@ -1,0 +1,2 @@
+#!/bin/sh
+notify-send "📋 Clipboard contents:" "$(xclip -o -selection clipboard)"

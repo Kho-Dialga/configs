@@ -1,0 +1,120 @@
+# The Simple X Hotkey Daemon is the program used by LARBS to map most of the
+# dwm-independent commands.  This file is pretty readable, so I'll let you read
+# it.
+
+# The keys NOT bound here by sxhkd, but by dwm or i3 are:
+# The t thru p keys on the top row
+# The f thru ; keys on the home row
+# The b key on the bottom row (hides the bar in either case)
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Basic binds
+super + Return
+	$TERMINAL
+super + d
+	dmenu_run
+super + r
+	$TERMINAL -e lf
+super + shift + h
+	$TERMINAL -e htop
+super + e
+	$TERMINAL -e neomutt; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook
+super + shift + e
+	$TERMINAL -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook
+super + m
+	$TERMINAL -e ncmpcpp
+super + shift + n
+	$TERMINAL -e newsboat
+super + c
+	$TERMINAL -e calcurse
+super + w
+	$BROWSER
+super + shift + w
+	$BROWSER -e nmtui
+
+# Et cetera...
+super + grave
+	dmenuunicode
+super + Scroll_Lock
+	killall screenkey || screenkey
+super + Insert
+	showclip
+super + shift + BackSpace
+	sysact
+
+
+# Recording
+# Take screenshot
+Print
+	maim pic-full-$(date '+%y%m%d-%H%M-%S').png && mv pic-full* ~/pix/scrot/full
+# Pick screenshot type
+shift + Print
+	maimpick
+# Print: Record audio or video; Del: kill recording
+super + Print
+	dmenurecord
+super + Delete
+	dmenurecord kill
+
+# Pause audio
+super + p
+	mpc toggle
+super + shift + p
+	mpc pause; pauseallmpv
+# Changes to next/previous tracks
+super + {comma,period}
+	mpc {prev,next}
+# Restart track
+super + shift + less
+	mpc seek 0%
+# Seek foward in song
+super + {_,shift +} bracketright
+	mpc seek +{10,60}
+# Seek backward in song
+super + {_,shift +} bracketleft
+	mpc seek -{10,60}
+# Increase volume
+super + equal
+	pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)
+super + plus
+	pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks)
+# Decrease volume
+super {_,shift +} minus
+	pamixer --allow-boost -d {5,15}; kill -44 $(pidof dwmblocks)
+
+# Mute audio
+super + shift + m
+	amixer sset Master toggle; kill -44 $(pidof dwmblocks)
+# Function keys
+
+# Show readme
+super + F1
+	groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -
+# F2 restarts either dwm or i3 and is bound in each.
+	tutorialvids
+# Change display
+super + F3
+	displayselect
+# Hibernate
+super + F4
+	$TERMINAL -e pulsemixer; kill -44 $(pidof dwmblocks)
+super + F5
+	setbg ~/pix/wallpaper
+# Start torrent daemon/open interface
+super + F6
+	torwrap
+# toggle torrent daemon
+super + F7
+	td-toggle
+# sync email
+super + F8
+	mailsync
+# Mount a USB drive or Android device
+super + {F9,F10}
+	{dmenumount,dmenuumount}
+# View webcam
+super + F11
+	mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)

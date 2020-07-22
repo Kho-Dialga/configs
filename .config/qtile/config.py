@@ -102,6 +102,11 @@ keys = [
     Key([mod], "o",
             lazy.spawncmd()
             ),
+    # Exit Qtile
+         Key([mod, "shift"], "q",
+             lazy.shutdown(),
+             desc='Shutdown Qtile'
+             ),
 ]
 
 #### GROUPS ####
@@ -420,7 +425,8 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
     {'wmclass': 'Pinentry-gtk-2'},
     {'wmclass':'Wine'},
-    {'wmclass':'Steam'}
+    {'wmclass':'Steam'},
+    {'wmclass':'Galculator'}
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

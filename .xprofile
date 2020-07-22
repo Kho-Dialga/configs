@@ -1,9 +1,13 @@
+#!/bin/sh
+eval $(dbus-launch --sh-syntax --exit-with-x11)
+[[ -f ~/.zprofile ]] && source ~/.zprofile
 sxhkd &
 picom &
 mpd &
 xset r rate 300 50 &
 dunst &
-setbg &
+/home/dialga/.local/bin/setbg ~/pix/wallpaper &
 redshift &
 numlockx on &
 xrdb ~/.config/Xresources &
+XCURSOR_THEME=redglass XCURSOR_SIZE=16 &

@@ -426,7 +426,8 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'Pinentry-gtk-2'},
     {'wmclass':'Wine'},
     {'wmclass':'Steam'},
-    {'wmclass':'Galculator'}
+    {'wmclass':'Galculator'},
+    {'wmclass':'Dragon-drag-and-drop'}
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

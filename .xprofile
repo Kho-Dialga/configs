@@ -11,3 +11,4 @@ redshift &
 numlockx on &
 xrdb ~/.config/Xresources &
 XCURSOR_THEME=redglass XCURSOR_SIZE=16 &
+tail -f /tmp/xobpulse | xob &

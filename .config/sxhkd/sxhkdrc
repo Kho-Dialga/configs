@@ -33,7 +33,9 @@ super + c
 super + w
 	$BROWSER
 super + shift + w
-	$BROWSER -e nmtui
+	$TERMINAL -e nmtui
+super + v
+	virt-manager
 
 # Et cetera...
 super + grave
@@ -79,29 +81,31 @@ super + {_,shift +} bracketleft
 	mpc seek -{10,60}
 # Increase volume
 super + equal
-	pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)
+	pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks); echo $(pamixer --get-volume) > /tmp/xobpulse
 super + plus
-	pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks)
+	pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks); echo $(pamixer --get-volume) > /tmp/xobpulse
 # Decrease volume
 super {_,shift +} minus
-	pamixer --allow-boost -d {5,15}; kill -44 $(pidof dwmblocks)
+	pamixer --allow-boost -d {5,15}; kill -44 $(pidof dwmblocks); echo $(pamixer --get-volume) > /tmp/xobpulse
 
 # Mute audio
 super + shift + m
 	amixer sset Master toggle; kill -44 $(pidof dwmblocks)
 # Function keys
 
-# Show readme
+# F2 is unbound
 super + F1
-	groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -
-# F2 restarts either dwm or i3 and is bound in each.
-	tutorialvids
+
+# F2 is unbound.
+super + F2
+
 # Change display
 super + F3
 	displayselect
 # Hibernate
 super + F4
 	$TERMINAL -e pulsemixer; kill -44 $(pidof dwmblocks)
+# Change wallpaper
 super + F5
 	setbg ~/pix/wallpaper
 # Start torrent daemon/open interface
@@ -116,6 +120,5 @@ super + F8
 # Mount a USB drive or Android device
 super + {F9,F10}
 	{dmenumount,dmenuumount}
-# View webcam
+# View webcam is unbound
 super + F11
-	mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)

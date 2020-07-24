@@ -8,4 +8,5 @@ case $BLOCK_BUTTON in
 - Middle click to open htop." ;;
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
-mpstat -P ALL | awk '/all/ {print "🖥" $4"%"}'
+
+sensors | awk '/Core 0/ {print "🌡" $3}'

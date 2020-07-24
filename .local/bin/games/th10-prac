@@ -1,0 +1,3 @@
+#!/bin/sh
+cd ~/misc/Games/touhou-fuujinroku-mountain-of-faith
+WINEPREFIX=~/misc/Games/touhou-chireiden-subterranean-animism wine ~/misc/Games/touhou-fuujinroku-mountain-of-faith/th10prac.exe

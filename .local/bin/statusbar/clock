@@ -16,18 +16,6 @@ case "$clock" in
 	"10") icon="🕙" ;;
 	"11") icon="🕚" ;;
 	"12") icon="🕛" ;;
-	"13") icon="🕐" ;;
-	"14") icon="🕑" ;;
-	"15") icon="🕒" ;;
-	"16") icon="🕓" ;;
-	"17") icon="🕔" ;;
-	"18") icon="🕕" ;;
-	"07") icon="🕖" ;;
-	"19") icon="🕗" ;;
-	"20") icon="🕘" ;;
-	"21") icon="🕙" ;;
-	"23") icon="🕚" ;;
-
 esac
 
 case $BLOCK_BUTTON in
@@ -38,4 +26,4 @@ case $BLOCK_BUTTON in
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-date "+%D $icon%H:%M (%a)"
+date "+%Y %b %d (%a) $icon%I:%M%p"

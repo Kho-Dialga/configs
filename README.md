@@ -4,4 +4,26 @@ These are based of Luke Smith's and Brodie Robertsons dotfiles. Go check them ou
 # Installation
 To install these you need to clone this repo, and copy .config and .local to your home directory.
 # Installation with LARBS
-You can also install these via Luke Smith's LARBS script. However im just trying it out.
+If you're using an Arch-based GNU/Linux distro, you can also install these via Luke Smith's LARBS script. However I'm just trying it out.
+You install it by cloning this repo and running the following command as root:
+```
+sh larbs.sh -r https://githuib.com/Kho-Dialga/configs.git -p path/to/progs.csv
+
+```
+If you're going to run this inside of a virtual machine, remove the following lines from .config/qtile/config.py
+```
+              widget.TextBox(
+                       text = "🌡",
+                       padding = 2,
+                       foreground = colors[2],
+                       background = colors[5],
+                       fontsize = 11
+                       ),
+              widget.ThermalSensor(
+                       foreground = colors[2],
+                       background = colors[5],
+                       threshold = 90,
+                       padding = 5,
+                       fontsize = 12
+                       ),
+```

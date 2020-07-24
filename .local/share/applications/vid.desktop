@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Video player
+Exec=~/.local/bin/devour mpv %f

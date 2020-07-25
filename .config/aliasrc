@@ -22,9 +22,9 @@ alias \
 
 # Window swallowing!
 alias \
-	img="devour sxiv" \
-	vid="devour mpv" \
-	pdf="devour zathura"
+	img="sw sxiv" \
+	vid="sw mpv" \
+	pdf="sw zathura"
 
 # These common commands are just too long! Abbreviate them.
 alias \

@@ -27,7 +27,7 @@ super + shift + e
 super + m
 	$TERMINAL -e ncmpcpp
 super + shift + n
-	$TERMINAL -e newsboat
+	$TERMINAL -e newsboat; pkill -RTMIN+6 dwmblocks
 super + c
 	$TERMINAL -e calcurse
 super + w

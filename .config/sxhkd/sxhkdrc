@@ -43,7 +43,7 @@ super + grave
 super + Scroll_Lock
 	killall screenkey || screenkey
 super + Insert
-	showclip
+	notify-send "📋 Clipboard contents:" "$(xclip -o -selection clipboard)"
 super + shift + BackSpace
 	sysact
 super + apostrophe

@@ -2,10 +2,9 @@
 *.alpha: 0.9
 
 !! Set a default font and font size as below:
-st.font: Liberation Mono:size=12
+*.font: Liberation Mono:size=12
 
 !! dmenu configuration
-dmenu.font: JetBrains Mono Nerd Font:size=12
 dmenu.background: #191919
 dmenu.foreground: #ffffff
 dmenu.selbackground: #182468

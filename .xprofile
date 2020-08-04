@@ -1,17 +1,16 @@
 #!/bin/sh
 eval $(dbus-launch --sh-syntax --exit-with-x11)		# Ensures dbus is launched along witn the X session.
 [[ -f ~/.zprofile ]] && source ~/.zprofile		# Sources the zsh configuration if using a display manager.
-sxhkd &							# Creates the keyboard shortcuts.
+sxhkd 2>/dev/null &					# Creates the keyboard shortcuts.
 picom &							# Launches picom for transparency.
-mpd &							# Launches mpd for using alongside ncmpcpp.
+mpd 2>/dev/null &					# Launches mpd for using alongside ncmpcpp.
 xset r rate 300 50 &					# Speeds up the xrate.
 dunst &							# Launches dunst for notifications.
 setbg ~/pix/wallpaper &					# Sets the wallpaper, change the directory to the path to your image.
-redshift &						# Launches redshift for adjusting the color temperature.
+redshift 2>/dev/null &					# Launches redshift for adjusting the color temperature.
 xrdb ~/.config/Xresources &				# Reloads the Xresources file.
-XCURSOR_THEME=redglass XCURSOR_SIZE=16 &		# Sets the cursor theme properly.
-tail -f /tmp/xobpulse | xob &				# Starts xob for a pulseaudio volume bar.
-mw sync & 						# Syncs the mail.
-sudo pacman -Syyuw --noconfirm &			# Updates the pacman repos at startup
-pulseaudio --start &					# Starts pulseaudio
-dwmblocks & 						# Starts the statusbar when using dwm
+tail -f /tmp/xobpulse | xob 2>/dev/null &		# Starts xob for a pulseaudio volume bar.
+mw sync 2>/dev/null & 					# Syncs the mail.
+sudo pacman -Syyuw --noconfirm &			# Updates the pacman repos at startup.
+dwmblocks 2>/dev/null &					# Starts the statusbar when using dwm.
+$TERMINAL -e pulsemixer &				# Don't close this until you've opened brave if you use it.

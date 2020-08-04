@@ -11,4 +11,7 @@ redshift &						# Launches redshift for adjusting the color temperature.
 xrdb ~/.config/Xresources &				# Reloads the Xresources file.
 XCURSOR_THEME=redglass XCURSOR_SIZE=16 &		# Sets the cursor theme properly.
 tail -f /tmp/xobpulse | xob &				# Starts xob for a pulseaudio volume bar.
-dwmblocks						# Starts the status bar if using dwm.
+mw sync & 						# Syncs the mail.
+sudo pacman -Syyuw --noconfirm &			# Updates the pacman repos at startup
+pulseaudio --start &					# Starts pulseaudio
+dwmblocks & 						# Starts the statusbar when using dwm

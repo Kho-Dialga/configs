@@ -10,6 +10,14 @@ dmenu.foreground: #ffffff
 dmenu.selbackground: #182468
 dmenu.selforeground: #ffffff
 
+!! dwm configuration
+dwm.normbordercolor: #32d0fc
+dwm.normbgcolor: #182468
+dwm.normfgcolor: #ffffff
+dwm.selbordercolor: #b02626
+dwm.selbgcolor: #191919
+dwm.selfgcolor: #ffffff
+
 /* name		dark	light */
 /* black	0	8 */
 /* red		1	9 */

@@ -5,11 +5,11 @@
 st.font: Liberation Mono:size=12
 
 !! dmenu configuration
-dmenu.font : JetBrains Mono Nerd Font:size=12
-dmenu.background : #191919
-dmenu.foreground : #ffffff
-dmenu.selbackground : #314ad0
-dmenu.selforeground : #ffffff
+dmenu.font: JetBrains Mono Nerd Font:size=12
+dmenu.background: #191919
+dmenu.foreground: #ffffff
+dmenu.selbackground: #182468
+dmenu.selforeground: #ffffff
 
 /* name		dark	light */
 /* black	0	8 */
@@ -22,24 +22,24 @@ dmenu.selforeground : #ffffff
 /* white	7	15 */
 
 /* !! custom theme: */
-st.color256: #191919
-st.color257: #ffffff
-st.color0: #191919
-st.color1: #b02626
-st.color2: #40a626
-st.color3: #f2e635
-st.color4: #314ad0
-st.color5: #b30ad0
-st.color6: #32d0fc
-st.color7: #acadb1
-st.color8: #676f78
-st.color9: #b55454
-st.color10: #78a670
-st.color11: #faf380
-st.color12: #707fd0
-st.color13: #c583d0
-st.color14: #8adaf1
-st.color15: #e0e3e7
+*.color256: #191919
+*.color257: #ffffff
+*.color0: #191919
+*.color1: #b02626
+*.color2: #40a626
+*.color3: #f2e635
+*.color4: #314ad0
+*.color5: #b30ad0
+*.color6: #32d0fc
+*.color7: #acadb1
+*.color8: #676f78
+*.color9: #b55454
+*.color10: #78a670
+*.color11: #faf380
+*.color12: #707fd0
+*.color13: #c583d0
+*.color14: #8adaf1
+*.color15: #e0e3e7
 
 /* !! gruvbox: */
 /* *.color0: #1d2021 */

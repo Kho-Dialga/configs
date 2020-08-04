@@ -36,7 +36,7 @@ alias \
 	f="$FILE" \
 	e="$EDITOR" \
 	v="$EDITOR" \
-	e="sudoedit" \
+	se="sudoedit" \
 	p="sudo pacman" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \

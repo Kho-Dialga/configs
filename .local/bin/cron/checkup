@@ -2,9 +2,7 @@
 
 # Syncs repositories and downloads updates, meant to be run as a cronjob.
 
-ping -q -c example.org > /dev/null || exit
-
-notify-send "📦 Repository Sync" "Checking for package updates..."
+ping -q -c 3 gnu.org > /dev/null || exit
 
 sudo pacman -Syyuw --noconfirm || notify-send "Error downloading updates.
 
@@ -15,5 +13,5 @@ if pacman -Qu | grep -v "\[ignored\]"
 then
 	notify-send "🎁 Repository Sync" "Updates available. Click statusbar icon (📦) for update."
 else
-	notify-send "📦 Repository Sync"  "Sync complete. No new packages for update."
+	cat /dev/null
 fi

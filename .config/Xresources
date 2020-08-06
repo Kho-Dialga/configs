@@ -29,9 +29,8 @@ dwm.selfgcolor: #ffffff
 /* white	7	15 */
 
 /* !! custom theme: */
-*.color256: #191919
-*.color257: #ffffff
-*.color0: #191919
+*.background: #191919
+*.color0: #313539
 *.color1: #b02626
 *.color2: #40a626
 *.color3: #f2e635

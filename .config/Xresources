@@ -2,21 +2,7 @@
 *.alpha: 0.9
 
 !! Set a default font and font size as below:
-*.font: Liberation Mono:size=12
-
-!! dmenu configuration
-dmenu.background: #191919
-dmenu.foreground: #ffffff
-dmenu.selbackground: #182468
-dmenu.selforeground: #ffffff
-
-!! dwm configuration
-dwm.normbordercolor: #32d0fc
-dwm.normbgcolor: #182468
-dwm.normfgcolor: #ffffff
-dwm.selbordercolor: #b02626
-dwm.selbgcolor: #191919
-dwm.selfgcolor: #ffffff
+*.font: JetBrains Mono Nerd Font:style=Bold:size=12
 
 /* name		dark	light */
 /* black	0	8 */
@@ -29,23 +15,45 @@ dwm.selfgcolor: #ffffff
 /* white	7	15 */
 
 /* !! custom theme: */
-*.background: #191919
-*.color0: #313539
-*.color1: #b02626
-*.color2: #40a626
-*.color3: #f2e635
-*.color4: #314ad0
-*.color5: #b30ad0
-*.color6: #32d0fc
-*.color7: #acadb1
-*.color8: #676f78
-*.color9: #b55454
-*.color10: #78a670
-*.color11: #faf380
-*.color12: #707fd0
-*.color13: #c583d0
-*.color14: #8adaf1
-*.color15: #e0e3e7
+ *.background: 	#191919
+*.color0:  	#313539
+*.color1:  	#b02626
+*.color2:  	#40a626
+*.color3:  	#f2e635
+*.color4:  	#314ad0
+*.color5:  	#b30ad0
+*.color6:  	#32d0fc
+*.color7:  	#ffffff
+*.color8:  	#676f78
+*.color9:  	#b55454
+*.color10: 	#78a670
+*.color11: 	#faf380
+*.color12: 	#707fd0
+*.color13: 	#c583d0
+*.color14: 	#8adaf1
+*.color15: 	#e0e3e7
+
+/* nord */
+!! *.background:   #2e3440
+!! *fading: 35
+!! *fadeColor: #4c566a
+
+!! *.color0:  #3b4252
+!! *.color1:  #bf616a
+!! *.color2:  #a3be8c
+!! *.color3:  #ebcb8c
+!! *.color4:  #81a1c1
+!! *.color5:  #b48ead
+!! *.color6:  #88c0d0
+!! *.color7:  #e5e9f0
+!! *.color8:  #4c566a
+!! *.color9:  #bf616a
+!! *.color10: #a3be8c
+!! *.color11: #ebcb8c
+!! *.color12: #81a1c1
+!! *.color13: #b48ead
+!! *.color14: #8fbcbb
+!! *.color15: #eceff4
 
 /* !! gruvbox: */
 /* *.color0: #1d2021 */
@@ -85,11 +93,9 @@ dwm.selfgcolor: #ffffff
 /* *.color14: #427b58 */
 /* *.color15: #3c3836 */
 /* *.background: #fbf1c7 */
-/* *.foreground: #282828 */
 /* st.alpha: 0.9 */
 
 /* !! brogrammer: */
-/* *.foreground:  #d6dbe5 */
 /* *.background:  #131313 */
 /* *.color0:      #1f1f1f */
 /* *.color8:      #d6dbe5 */
@@ -127,23 +133,23 @@ dwm.selfgcolor: #ffffff
 /* *.color14:      #86c1b9 */
 /* *.color15:      #f8f8f8 */
 
-/* !! solarized */
-/* *.color0:	#073642 */
-/* *.color1:	#dc322f */
-/* *.color2:	#859900 */
-/* *.color3:	#b58900 */
-/* *.color4:	#268bd2 */
-/* *.color5:	#d33682 */
-/* *.color6:	#2aa198 */
-/* *.color7:	#eee8d5 */
-/* *.color9:	#cb4b16 */
-/* *.color8:	#fdf6e3 */
-/* *.color10:	#586e75 */
-/* *.color11:	#657b83 */
-/* *.color12:	#839496 */
-/* *.color13:	#6c71c4 */
-/* *.color14:	#93a1a1 */
-/* *.color15:	#fdf6e3 */
+!! solarized */
+!! *.color0:	#073642
+!! *.color1:	#dc322f
+!! *.color2:	#859900
+!! *.color3:	#b58900
+!! *.color4:	#268bd2
+!! *.color5:	#d33682
+!! *.color6:	#2aa198
+!! *.color7:	#eee8d5
+!! *.color9:	#cb4b16
+!! *.color8:	#fdf6e3
+!! *.color10:	#586e75
+!! *.color11:	#657b83
+!! *.color12:	#839496
+!! *.color13:	#6c71c4
+!! *.color14:	#93a1a1
+!! *.color15:	#fdf6e3
 
 /* !! xterm */
 /* *.color0:   #000000 */

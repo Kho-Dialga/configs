@@ -13,18 +13,16 @@ alias \
 	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner"
 
+# Image previews (sort of in lf)
+alias \
+	lf="lfrun"
+
 # Colorize commands when possible.
 alias \
 	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"
-
-# Window swallowing!
-alias \
-	img="sw sxiv" \
-	vid="sw mpv" \
-	pdf="sw zathura"
 
 # These common commands are just too long! Abbreviate them.
 alias \
@@ -41,8 +39,9 @@ alias \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
 	xq="xbps-query" \
-	z="devour zathura" \
-	pro="sudo pacman -Rns $(pacman -Qtdq)"
+	z="zathura" \
+	pro="sudo pacman -Rns $(pacman -Qtdq)" \
+	nvd-set="nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings"
 
 alias \
 	magit="nvim -c MagitOnly" \

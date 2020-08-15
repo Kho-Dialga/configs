@@ -15,6 +15,25 @@ cmd open ${{
     esac
 }}
 
+cmd bulk-rename ${{
+    old=$(mktemp)
+    new=$(mktemp)
+    [ -n $fs ] && fs=$(ls)
+    printf "$fs\n" > $old
+    printf "$fs\n" > $new
+    $EDITOR $new
+    [ $(cat $new | wc -l) -ne $(cat $old | wc -l) ] && exit
+    paste $old $new | while read names; do
+        src=$(printf $names | cut -f1)
+        dst=$(printf $names | cut -f2)
+        [ $src = $dst ] && continue
+        [ -e $dst ] && continue
+        mv $src $dst
+    done
+    rm $old $new
+    lf -remote "send $id unselect"
+}}
+
 cmd mkdir %{{
   printf "Directory Name: "
   read ans
@@ -123,16 +142,6 @@ map c
 map e
 map f
 
-# Not really image preview
-map - $~/.config/lf/draw_img "$f"
-
-cmd video_preview ${{
-    CACHE=$(mktemp /tmp/thumb_cache.XXXXX)
-    ffmpegthumbnailer -i "$f" -o $CACHE -s 0
-    ~/.config/lf/draw_img $CACHE && rm $CACHE
-}}
-map + :video_preview
-
 # Keybindings down below
 # vvvvvvvvvvvv
 
@@ -182,6 +191,7 @@ map L bottom
 map R reload
 map C clear
 map U unselect
+map B bulk-rename
 
 # Movement
 # Woah! Cool keyboard
@@ -189,13 +199,20 @@ map U unselect
 map gtr cd ~/.local/share/Trash/files
 map gus cd /run/media/dialga
 
+map gr. cd ~/misc/git
+map grc cd ~/misc/git/configs
+map grd cd ~/misc/git/dwm-dialga
+map grs cd ~/misc/git/st-dialga
+map grb cd ~/misc/git/dwmblocks
+
 map gv. cd ~/vid
 
 map gpp cd ~/pix
 map gps cd ~/pix/scrot
 map gpw cd ~/pix/wallpaper
 
-map ggr cd ~/misc/git
+map gm. cd ~/music
+map gmp cd ~/.config/mpd/playlists
 
 map gd cd ~/dox
 map gb cd ~/dox/bak

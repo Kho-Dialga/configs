@@ -13,7 +13,7 @@ alias \
 	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner"
 
-# Image previews (sort of in lf)
+# Image previews (sort of) in lf
 alias \
 	lf="lfrun"
 
@@ -27,24 +27,33 @@ alias \
 # These common commands are just too long! Abbreviate them.
 alias \
 	ka="killall" \
-	g="git" \
 	trem="transmission-remote" \
-	YT="youtube-viewer" \
-	sdn="sudo shutdown -h now" \
-	f="$FILE" \
 	e="$EDITOR" \
-	v="$EDITOR" \
 	se="sudoedit" \
-	p="sudo pacman" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove -R" \
-	xq="xbps-query" \
 	z="zathura" \
-	pro="sudo pacman -Rns $(pacman -Qtdq)" \
 	nvd-set="nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings"
 
 alias \
-	magit="nvim -c MagitOnly" \
-	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
-	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf" \
+
+# Git aliases
+alias \
+	gau="git add -u" \
+	gpu="git push" \
+	gpl="git pull" \
+	gcm="git commit -m" \
+	gft="git fetch" \
+	gbr="git branch" \
+	gck="git checkout" \
+	gst="git status"
+ # Pacman aliases
+ alias \
+	 psi="sudo pacman -S" \
+	 pss="sudo pacman -Ss" \
+	 psu="sudo pacman -Syu" \
+	 prm="sudo pacman -Rns" \
+	 pro="sudo pacman -Rns $(pacman -Qtdq)" \
+	 pqa="sudo pacman -Q" \
+	 pqsl="sudo pacman -Qs" \
+	 pqe="sudo pacman -Qqe" \
+	 pqo="sudo pacman -Qtdq"

@@ -14,3 +14,4 @@ mw sync 2>/dev/null & 					# Syncs the mail.
 sudo pacman -Syyuw --noconfirm &			# Updates the pacman repos at startup.
 dwmblocks 2>/dev/null &					# Starts the statusbar when using dwm.
 $TERMINAL -e pulsemixer &				# Don't close this until you've opened brave if you use it.
+newsup							# Updates RSS feeds

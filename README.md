@@ -5,8 +5,9 @@ These are based of Luke Smith's and Brodie Robertsons dotfiles. Go check them ou
 To install these you need to clone this repo, and copy .config and .local to your home directory.
 # Installation with LARBS
 If you're using an Arch-based GNU/Linux distro, you can also install these via Luke Smith's LARBS script. However I'm just trying it out.
-You install it by cloning this repo and running the following command as root:
+You install it by running the following commands as root:
 ```
+curl -LO https://raw.githubusercontent.com/Kho-Dialga/configs/master/progs.csv
 sh larbs.sh -r https://githuib.com/Kho-Dialga/configs.git -p path/to/progs.csv
 
 ```

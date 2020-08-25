@@ -8,7 +8,7 @@ If you're using an Arch-based GNU/Linux distro, you can also install these via L
 You install it by running the following commands as root:
 ```
 curl -LO https://raw.githubusercontent.com/Kho-Dialga/configs/master/progs.csv
-sh larbs.sh -r https://githuib.com/Kho-Dialga/configs.git -p path/to/progs.csv
+sh larbs.sh -r https://github.com/Kho-Dialga/configs.git -p path/to/progs.csv
 
 ```
 If you're going to run this inside of a virtual machine, remove the following lines from .config/qtile/config.py

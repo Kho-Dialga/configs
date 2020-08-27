@@ -59,4 +59,7 @@ alias \
 	 pqa="pacman -Q" \
 	 pqsl="pacman -Qs" \
 	 pqe="pacman -Qqe" \
-	 pqo="pacman -Qtdq"
+	 pqo="pacman -Qtdq" \
+	 ysi="yay -S" \
+	 yss="yay -Ss" \
+	 ysu="yay -Syu"

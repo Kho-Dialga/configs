@@ -15,9 +15,9 @@ super + Escape
 super + Return
 	$TERMINAL
 super + d
-	dmenu_run
+	dmenu_run -c -l 15 -h 30
 super + r
-	$TERMINAL -e lf
+	$TERMINAL -e lfrun
 super + shift + h
 	$TERMINAL -e htop
 super + e
@@ -36,6 +36,8 @@ super + shift + w
 	$TERMINAL -e nmtui
 super + v
 	virt-manager
+super + g
+	dmenugame
 
 # Et cetera...
 super + grave
@@ -116,9 +118,10 @@ super + F7
 	td-toggle
 # sync email
 super + F8
-	mailsync
+	mw sync
 # Mount a USB drive or Android device
 super + {F9,F10}
 	{dmenumount,dmenuumount}
-# View webcam is unbound
+# Show the webcam
 super + F11
+	camtoggle

@@ -99,7 +99,7 @@
     #        <u>underline</u>
     #
     #        For a complete reference see
-    #        <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
+    #        <http://developer.breeze-dark.org/pango/stable/PangoMarkupFormat.html>.
     #
     # strip: This setting is provided for compatibility with some broken
     #        clients that send markup even though it's not enabled on the
@@ -165,7 +165,7 @@
     max_icon_size = 64
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /usr/share/icons/breeze-dark/16x16/status/:/usr/share/icons/breeze-dark/16x16/devices/
 
     ### History ###
 

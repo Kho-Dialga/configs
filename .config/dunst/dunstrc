@@ -82,7 +82,7 @@
     # Set to 0 to disable.
     # A client can set the 'transient' hint to bypass this. See the rules
     # section for how to disable this if necessary
-    idle_threshold = 120
+    idle_threshold = 300
 
     ### Text ###
     font = JetBrains Mono Nerd Font Medium 10
@@ -134,7 +134,7 @@
     # Show age of message if message is older than show_age_threshold
     # seconds.
     # Set to -1 to disable.
-    show_age_threshold = 60
+    show_age_threshold = 300
 
     # Split notifications into multiple lines if they don't fit into
     # geometry.
@@ -162,7 +162,7 @@
     icon_position = left
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 32
+    max_icon_size = 64
 
     # Paths to default icons.
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
@@ -278,14 +278,14 @@
     foreground = "#ffffff"
     timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
-    icon = /home/brodie/.config/dunst/normal.png
+    icon = /home/dialga/.config/dunst/normal.png
 
 [urgency_normal]
     background = "#2b2b2b"
     foreground = "#ffffff"
     timeout = 5
     # Icon for notifications with normal urgency, uncomment to enable
-    icon = /home/brodie/.config/dunst/normal.png
+    icon = /home/dialga/.config/dunst/normal.png
 
 [urgency_critical]
     background = "#900000"
@@ -293,7 +293,7 @@
     frame_color = "#ff0000"
     timeout = 5
     # Icon for notifications with critical urgency, uncomment to enable
-    icon = /home/brodie/.config/dunst/critical.png
+    icon = /home/dialga/.config/dunst/critical.png
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

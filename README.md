@@ -7,8 +7,7 @@ To install these you need to clone this repo, and copy .config and .local to you
 If you're using an Arch-based GNU/Linux distro, you can also install these via Luke Smith's LARBS script. However I'm just trying it out.
 You install it by running the following commands as root:
 ```
-curl -LO https://raw.githubusercontent.com/Kho-Dialga/configs/master/progs.csv
-sh larbs.sh -r https://github.com/Kho-Dialga/configs.git -p path/to/progs.csv
+sh larbs.sh -r https://github.com/Kho-Dialga/configs.git -p https://raw.githubusercontent.com/Kho-Dialga/configs/master/progs.csv
 
 ```
 If you're going to run this inside of a virtual machine, remove the following lines from .config/qtile/config.py

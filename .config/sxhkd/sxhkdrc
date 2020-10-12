@@ -26,14 +26,12 @@ super + shift + e
 	$TERMINAL -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook
 super + m
 	$TERMINAL -e ncmpcpp
-super + shift + n
+super + n
 	$TERMINAL -e newsboat; pkill -RTMIN+6 dwmblocks
 super + c
 	$TERMINAL -e calcurse
 super + w
 	$BROWSER
-super + shift + w
-	$TERMINAL -e nmtui
 super + v
 	virt-manager
 super + g
@@ -92,15 +90,15 @@ super {_,shift +} minus
 
 # Mute audio
 super + shift + m
-	amixer sset Master toggle; kill -44 $(pidof dwmblocks)
+	pamixer --toggle; kill -44 $(pidof dwmblocks)
 # Function keys
 
 # F2 is unbound
 super + F1
-
+	droidcam
 # F2 is unbound.
 super + F2
-
+	$TERMINAL -e popupgrade
 # Change display
 super + F3
 	displayselect
@@ -118,10 +116,13 @@ super + F7
 	td-toggle
 # sync email
 super + F8
-	mw sync
+	mw -Y
 # Mount a USB drive or Android device
 super + {F9,F10}
 	{dmenumount,dmenuumount}
 # Show the webcam
 super + F11
 	camtoggle
+# Start and Xbox controller
+super + F12
+	xboxdrv --detach-kernel-driver --no-uinput

@@ -2,7 +2,7 @@
 !!*.alpha: 0.9
 
 !! Set a default font and font size as below:
-*.font: JetBrains Mono Nerd Font:style=Bold:size=13
+*.font: JetBrains Mono Medium:style=Bold:size=13
 !! URxvt.font: xft:JetBrains Mono Medium:size=12
 /* name		dark	light */
 /* black	0	8 */

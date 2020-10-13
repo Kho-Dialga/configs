@@ -87,7 +87,7 @@ A,xob,a lightweight volume (or anything) bar for the X Window System.
 ,neofetch,a CLI system information tool.
 ,xcb-util-cursor,XCB cursor library.
 A,spaceship-prompt-git,is a zsh prompt for Astronauts.
-A,nerd-fonts-jetbrains-mono,is a Nerd Font patched version of JetBrains Mono.
+,ttf-jetbrains-mono,is a font for developers.
 ,redshift,adjusts the color temperature of your screen according to your surroundings.
 ,noto-fonts,is the Google Noto TTF fonts.
 -

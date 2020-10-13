@@ -6,11 +6,11 @@ picom &							# Launches picom for transparency.
 mpd 2>/dev/null &					# Launches mpd for using alongside ncmpcpp.
 xset r rate 300 50 &					# Speeds up the xrate.
 dunst &							# Launches dunst for notifications.
-setbg ~/pix/wallpaper &					# Sets the wallpaper, change the directory to the path to your image.
+# setbg ~/pix/wallpaper &				# Sets the wallpaper, change the directory to the path to your image.
 redshift 2>/dev/null &					# Launches redshift for adjusting the color temperature.
 xrdb ~/.config/Xresources &				# Reloads the Xresources file.
 tail -f /tmp/xobpulse | xob 2>/dev/null &		# Starts xob for a pulseaudio volume bar.
-mw sync 2>/dev/null & 					# Syncs the mail.
+mw -Y & 						# Syncs all mailboxes.
 sudo pacman -Syyuw --noconfirm &			# Updates the pacman repos at startup.
 dwmblocks 2>/dev/null &					# Starts the statusbar when using dwm.
 $TERMINAL -e pulsemixer &				# Don't close this until you've opened brave if you use it.

@@ -90,4 +90,4 @@ A,spaceship-prompt-git,is a zsh prompt for Astronauts.
 ,ttf-jetbrains-mono,is a font for developers.
 ,redshift,adjusts the color temperature of your screen according to your surroundings.
 ,noto-fonts,is the Google Noto TTF fonts.
--
+,zsh-autosuggestions,provides fish-like autosuggestions for zsh.

@@ -11,7 +11,7 @@ export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="brave-bin"
 export READER="zathura"
 
 # ~/ Clean-up:
@@ -54,7 +54,6 @@ export QT_QPA_PLATFORMTHEME="gtk3"	# Have QT use gtk3 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
-#export DISPLAY=:0
 export COLORTERM="truecolor"
 
 # This is the list for lf icons:
@@ -132,15 +131,7 @@ ex=🎯:\
 
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ] && shortcuts >/dev/null 2>&1 &
 
-if pacman -Qs libxft-bgra >/dev/null 2>&1; then
-	# Start graphical server on tty1 if not already running.
-	[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec dbus-launch --exit-with-session startx
-else
-	echo "\033[31mIMPORTANT\033[0m: Note that \033[32m\`libxft-bgra\`\033[0m must be installed for this build of dwm.
-Please run:
-	\033[32myay -S libxft-bgra\033[0m
-and replace \`libxft\`"
-fi
+#[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec dbus-launch --exit-with-session startx
 
 # Start the gnome keyring
 if [ -n "$DESKTOP_SESSION" ];then

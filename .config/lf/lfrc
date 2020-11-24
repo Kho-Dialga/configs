@@ -15,34 +15,49 @@ cmd open ${{
 }}
 
 cmd bulk-rename ${{
-    old=$(mktemp)
-    new=$(mktemp)
-    [ -n $fs ] && fs=$(ls)
-    printf "$fs\n" > $old
-    printf "$fs\n" > $new
-    $EDITOR $new
-    [ $(cat $new | wc -l) -ne $(cat $old | wc -l) ] && exit
-    paste $old $new | while read names; do
-        src=$(printf $names | cut -f1)
-        dst=$(printf $names | cut -f2)
-        [ $src = $dst ] && continue
-        [ -e $dst ] && continue
-        mv $src $dst
-    done
-    rm $old $new
-    lf -remote "send $id unselect"
+	index=$(mktemp /tmp/lf-bulk-rename-index.XXXXXXXXXX)
+	if [ -n "${fs}" ]; then
+		echo "$fs" > $index
+	else
+		echo "$(ls "$(dirname $f)" | tr ' ' "\n")" > $index
+	fi
+	index_edit=$(mktemp /tmp/lf-bulk-rename.XXXXXXXXXX)
+	cat $index > $index_edit
+	$EDITOR $index_edit
+	if [ $(cat $index | wc -l) -eq $(cat $index_edit | wc -l) ]; then
+		max=$(($(cat $index | wc -l)+1))
+		counter=1
+		while [ $counter -le $max ]; do
+			a="$(cat $index | sed "${counter}q;d")"
+			b="$(cat $index_edit | sed "${counter}q;d")"
+			counter=$(($counter+1))
+
+			[ "$a" = "$b" ] && continue
+			[ -e "$b" ] && echo "File exists: $b" && continue
+			mv "$a" "$b"
+		done
+	else
+		echo "Number of lines must stay the same"
+	fi
+	rm $index $index_edit
 }}
 
 cmd mkdir %{{
-  printf "Directory Name: "
+  printf "Directory name: "
   read ans
   mkdir $ans
 }}
 
 cmd mkfile %{{
-  printf "File Name: "
+  printf "File name: "
   read ans
   $EDITOR $ans
+}}
+
+cmd mkfile %{{
+	printf "File name: "
+	read ans
+	sudoedit $ans
 }}
 
 cmd chmod %{{
@@ -179,51 +194,61 @@ map mr sudomkfile
 map md mkdir
 map ms $mkscript
 map ch chmod
-map bg setwallpaper
-map o open_config
-map br $vimv $fx
 map r rename
-map H top
-map L bottom
-map R reload
+map gg top
+map G bottom
 map C clear
 map U unselect
-map B bulk-rename
+map br bulk-rename
 
 # Movement
 # Woah! Cool keyboard
-# Shortcuts for moving!
+# shortcuts for moving!
 map gtr cd ~/.local/share/Trash/files
 map gus cd /run/media/dialga
 
-map gr. cd ~/misc/git
-map grc cd ~/misc/git/configs
-map grd cd ~/misc/git/dwm-dialga
-map grs cd ~/misc/git/st-dialga
-map grb cd ~/misc/git/dwmblocks
+map gr. cd ~/.local/src
+map grc cd ~/.local/src/configs
+map grd cd ~/.local/src/dwm-dialga
+map grs cd ~/.local/src/st-dialga
+map grb cd ~/.local/src/dwmblocks-dialga
 
 map gv. cd ~/vid
+map gva cd ~/vid/anime
 
-map gpp cd ~/pix
+map gp. cd ~/pix
 map gps cd ~/pix/scrot
 map gpw cd ~/pix/wallpaper
 
 map gm. cd ~/music
 map gmp cd ~/.config/mpd/playlists
 
-map gd cd ~/dox
-map gb cd ~/dox/bak
+map gd. cd ~/dox
+map gds cd ~/dox/school
+map gdc cd ~/dox/school/class
+map gdh cd ~/dox/school/hw
+map gdp cd ~/dox/school/projects
+map gb. cd ~/dox/bak
 
-map gD  cd ~/dl
+map gD. cd ~/dl
 map gDi cd ~/dl/iso
+map gDt cd ~/dl/torrent
+map gDT cd ~/dl/torrent-dl
 
 map gs. cd ~/.local/bin
+map gss cd ~/.local/bin/statusbar
 map gsc cd ~/.local/bin/cron
 map gsg cd ~/.local/bin/games
-map gG cd ~/games
+map gG. cd ~/games
+
+map gw. cd ~/.local/share/wineprefixes
+map gwt cd ~/.local/share/wineprefixes/touhou
+map gwd cd ~/.local/share/wineprefixes/default
+
+map gP. cd /etc/portage
 
 map gcf cd ~/.config
 map gca cd ~/.cache
-map gE cd /etc
+map gE. cd /etc
 map gU. cd /usr
 map gUs cd /usr/share

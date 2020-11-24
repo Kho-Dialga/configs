@@ -43,6 +43,7 @@ alias \
 	gpss="git push git@github.com:Kho-Dialga/st-dialga.git" \
 	gpsd="git push git@github.com:Kho-Dialga/dwm-dialga.git" \
 	gpsdm="git push git@github.com:Kho-Dialga/dmenu-dialga.git" \
+	gpst="git push git@github.com:Kho-Dialga/touhou-replays.git" \
 	gpl="git pull" \
 	gcm="git commit -m" \
 	gft="git fetch" \
@@ -55,9 +56,9 @@ alias \
 	 pss="pacman -Ss" \
 	 psu="sudo pacman -Syu" \
 	 prm="sudo pacman -Rns" \
-	 pro="sudo pacman -Rns $(pacman -Qtdq)" \
+	 pro="sudo pacman -Qttdq | sudo pacman -Rns - " \
 	 pqa="pacman -Q" \
-	 pqsl="pacman -Qs" \
+	 pqs="pacman -Qs" \
 	 pqe="pacman -Qqe" \
 	 pqo="pacman -Qtdq" \
 	 ysi="yay -S" \

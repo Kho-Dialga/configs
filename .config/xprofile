@@ -1,17 +1,14 @@
 #!/bin/sh
 eval $(dbus-launch --sh-syntax --exit-with-x11)		# Ensures dbus is launched along witn the X session.
-[[ -f ~/.zprofile ]] && source ~/.zprofile		# Sources the zsh configuration if using a display manager.
-sxhkd 2>/dev/null &					# Creates the keyboard shortcuts.
-picom &							# Launches picom for transparency.
-mpd 2>/dev/null &					# Launches mpd for using alongside ncmpcpp.
+sxhkd &							# Creates the keyboard shortcuts.
+compton --config ~/.config/compton/compton.conf &	# Launches picom for transparency.
+mpd &							# Launches mpd for using alongside ncmpcpp.
 xset r rate 300 50 &					# Speeds up the xrate.
 dunst &							# Launches dunst for notifications.
-# setbg ~/pix/wallpaper &				# Sets the wallpaper, change the directory to the path to your image.
-redshift 2>/dev/null &					# Launches redshift for adjusting the color temperature.
+setbg ~/pix/wallpaper &					# Sets the wallpaper, change the directory to the path to your image.
+redshift &						# Launches redshift for adjusting the color temperature.
 xrdb ~/.config/Xresources &				# Reloads the Xresources file.
-tail -f /tmp/xobpulse | xob 2>/dev/null &		# Starts xob for a pulseaudio volume bar.
 mw -Y & 						# Syncs all mailboxes.
-sudo pacman -Syyuw --noconfirm &			# Updates the pacman repos at startup.
-dwmblocks 2>/dev/null &					# Starts the statusbar when using dwm.
-$TERMINAL -e pulsemixer &				# Don't close this until you've opened brave if you use it.
-newsup							# Updates RSS feeds
+dwmblocks &						# Start the statusbar
+newsup &						# Updates RSS feeds
+tail -f /tmp/xobpulse | xob 				# Starts xob for a pulseaudio volume bar.

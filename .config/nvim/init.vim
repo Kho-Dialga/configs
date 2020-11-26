@@ -8,12 +8,19 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'lambdalisue/fern.vim'
 call plug#end()
 
-set bg=light
+" Themes
+syntax enable
+set termguicolors
+set background=dark
+colorscheme solarized
+
 set go=a
 set mouse=a
 set nohlsearch

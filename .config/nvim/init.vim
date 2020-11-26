@@ -8,17 +8,9 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
-Plug 'tpope/vim-surround'
-Plug 'preservim/nerdtree'
-Plug 'junegunn/goyo.vim'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'jreybert/vimagit'
-Plug 'lukesmithxyz/vimling'
-Plug 'vimwiki/vimwiki'
 Plug 'bling/vim-airline'
-Plug 'tpope/vim-commentary'
-Plug 'kovetskiy/sxhkd-vim'
 Plug 'ap/vim-css-color'
+Plug 'lambdalisue/fern.vim'
 call plug#end()
 
 set bg=light
@@ -48,40 +40,10 @@ set clipboard+=unnamedplus
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
 
-" Nerd tree
-	map <leader>n :NERDTreeToggle<CR>
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-    if has('nvim')
-        let NERDTreeBookmarksFile = stdpath('data') . '/NERDTreeBookmarks'
-    else
-        let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
-    endif
-
-" vimling:
-	nm <leader>d :call ToggleDeadKeys()<CR>
-	imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
-	nm <leader>i :call ToggleIPA()<CR>
-	imap <leader>i <esc>:call ToggleIPA()<CR>a
-	nm <leader>q :call ToggleProse()<CR>
-
-" Shortcutting split navigation, saving a keypress:
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
-
-" Replace ex mode with gq
-	map Q gq
-
-" Check file in shellcheck:
-	map <leader>s :!clear && shellcheck %<CR>
-
-" Open my bibliography file in split
-	map <leader>b :vsp<space>$BIB<CR>
-	map <leader>r :vsp<space>$REFER<CR>
-
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
+" Toggle fern
+	nnoremap F :Fern . -drawer -toggle<Enter>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
 	map <leader>c :w! \| !compiler <c-r>%<CR>
@@ -119,6 +81,18 @@ set clipboard+=unnamedplus
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+" Update compton when compton.conf is updated
+	autocmd BufWritePost *compton.conf !pkill -USR1 compton
+" Update dunst when dunstrc is updated
+	autocmd BufWritePost *dunstrc !pkill -USR1 dunst
+" Update dwmblocks when config.h is edited
+	autocmd BufWritePost ~/.local/src/dwmblocks-dialga/config.h !cd ~/.local/src/dwmblocks-dialga/; sudo make clean install && { killall -q dwmblocks;setsid dwmblocks & }
+" Update dwm when config.h is edited
+	autocmd BufWritePost ~/.local/src/dwm-dialga/config.h !cd ~/.local/src/dwm-dialga/; sudo make clean install
+" Update st when config.h is edited
+	autocmd BufWritePost ~/.local/src/st-dialga/config.h !cd ~/.local/src/st-dialga/; sudo make clean install
+" Update dmneu when config.h is edited
+	autocmd BufWritePost ~/.local/src/dmenu-dialga/config.h !cd ~/.local/src/dmenu-dialga/; sudo make clean install
 
 " Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
 if &diff

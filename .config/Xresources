@@ -1,8 +1,10 @@
 !! Transparency (0-1):
-!!*.alpha: 0.9
+*.alpha: 0.9
+
+Xcursor.theme: Adwaita
 
 !! Set a default font and font size as below:
-*.font: JetBrains Mono Medium:style=Bold:size=13
+*.font: Fantasque Sans Mono:style=Bold:size=13
 !! URxvt.font: xft:JetBrains Mono Medium:size=12
 /* name		dark	light */
 /* black	0	8 */
@@ -15,43 +17,41 @@
 /* white	7	15 */
 
 ! special
-dmenu.foreground: #ffffff
-dwm.foreground: #ffffff
-! special
-*.background:   #191919
-*.cursorColor:  #ffffff
+!*.foreground: #ffffff
+!*.background:   #191919
+!*.cursorColor:  #ffffff
 
 ! black
-*.color0:       #202738
-*.color8:       #2b344a
+!*.color0:       #202738
+!*.color8:       #2b344a
 
 ! red
-*.color1:       #89333b
-*.color9:       #e78c73
+!*.color1:       #89333b
+!*.color9:       #e78c73
 
 ! green
-*.color2:       #42ea72
-*.color10:      #82f684
+!*.color2:       #42ea72
+!*.color10:      #82f684
 
 ! yellow
-*.color3:       #f1da54
-*.color11:      #faf380
+!*.color3:       #f1da54
+!*.color11:      #faf380
 
 ! blue
-*.color4:       #3262df
-*.color12:      #5c94d4
+!*.color4:       #3262df
+!*.color12:      #5c94d4
 
 ! magenta
-*.color5:       #A94AA7
-*.color13:      #D574D1
+!*.color5:       #A94AA7
+!*.color13:      #D574D1
 
 ! cyan
-*.color6:       #47b7e9
-*.color14:      #6ac4de
+!*.color6:       #47b7e9
+!*.color14:      #6ac4de
 
 ! white
-*.color7:       #a3a8ae
-*.color15:      #eaeaea
+!*.color7:       #a3a8ae
+!*.color15:      #eaeaea
 
 /* !! custom theme: */
 !*.background: 	#191919
@@ -74,8 +74,8 @@ dwm.foreground: #ffffff
 
 /* nord */
 !! *.background:   #2e3440
-!! *fading: 35
-!! *fadeColor: #4c566a
+!! *.fading: 35
+!! *.fadeColor: #4c566a
 
 !! *.color0:  #3b4252
 !! *.color1:  #bf616a
@@ -172,23 +172,24 @@ dwm.foreground: #ffffff
 /* *.color14:      #86c1b9 */
 /* *.color15:      #f8f8f8 */
 
-!! solarized */
-!! *.color0:	#073642
-!! *.color1:	#dc322f
-!! *.color2:	#859900
-!! *.color3:	#b58900
-!! *.color4:	#268bd2
-!! *.color5:	#d33682
-!! *.color6:	#2aa198
-!! *.color7:	#eee8d5
-!! *.color9:	#cb4b16
-!! *.color8:	#fdf6e3
-!! *.color10:	#586e75
-!! *.color11:	#657b83
-!! *.color12:	#839496
-!! *.color13:	#6c71c4
-!! *.color14:	#93a1a1
-!! *.color15:	#fdf6e3
+/* solarized */
+*.color0:	#073642
+*.color1:	#dc322f
+*.color2:	#859900
+*.color3:	#b58900
+*.color4:	#268bd2
+*.color5:	#d33682
+*.color6:	#2aa198
+*.color7:	#eee8d5
+*.color9:	#cb4b16
+*.color8:	#fdf6e3
+*.color10:	#586e75
+*.color11:	#657b83
+*.color12:	#839496
+*.color13:	#6c71c4
+*.color14:	#93a1a1
+*.color15:	#fdf6e3
+*.background:	#002b36
 
 /* !! xterm */
 /* *.color0:   #000000 */

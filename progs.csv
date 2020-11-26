@@ -15,7 +15,7 @@ A,lf-git,is an extensive terminal file manager that everyone likes.
 ,arandr,is a UI for screen adjustment.
 ,galculator,is used for a dropdown calculator.
 A,dragon-drag-and-drop,provides a gui interface for dragging and dropping files for the file.
-,picom,is for transparency and removing screen-tearing.
+A,compton-tryone-git,is for transparency and removing screen-tearing.
 ,xorg-xprop,is a tool for detecting window properties.
 V,xprop,is a tool for detecting window properties.
 ,dosfstools,allows your computer to access dos-like filesystems.
@@ -87,7 +87,7 @@ A,xob,a lightweight volume (or anything) bar for the X Window System.
 ,neofetch,a CLI system information tool.
 ,xcb-util-cursor,XCB cursor library.
 A,spaceship-prompt-git,is a zsh prompt for Astronauts.
-,ttf-jetbrains-mono,is a font for developers.
+,ttf-fantasque-sans-mono,is a font for developers.
 ,redshift,adjusts the color temperature of your screen according to your surroundings.
 ,noto-fonts,is the Google Noto TTF fonts.
 ,zsh-autosuggestions,provides fish-like autosuggestions for zsh.

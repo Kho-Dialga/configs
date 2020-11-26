@@ -64,3 +64,12 @@ alias \
 	 ysi="yay -S" \
 	 yss="yay -Ss" \
 	 ysu="yay -Syu"
+# Portage aliases
+alias \
+	emi="sudo emerge -a" \
+	emr="sudo emerge --depclean" \
+	ems="emerge -s" \
+	emp="emerge -pv" \
+	emq="eix -I" \
+	emu="sudo emerge -uavDN @world" \
+	eeu="sudo dispatch-conf"

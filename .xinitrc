@@ -10,7 +10,7 @@
 
 # export STATUSBAR="i3blocks" # Uncomment this line when using i3.
 
-. ~/.xprofile 2>/dev/null
+. ~/.config/xprofile 2>/dev/null
 
 # Your default LARBS WM is determined in your `~/.profile` on login.  Here we
 # run the proper command to run when the graphical environment starts.

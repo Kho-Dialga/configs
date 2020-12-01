@@ -131,7 +131,7 @@ ex=🎯:\
 
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ] && shortcuts >/dev/null 2>&1 &
 
-#[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec dbus-launch --exit-with-session startx
+[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec dbus-launch --exit-with-session startx
 
 # Start the gnome keyring
 if [ -n "$DESKTOP_SESSION" ];then

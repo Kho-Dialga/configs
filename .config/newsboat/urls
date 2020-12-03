@@ -27,6 +27,20 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCR1D15p_vdP3HkrH8wgjQRw "In
 https://www.archlinux.org/feeds/news/
 https://voidlinux.org/atom.xml
 https://artixlinux.org/feed.php
+>PKG_UPDATES
+https://github.com/brave/brave-browser/releases.atom
+https://github.com/mwh/dragon/releases.atom
+https://github.com/seebye/ueberzug/releases.atom
+https://github.com/gokcehan/lf/releases.atom
+https://github.com/florentc/xob/releases.atom
+https://github.com/aramg/droidcam/releases.atom
+https://github.com/cruegge/pam-gnupg/releases.atom
+https://github.com/daniruiz/flat-remix/releases.atom
+https://github.com/denysdovhan/spaceship-prompt/releases.atom
+https://github.com/zsh-users/zsh-autosuggestions/releases.atom
+https://github.com/zsh-users/zsh-history-substring-search/releases.atom
+https://github.com/zdharma/fast-syntax-highlighting/releases.atom
+https://github.com/cdemoulins/pamixer/releases.atom
 ---PEOPLE---
 >BLOGS
 https://lukesmith.xyz/rss.xml
@@ -34,3 +48,4 @@ https://lukesmith.xyz/rss.xml
 https://nitter.net/asteroid_ill/media/rss
 https://nitter.net/itdoesnteggs/rss
 https://nitter.net/TouhouIRL/rss
+https://nitter.net/shixiexiaomo/rss

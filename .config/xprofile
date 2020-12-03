@@ -12,4 +12,5 @@ mw -Y & 						# Syncs all mailboxes.
 dwmblocks &						# Start the statusbar
 udiskie	&						# Automounts USBs
 newsup &						# Updates RSS feeds
+mkfifo /tmp/xobpulse &					# Makes xob work
 tail -f /tmp/xobpulse | xob &				# Starts xob for a pulseaudio volume bar.

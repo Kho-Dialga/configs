@@ -9,6 +9,7 @@
 # source them here with the line below.
 
 # export STATUSBAR="i3blocks" # Uncomment this line when using i3.
+xrandr --output HDMI-A-0 --mode 1920x1080 --rate 144
 
 . ~/.config/xprofile 2>/dev/null
 

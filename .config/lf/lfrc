@@ -1,4 +1,5 @@
 set previewer ~/.config/lf/preview
+set previewer ~/.config/lf/preview
 # Basic Settings
 set preview true
 set hidden true
@@ -169,7 +170,7 @@ map ab targz
 map au unarchive
 
 # Trash Mappings
-map dd trash
+map dd trash --trash-dir=TRASH
 map tc clear_trash
 map tr restore_trash
 
@@ -177,9 +178,6 @@ map tr restore_trash
 map dr dragon
 map ds dragon-stay
 map di dragon-individual
-map dm mvdragon
-map dc cpdragon
-map dl dlfile
 
 map ss stripspace
 
@@ -220,8 +218,8 @@ map gp. cd ~/pix
 map gps cd ~/pix/scrot
 map gpw cd ~/pix/wallpaper
 
-map gm. cd ~/music
-map gmp cd ~/.config/mpd/playlists
+map gm. cd ~/.local/share/music
+map gmp cd ~/.local/share/mpd/playlists
 
 map gd. cd ~/dox
 map gds cd ~/dox/school

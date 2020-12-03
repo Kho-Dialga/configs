@@ -8,6 +8,8 @@ alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="trash --trash-dir=$TRASHDIR" \
+	te="trash-empty --trash-dir=TRASHDIR"\
+	tR="trash-restore --trash-dir=TRASHDIR" \
 	mkd="mkdir -pv" \
 	yt="youtube-dl --add-metadata -i" \
 	yta="yt -x -f bestaudio/best" \

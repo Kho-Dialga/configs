@@ -52,7 +52,7 @@ cmd mkdir %{{
 cmd mkfile %{{
   printf "File name: "
   read ans
-  $EDITOR $ans
+  touch $ans
 }}
 
 cmd mkfile %{{
@@ -123,7 +123,7 @@ cmd trash ${{
     # this is the first "element" of the string.
     file=${files%%;*}
 
-    trash-put "$(basename "$file")"
+    trash-put --trash-dir=$TRASHDIR "$(basename "$file")"
     # if there's only one element left, set `files` to an empty string.
     # this causes us to exit this `while` loop.
     # else, we delete the first "element" of the string from files, and move onto the next.
@@ -135,10 +135,10 @@ cmd trash ${{
   done
 }}
 
-cmd clear_trash %trash-empty
+cmd clear_trash %trash-empty --trash-dir=$HOME/.local/Trash
 
 cmd restore_trash ${{
-  trash-restore
+  trash-restore --trash-dir=$HOME/.local/Trash
 }}
 
 cmd stripspace %stripspace "$f"
@@ -170,9 +170,9 @@ map ab targz
 map au unarchive
 
 # Trash Mappings
-map dd trash --trash-dir=TRASH
-map tc clear_trash
-map tr restore_trash
+map dd trash
+map tc clear_trash --trash-dir=$HOME/.local/Trash
+map tr restore_trash --trash-dir=$HOME/.local/Trash
 
 # Dragon Mapping
 map dr dragon

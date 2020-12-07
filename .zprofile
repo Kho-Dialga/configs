@@ -7,11 +7,11 @@
 
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$(du "$HOME/.local/src/configs/.local/bin" | cut -f2 | paste -sd ':')"
-
+unsetopt PROMPT_SP
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave-browser-nightly"
+export BROWSER="brave"
 export READER="zathura"
 
 # ~/ Clean-up:

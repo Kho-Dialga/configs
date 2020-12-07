@@ -27,6 +27,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCR1D15p_vdP3HkrH8wgjQRw "In
 https://www.archlinux.org/feeds/news/
 https://voidlinux.org/atom.xml
 https://artixlinux.org/feed.php
+https://www.kernel.org/feeds/kdist.xml
 >PKG_UPDATES
 https://github.com/brave/brave-browser/releases.atom
 https://github.com/mwh/dragon/releases.atom
@@ -41,6 +42,7 @@ https://github.com/zsh-users/zsh-autosuggestions/releases.atom
 https://github.com/zsh-users/zsh-history-substring-search/releases.atom
 https://github.com/zdharma/fast-syntax-highlighting/releases.atom
 https://github.com/cdemoulins/pamixer/releases.atom
+https://github.com/andreafrancia/trash-cli/releases.atom
 ---PEOPLE---
 >BLOGS
 https://lukesmith.xyz/rss.xml

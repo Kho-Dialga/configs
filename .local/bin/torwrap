@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ifinstalled net-p2p/tremc net-p2p/transmission || exit
+ifinstalled tremc-git transmission-cli || exit
 
 ! pidof transmission-daemon >/dev/null && transmission-daemon && notify-send "Starting torrent daemon..."
 

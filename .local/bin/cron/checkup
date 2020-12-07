@@ -4,8 +4,10 @@
 
 ping -q -c 3 gnu.org > /dev/null || exit
 
-sudo emerge --sync || notify-send "Error downloading updates."
-sudo layman -S
+sudo pacman -Syyuw --noconfirm
+
+#sudo emerge --sync || notify-send "Error downloading updates."
+#sudo layman -S
 
 #Check your internet connection, if pacman is already running, or run update manually to see errors."
 pkill -RTMIN+8 "${STATUSBAR:-dwmblocks}"

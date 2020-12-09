@@ -8,11 +8,12 @@ dunst &							# Launches dunst for notifications.
 setbg ~/pix/wallpaper &					# Sets the wallpaper, change the directory to the path to your image.
 redshift &						# Launches redshift for adjusting the color temperature.
 xrdb ~/.config/Xresources &				# Reloads the Xresources file.
-transmission-daemon
+transmission-daemon					# Starts up the transmission daemon.
 mw -Y & 						# Syncs all mailboxes.
-dwmblocks &						# Start the statusbar
-udiskie	&						# Automounts USBs
-newsup &						# Updates RSS feeds
-mkfifo /tmp/xobpulse &					# Makes xob work
+dwmblocks &						# Start the statusbar.
+udiskie	&						# Automounts USBs.
+newsup &						# Updates RSS feeds.
+mkfifo /tmp/xobpulse &					# Makes xob work.
 tail -f /tmp/xobpulse | xob &				# Starts xob for a pulseaudio volume bar.
+checkup &						# Updates the repos.
 xset -dpms ; xset s off					# Removes the screensaver.

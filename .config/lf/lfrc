@@ -54,7 +54,7 @@ cmd mkfile %{{
   touch $ans
 }}
 
-cmd mkfile %{{
+cmd sudomkfile %{{
 	printf "File name: "
 	read ans
 	sudoedit $ans

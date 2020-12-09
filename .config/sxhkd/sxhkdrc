@@ -11,6 +11,29 @@
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# bspwm stuff
+
+# Restart bspwm
+super + shift + r
+  bspc wm -r; polybarlaunch
+# Focus on window in direction
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+# Kill window
+super + q
+	bspc node -c
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} focused:'^{1-9,10}'
+# Toggle floating on and off
+super + shift + f
+	bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+# Swap window with direction
+super + shift + {h,j,k,l}
+	bspc node -s {west,south,north,east}
+# Quit bspwm
+super + shift + q
+	bspc quit
 # Basic binds
 super + Return
 	$TERMINAL
@@ -21,13 +44,13 @@ super + r
 super + shift + h
 	$TERMINAL -e htop
 super + e
-	$TERMINAL -e neomutt; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook
+	$TERMINAL -e neomutt; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook; polybar-msg -p "$(pidof "polybar")" hook mailbox 1
 super + shift + e
 	$TERMINAL -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook
 super + m
 	$TERMINAL -e ncmpcpp
 super + n
-	$TERMINAL -e newsboat; pkill -RTMIN+6 dwmblocks
+	$TERMINAL -e newsboat; pkill -RTMIN+6 dwmblocks; polybar-msg -p "$(pidof "polybar")" hook news 1
 super + c
 	$TERMINAL -e calcurse
 super + w

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+vidya="\
+Touhou Puppet Dance Performance	tpdp"
+
+choice="$(echo "$vidya" | cut -d'	' -f 1 | dmenu -c -l 20)" || exit 1
+
+`echo "$vidya" | grep "^$choice	" | cut -d '	' -f2-`

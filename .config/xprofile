@@ -14,6 +14,6 @@ dwmblocks &						# Start the statusbar.
 udiskie	&						# Automounts USBs.
 newsup &						# Updates RSS feeds.
 mkfifo /tmp/xobpulse &					# Makes xob work.
-tail -f /tmp/xobpulse | xob &				# Starts xob for a pulseaudio volume bar.
 checkup &						# Updates the repos.
 xset -dpms ; xset s off					# Removes the screensaver.
+tail -f /tmp/xobpulse | xob &				# Starts xob for a pulseaudio volume bar.

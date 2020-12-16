@@ -1,0 +1,13 @@
+# Comments and blank lines are allowed.
+# https://www.gnu.org/software/stow/manual/stow.html#Types-And-Syntax-Of-Ignore-Lists
+
+
+progs.csv
+
+\.git
+\.gitignore
+\.gitmodules
+
+^/README.*
+^/LICENSE.*
+^/COPYING

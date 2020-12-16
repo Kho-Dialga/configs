@@ -19,6 +19,10 @@ alias \
 alias \
 	lf="lfrun"
 
+# Window devouring outside of dwm
+alias \
+	sxiv="devour sxiv"
+
 # Colorize commands when possible.
 alias \
 	ls="ls -hN --color=auto --group-directories-first" \

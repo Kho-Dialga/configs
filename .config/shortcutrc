@@ -2,7 +2,7 @@
 alias h="cd ~/ && ls -a" \
 d="cd ~/dox && ls -a" \
 D="cd ~/dl && ls -a" \
-m="cd ~/music && ls -a" \
+m="cd ${XDG_DATA_HOME:-$HOME/.local/share}/music && ls -a" \
 p="cd ~/pix && ls -a" \
 v="cd ~/vid && ls -a" \
 cf="cd ${XDG_CONFIG_HOME:-$HOME/.config} && ls -a" \

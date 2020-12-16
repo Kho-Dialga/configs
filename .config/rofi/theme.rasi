@@ -40,7 +40,7 @@
     background-color: #00000065;
     border-color: #00000000;
     text-color: #EFEFEF;
-    font: "Hack 11";
+    font: "Fantasque Sans Mono Regular 11";
 }
 
 #window {
@@ -108,4 +108,3 @@
     str:        ":";
     margin:     0px 0.3em 0em 0em ;
 }
-

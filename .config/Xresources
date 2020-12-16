@@ -5,6 +5,7 @@ Xcursor.theme: Adwaita
 
 !! Set a default font and font size as below:
 *.font: Fantasque Sans Mono:style=Bold:size=13
+rofi.font: Fantasque Sans Mono 13
 !! URxvt.font: xft:JetBrains Mono Medium:size=12
 /* name		dark	light */
 /* black	0	8 */

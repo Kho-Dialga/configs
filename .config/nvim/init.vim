@@ -9,17 +9,15 @@ endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'lambdalisue/fern.vim'
 call plug#end()
 
 " Themes
-syntax enable
-set termguicolors
-set background=dark
-colorscheme solarized
+ syntax enable
+ set termguicolors
+" set background=dark
+" colorscheme solarized
 
 set go=a
 set mouse=a

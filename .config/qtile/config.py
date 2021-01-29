@@ -37,8 +37,7 @@ from typing import List  # noqa: F401
 #### DEFINING VARIABLES ##
 
 mod = "mod4"
-myTerm = "alacritty"
-myConfig = "/home/dialga/.config/qtile/config-dialga.py"
+myTerm = "st"
 
 #### KEYBINDINGS ####
 
@@ -148,7 +147,7 @@ layouts = [
     layout.Tile(shift_windows=True, **layout_theme),
     layout.Stack(num_stacks=2),
     layout.TreeTab(
-         font = "JetBrains Mono Nerd Font",
+         font = "Fantasque Sans Mono",
          fontsize = 10,
          sections = ["FIRST", "SECOND"],
          section_fontsize = 11,
@@ -179,8 +178,8 @@ prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 #### WIDGETS DEFAULT SETTINGS ####
 widget_defaults = dict(
-    font="JetBrains Mono Nerd Font",
-    fontsize = 12,
+    font="Fantasque Sans Mono",
+    fontsize = 15,
     padding = 2,
     background=colors[2]
 )
@@ -208,8 +207,8 @@ screens = [
                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('dmenu_run')}
                        ),
               widget.GroupBox(
-                       font = "JetBrains Mono Nerd Font",
-                       fontsize = 12,
+                       font = "Fantasque Sans Mono",
+                       fontsize = 15,
                        margin_y = 3,
                        margin_x = 0,
                        padding_y = 5,
@@ -238,13 +237,13 @@ screens = [
                        foreground = colors[6],
                        background = colors[0],
                        padding = 0,
-                       fontsize = 12
+                       fontsize = 15
                        ),
             widget.TextBox(
                        text = '',
                        background = colors[0],
                        foreground = colors[5],
-                       padding = -7,
+                       padding = 0,
                        fontsize = 49
                        ),
             widget.TextBox(
@@ -263,7 +262,7 @@ screens = [
                        text = '',
                        background = colors[5],
                        foreground = colors[4],
-                       padding = -7,
+                       padding = 0,
                        fontsize = 49
                        ),
               widget.TextBox(
@@ -282,7 +281,7 @@ screens = [
                        text = '',
                        background = colors[4],
                        foreground = colors[5],
-                       padding = -7,
+                       padding = 0,
                        fontsize = 49
                        ),
               widget.TextBox(
@@ -303,7 +302,7 @@ screens = [
                        text='',
                        background = colors[5],
                        foreground = colors[4],
-                       padding = -7,
+                       padding = 0,
                        fontsize = 49
                        ),
               widget.TextBox(
@@ -313,21 +312,11 @@ screens = [
                        background = colors[4],
                        fontsize = 14
                        ),
-              widget.CheckUpdates(
-                       update_interval = 60,
-                       custom_command = 'pacman -Qu',
-                       display_format = '{updates}',
-                       foreground = colors[2],
-                       distro = 'Arch',
-                       execute = 'alacritty -e popupgrade',
-                       background = colors[4],
-                       fontsize = 12
-                       ),
               widget.TextBox(
                        text = '',
                        background = colors[4],
                        foreground = colors[5],
-                       padding = -7,
+                       padding = 0,
                        fontsize = 49
                        ),
               widget.TextBox(
@@ -346,7 +335,7 @@ screens = [
                        text = '',
                        background = colors[5],
                        foreground = colors[4],
-                       padding = -7,
+                       padding = 0,
                        fontsize = 49
                        ),
               widget.CurrentLayoutIcon(
@@ -366,7 +355,7 @@ screens = [
                        text = '',
                        background = colors[4],
                        foreground = colors[5],
-                       padding = -7,
+                       padding = 0,
                        fontsize = 49
                        ),
               widget.Clock(

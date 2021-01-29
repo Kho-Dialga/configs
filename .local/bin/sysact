@@ -11,7 +11,7 @@ esac
 cmds="\
 🔒 lock		slock
 🔃 reboot	${reb:-sudo -A reboot}
-🖥 shutdown	${shut:-sudo -A shutdown -h now}"
+🖥 shutdown	${shut:-sudo -A poweroff}"
 
 choice="$(echo "$cmds" | cut -d'	' -f 1 | dmenu -c -l 15)" || exit 1
 

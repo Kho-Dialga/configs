@@ -9,11 +9,11 @@ setbg ~/pix/wallpaper &					# Sets the wallpaper, change the directory to the pa
 redshift &						# Launches redshift for adjusting the color temperature.
 xrdb ~/.config/Xresources &				# Reloads the Xresources file.
 transmission-daemon					# Starts up the transmission daemon.
-mw -Y & 						# Syncs all mailboxes.
+mailsync; pkill -RTMIN+12 dwmblocks & 			# Syncs all mailboxes.
 dwmblocks &						# Start the statusbar.
 udiskie	&						# Automounts USBs.
 newsup &						# Updates RSS feeds.
 mkfifo /tmp/xobpulse &					# Makes xob work.
 checkup &						# Updates the repos.
-xset -dpms ; xset s off					# Removes the screensaver.
+xset -dpms; xset s off					# Removes the screensaver.
 tail -f /tmp/xobpulse | xob &				# Starts xob for a pulseaudio volume bar.

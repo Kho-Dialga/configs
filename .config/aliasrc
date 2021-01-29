@@ -12,13 +12,14 @@ alias \
 	tR="trash-restore --trash-dir=TRASHDIR" \
 	mkd="mkdir -pv" \
 	yt="youtube-dl --add-metadata -i" \
+	ytv="yt -f best" \
 	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner"
 
-# Image previews (sort of) in lf
+# Image previews (sort of) in lf and vifm
 alias \
-	lf="lfrun"
-
+	lf="lfrun" \
+	vifm="vifmrun"
 # Window devouring outside of dwm
 alias \
 	sxiv="devour sxiv"
@@ -67,9 +68,9 @@ alias \
 	 pqs="pacman -Qs" \
 	 pqe="pacman -Qqe" \
 	 pqo="pacman -Qtdq" \
-	 ysi="yay -S" \
-	 yss="yay -Ss" \
-	 ysu="yay -Syu"
+	 asi="paru -S" \
+	 ass="paru -Ss" \
+	 asu="paru -Syu"
 # Portage aliases
 alias \
 	emi="sudo emerge -a" \

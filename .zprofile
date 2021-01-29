@@ -11,10 +11,13 @@ unsetopt PROMPT_SP
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="librewolf"
 export READER="zathura"
 
 # ~/ Clean-up:
+export XMONAD_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/xmonad"
+export XMONAD_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/xmonad"
+export XMONAD_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.local/share}/xmonad"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -56,6 +59,7 @@ export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 export COLORTERM="truecolor"
+export LOCATION="Pozos"
 
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\
@@ -110,6 +114,7 @@ ex=🎯:\
 *.rar=📦:\
 *.7z=📦:\
 *.tar.gz=📦:\
+*.tar.xz=📦:\
 *.z64=🎮:\
 *.v64=🎮:\
 *.n64=🎮:\

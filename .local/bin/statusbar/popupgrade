@@ -2,7 +2,7 @@
 
 printf "Beginning upgrade.\\n"
 
- yay -Syu
+paru -Syu
 #sudo emerge -uavDN @world
 pkill -RTMIN+8 "${STATUSBAR:-dwmblocks}"
 

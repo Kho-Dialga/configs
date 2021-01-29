@@ -131,6 +131,9 @@ super + F4
 # Change wallpaper
 super + F5
 	setbg ~/pix/wallpaper
+# Change wallpaper to a specific image
+super + shift + F5
+	sxiv -r -q -o ~/pix/wallpaper/* | xargs setbg
 # Start torrent daemon/open interface
 super + F6
 	torwrap
@@ -139,13 +142,13 @@ super + F7
 	td-toggle
 # sync email
 super + F8
-	mw -Y
+	mailsync; pkill -RTMIN+12 dwmblocks
 # Mount a USB drive or Android device
 super + {F9,F10}
 	{dmenumount,dmenuumount}
 # Show the webcam
 super + F11
 	camtoggle
-# Start and Xbox controller
+# Start an Xbox controller
 super + F12
 	xboxdrv --detach-kernel-driver --no-uinput

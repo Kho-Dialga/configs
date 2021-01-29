@@ -1,4 +1,5 @@
 set previewer ~/.config/lf/preview
+set previewer ~/.config/lf/preview
 # Basic Settings
 set preview true
 set hidden true
@@ -9,8 +10,8 @@ set ignorecase true
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
-        video/*|image/*/application/pdf) xdg-open "$f";;
-        *) xdg-open "$f" ;;
+        video/*|image/*/application/pdf) dv-open "$f";;
+        *) dv-open "$f" ;;
     esac
 }}
 
@@ -89,9 +90,9 @@ cmd fzf_jump %{{
 # Dragon RAWR UwU
 # This is used to be able to
 # Drag and drop files to other GUI apps
-cmd dragon %dragon-drag-and-drop -a -x $fx
-cmd dragon-stay %dragon-drag-and-drop -a $fx
-cmd dragon-individual %dragon-drag-and-drop $fx
+cmd dragon %dragon-drag-and-drop -a -x "$fx"
+cmd dragon-stay %dragon-drag-and-drop -a "$fx"
+cmd dragon-individual %dragon-drag-and-drop "$fx"
 
 # Archive bindings
 # Pretty self-explanatory
@@ -100,6 +101,7 @@ cmd unarchive ${{
       *.zip) unzip "$f" ;;
       *.tar.gz) tar -xzvf "$f" ;;
       *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar.xz) tar -xpvf "$f" ;;
       *.tar) tar -xvf "$f" ;;
       *.rar) unrar x "$f" ;;
       *) echo "Unsupported format" ;;
@@ -227,10 +229,9 @@ map gdh cd ~/dox/school/hw
 map gdp cd ~/dox/school/projects
 map gb. cd ~/dox/bak
 
-map gD. cd ~/dl
-map gDi cd ~/dl/iso
-map gDt cd ~/dl/torrent
-map gDT cd ~/dl/torrent-dl
+map gD. cd ~/.local/share/dl
+map gDi cd ~/.local/share/dl/iso
+map gDt cd ~/.local/share/dl/torrent
 
 map gs. cd ~/.local/bin
 map gss cd ~/.local/bin/statusbar

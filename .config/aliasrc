@@ -14,15 +14,13 @@ alias \
 	yt="youtube-dl --add-metadata -i" \
 	ytv="yt -f best" \
 	yta="yt -x -f bestaudio/best" \
-	ffmpeg="ffmpeg -hide_banner"
+	ffmpeg="ffmpeg -hide_banner" \
+	fe="fzf | xargs nvim"
 
 # Image previews (sort of) in lf and vifm
 alias \
 	lf="lfrun" \
 	vifm="vifmrun"
-# Window devouring outside of dwm
-alias \
-	sxiv="devour sxiv"
 
 # Colorize commands when possible.
 alias \

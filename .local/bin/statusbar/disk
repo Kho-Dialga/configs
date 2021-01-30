@@ -15,8 +15,8 @@ case $BLOCK_BUTTON in
 esac
 
 case "$location" in
-	"/home"* ) icon="🏠" ;;
-	"/mnt"* ) icon="💾" ;;
+	"/home" ) icon="🏠" ;;
+	"$HOME/.local/share" ) icon="💾" ;;
 	*) icon="🖥";;
 esac
 

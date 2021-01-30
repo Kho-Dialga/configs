@@ -1,5 +1,5 @@
 set previewer ~/.config/lf/preview
-set previewer ~/.config/lf/preview
+set ratios 1:2:3
 # Basic Settings
 set preview true
 set hidden true
@@ -71,22 +71,6 @@ cmd chmod %{{
   done
 }}
 
-cmd sudomkfile %{{
-  printf "File Name: "
-  read ans
-  sudo $EDITOR $ans
-}}
-
-cmd fzf_jump %{{
-  res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
-  if [ -f "$res" ]; then
-    cmd="select"
-  elif [ -d "$res" ]; then
-    cmd="cd"
-  fi
-  lf -remote "send $id $cmd \"$res\""
-}}
-
 # Dragon RAWR UwU
 # This is used to be able to
 # Drag and drop files to other GUI apps
@@ -94,14 +78,14 @@ cmd dragon %dragon-drag-and-drop -a -x "$fx"
 cmd dragon-stay %dragon-drag-and-drop -a "$fx"
 cmd dragon-individual %dragon-drag-and-drop "$fx"
 
-# Archive bindings
+# Archive functions
 # Pretty self-explanatory
 cmd unarchive ${{
   case "$f" in
       *.zip) unzip "$f" ;;
       *.tar.gz) tar -xzvf "$f" ;;
       *.tar.bz2) tar -xjvf "$f" ;;
-      *.tar.xz) tar -xpvf "$f" ;;
+      *.tar.xz) tar -xvf "$f" ;;
       *.tar) tar -xvf "$f" ;;
       *.rar) unrar x "$f" ;;
       *) echo "Unsupported format" ;;
@@ -109,11 +93,12 @@ cmd unarchive ${{
 }}
 
 cmd zip %zip -r "$f" "$f"
-cmd tar %tar cvf "$f.tar" "$f"
+cmd tar %tar cvf "$f.tar.xz" "$f"
 cmd targz %tar cvzf "$f.tar.gz" "$f"
 cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+cmd rar %rar a "$f.rar" "$f"
 
-# Trash cli bindings
+# Trash cli functions
 # These will save your ass in case
 # You delete something important like
 # A fucking retard (Has happened)
@@ -159,21 +144,19 @@ map f
 # Keybindings down below
 # vvvvvvvvvvvv
 
-# File Openers
-map ee $$EDITOR "$f"
-map u $view "$f"
-
 # Archive Mappings
 map az zip
+map ar rar
 map at tar
 map ag targz
-map ab targz
+map ab tarbz2
 map au unarchive
 
 # Trash Mappings
 map dd trash
 map tc clear_trash --trash-dir=$HOME/.local/Trash
 map tr restore_trash --trash-dir=$HOME/.local/Trash
+map DD delete
 
 # Dragon Mapping
 map dr dragon
@@ -197,7 +180,7 @@ map r rename
 map gg top
 map G bottom
 map C clear
-map U unselect
+map u unselect
 map br bulk-rename
 
 # Movement
@@ -213,7 +196,6 @@ map grs cd ~/.local/src/st-dialga
 map grb cd ~/.local/src/dwmblocks-dialga
 
 map gv. cd ~/vid
-map gva cd ~/vid/anime
 
 map gp. cd ~/pix
 map gps cd ~/pix/scrot
@@ -236,8 +218,7 @@ map gDt cd ~/.local/share/dl/torrent
 map gs. cd ~/.local/bin
 map gss cd ~/.local/bin/statusbar
 map gsc cd ~/.local/bin/cron
-map gsg cd ~/.local/bin/games
-map gG. cd ~/games
+map gsg cd ~/.local/bin/game
 
 map gw. cd ~/.local/share/wineprefixes
 map gwt cd ~/.local/share/wineprefixes/touhou

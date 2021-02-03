@@ -5,7 +5,7 @@
 # The keys NOT bound here by sxhkd, but by dwm or i3 are:
 # The q, t, and u keys on the top row
 # The f and h thru ; keys on the home row
-# The z,x, and b key on the bottom row (hides the bar in either case)
+# The b key on the bottom row (hides the bar in either case)
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -55,8 +55,6 @@ super + c
 	$TERMINAL -e calcurse
 super + w
 	$BROWSER
-super + v
-	virt-manager
 super + g
 	dmenugame
 

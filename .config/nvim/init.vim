@@ -11,14 +11,14 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 Plug 'vim-airline/vim-airline'
 Plug 'ap/vim-css-color'
 Plug 'lambdalisue/fern.vim'
+Plug 'tomasiser/vim-code-dark'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " Themes
- syntax enable
- set termguicolors
-" set background=dark
-" colorscheme solarized
-
+syntax enable
+set termguicolors
+colorscheme codedark
 set go=a
 set mouse=a
 set nohlsearch

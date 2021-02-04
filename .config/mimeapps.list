@@ -21,3 +21,4 @@ inode/directory=file.desktop
 video/x-msvideo=vid.desktop
 video/mpeg=vid.desktop
 video/mp4=vid.desktop
+inode/x-empty=text.desktop

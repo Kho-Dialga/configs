@@ -1,0 +1,3 @@
+[submodule ".config/nvim/plugged/vim-code-dark"]
+	path = .config/nvim/plugged/vim-code-dark
+	url = https://github.com/tomasiser/vim-code-dark

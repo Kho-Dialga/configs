@@ -30,8 +30,8 @@ aliasrc				st -e $EDITOR $XDG_CONFIG_HOME/aliasrc
 shortcutrc			st -e $EDITOR $XDG_CONFIG_HOME/shortcutrc
 xprofile			st -e $EDITOR $XDG_CONFIG_HOME/xprofile
 Xresources			st -e $EDITOR $XDG_CONFIG_HOME/Xresources
-zsh profile			st -e $EDITOR ~/.zprofile
-xinitrc				st -e $EDITOR ~/.xinitrc"
+zsh profile			st -e $EDITOR $HOME/.zprofile
+xinitrc				st -e $EDITOR $HOME/.xinitrc"
 
 choice="$(echo "$cfg" | cut -d'	' -f 1 | dmenu -c -l 20)" || exit 1
 `echo "$cfg" | grep "^$choice	" | cut -d '	' -f2-`

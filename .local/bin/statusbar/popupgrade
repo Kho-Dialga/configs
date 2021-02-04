@@ -5,6 +5,7 @@ printf "Beginning upgrade.\\n"
 paru -Syu
 #sudo emerge -uavDN @world
 pkill -RTMIN+8 "${STATUSBAR:-dwmblocks}"
+echo 'pacpackages()' | awesome-client
 
 printf "\\nUpgrade complete.\\nPress <Enter> to exit window.\\n\\n"
 read -r

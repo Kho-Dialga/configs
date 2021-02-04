@@ -42,17 +42,17 @@ super + d
 super + r
 	$TERMINAL -e lfrun
 super + shift + h
-	$TERMINAL -e htop
+	$TERMINAL -e v
 super + e
-	$TERMINAL -e neomutt; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook; polybar-msg -p "$(pidof "polybar")" hook mailbox 1
+	$TERMINAL -e neomutt; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook; polybar-msg -p "$(pidof "polybar")" hook mailbox 1; echo 'mailbox()' | awesome-client
 super + shift + e
 	$TERMINAL -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook
 super + m
 	$TERMINAL -e ncmpcpp
 super + n
-	$TERMINAL -e newsboat; pkill -RTMIN+6 dwmblocks; polybar-msg -p "$(pidof "polybar")" hook news 1
+	$TERMINAL -e newsboat; pkill -RTMIN+6 dwmblocks; polybar-msg -p "$(pidof "polybar")" hook news 1; killall newsboat; echo 'news()' | awesome-client
 super + c
-	$TERMINAL -e calcurse
+	dmenucfg
 super + w
 	$BROWSER
 super + g
@@ -102,16 +102,14 @@ super + {_,shift +} bracketleft
 	mpc seek -{10,60}
 # Increase volume
 super + equal
-	pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks); echo $(pamixer --get-volume) > /tmp/xobpulse
-super + plus
-	pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks); echo $(pamixer --get-volume) > /tmp/xobpulse
+	pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks); echo 'volume()' | awesome-client | awesome-client; echo $(pamixer --get-volume) > /tmp/xobpulse
 # Decrease volume
-super {_,shift +} minus
-	pamixer --allow-boost -d {5,15}; kill -44 $(pidof dwmblocks); echo $(pamixer --get-volume) > /tmp/xobpulse
+super + minus
+	pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks); echo 'volume()' | awesome-client | awesome-client; echo $(pamixer --get-volume) > /tmp/xobpulse
 
 # Mute audio
 super + shift + m
-	pamixer --toggle; kill -44 $(pidof dwmblocks)
+	pamixer --toggle; kill -44 $(pidof dwmblocks); echo 'volume()' | awesome-client
 # Function keys
 
 # F2 is unbound

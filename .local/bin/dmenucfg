@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Small dmenu script for editing the config files of programs that I use
+
+# Program			# Command to edit file
+cfg="\
+awesome				st -e $EDITOR $XDG_CONFIG_HOME/awesome/rc.lua
+bspwm				st -e $EDITOR $XDG_CONFIG_HOME/bspwm/bspwmrc
+dunst				st -e $EDITOR $XDG_CONFIG_HOME/dunst/dunstrc
+i3				st -e $EDITOR $XDG_CONFIG_HOME/i3/config
+kitty				st -e $EDITOR $XDG_CONFIG_HOME/kitty/kitty.conf
+lf				st -e $EDITOR $XDG_CONFIG_HOME/lf/lfrc
+mpd				st -e $EDITOR $XDG_CONFIG_HOME/mpd/mpd.conf
+mpv				st -e $EDITOR $XDG_CONFIG_HOME/mpv/mpv.conf
+mpv (key bindings)		st -e $EDITOR $XDG_CONFIG_HOME/mpv/input.conf
+ncmpcpp				st -e $EDITOR $XDG_CONFIG_HOME/ncmpcpp/config
+ncmpcpp (keybindings)		st -e $EDITOR $XDG_CONFIG_HOME/ncmpcpp/bindings
+newsboat			st -e $EDITOR $XDG_CONFIG_HOME/newsboat/config
+newsboat (feeds)		st -e $EDITOR $XDG_CONFIG_HOME/newsboat/urls
+nvim				st -e $EDITOR $XDG_CONFIG_HOME/nvim/init.vim
+picom				st -e $EDITOR $XDG_CONFIG_HOME/picom/picom.conf
+polybar				st -e $EDITOR $XDG_CONFIG_HOME/polybar/config
+qtile				st -e $EDITOR $XDG_CONFIG_HOME/qtile/config.py
+rofi				st -e $EDITOR $XDG_CONFIG_HOME/rofi/config.rasi
+sxhkd				st -e $EDITOR $XDG_CONFIG_HOME/sxhkd/sxhkdrc
+transmission-daemon		st -e $EDITOR $XDG_CONFIG_HOME/transmission-daemon/settings.json
+xob				st -e $EDITOR $XDG_CONFIG_HOME/xob/styles.cfg
+zsh				st -e $EDITOR $ZDOTDIR/.zshrc
+aliasrc				st -e $EDITOR $XDG_CONFIG_HOME/aliasrc
+shortcutrc			st -e $EDITOR $XDG_CONFIG_HOME/shortcutrc
+xprofile			st -e $EDITOR $XDG_CONFIG_HOME/xprofile
+Xresources			st -e $EDITOR $XDG_CONFIG_HOME/Xresources
+zsh profile			st -e $EDITOR ~/.zprofile
+xinitrc				st -e $EDITOR ~/.xinitrc"
+
+choice="$(echo "$cfg" | cut -d'	' -f 1 | dmenu -c -l 20)" || exit 1
+`echo "$cfg" | grep "^$choice	" | cut -d '	' -f2-`

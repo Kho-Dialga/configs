@@ -18,4 +18,4 @@ xrandr --output HDMI-A-0 --mode 1920x1080 --rate 144
 
 # Comment/uncomment these lines depending on what wm you want to use. Also
 # check the i3blocks line above.
-ssh-agent awesome
+ssh-agent dwm

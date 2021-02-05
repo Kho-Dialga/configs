@@ -1,0 +1,9 @@
+#!/bin/sh
+
+Small script for launching Touhou games. Used in the dmenugame script. Requires proton-caller.
+
+export STEAM_COMPAT_DATA_PATH=~/.local/share/wineprefixes/touhou
+export PC_COMMON=~/.local/share/Steam/steamapps/common/
+
+cd $STEAM_COMPAT_DATA_PATH/pfx/drive_c/2hu/th$1
+proton-call 5.13 Touhou$1.lnk

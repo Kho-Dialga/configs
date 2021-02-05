@@ -7,9 +7,7 @@ command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
-	rm="trash --trash-dir=$TRASHDIR" \
-	te="trash-empty --trash-dir=TRASHDIR"\
-	tR="trash-restore --trash-dir=TRASHDIR" \
+	rm='echo "This is not the command you are looking for, retard."; false' \
 	mkd="mkdir -pv" \
 	yt="youtube-dl --add-metadata -i" \
 	ytv="yt -f best" \
@@ -44,11 +42,8 @@ alias \
 # Git aliases
 alias \
 	gau="git add -u" \
-	gpsc="git push git@github.com:Kho-Dialga/configs.git" \
-	gpss="git push git@github.com:Kho-Dialga/st-dialga.git" \
-	gpsd="git push git@github.com:Kho-Dialga/dwm-dialga.git" \
-	gpsdm="git push git@github.com:Kho-Dialga/dmenu-dialga.git" \
-	gpst="git push git@github.com:Kho-Dialga/touhou-replays.git" \
+	gaa="git add" \
+	gps="git push" \
 	gpl="git pull" \
 	gcm="git commit -m" \
 	gft="git fetch" \

@@ -50,7 +50,19 @@ alias \
 	gbr="git branch" \
 	gck="git checkout" \
 	gst="git status"
- # Pacman aliases
+# Aliases for a bare config repo
+alias \
+	gc="/usr/bin/git --git-dir=$HOME/.local/src/configs --work-tree=$HOME" \
+	gcaa="gc add" \
+	gcau="gc add -u" \
+	gcps="gc push" \
+	gcpl="gc pull" \
+	gccm="gc commit -m" \
+	gcft="gc fetch" \
+	gcbr="gc branch" \
+	gcck="gc checkout" \
+	gcst="gc status"
+# Pacman aliases
  alias \
 	 psi="sudo pacman -S" \
 	 pss="pacman -Ss" \

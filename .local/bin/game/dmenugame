@@ -27,6 +27,6 @@ Touhou 16: Hidden Star in Four Seasons			2hu 16
 Touhou 16.5: Violet Detector				2hu 165
 Touhou 17: Wily Beast and Weakest Creature		2hu 17"
 
-choice="$(echo "$vidya" | cut -d'	' -f 1 | dmenu -c -l 20)" || exit 1
+choice="$(echo "$vidya" | cut -d'	' -f 1 | dmenu -i -c -l 20)" || exit 1
 
 `echo "$vidya" | grep "^$choice	" | cut -d '	' -f2-`

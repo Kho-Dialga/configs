@@ -188,7 +188,7 @@ extension_defaults = widget_defaults.copy()
 #### MOUSE CALLBACKS ####
 
 def cpu_hogs(qtile):
-    qtile.cmd_spawn('notify-send "🖥 CPU hogs" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)\\n(100% per core)"')
+    qtile.cmd_spawn('notify-send aaa)"')
 
 #### BAR AND WIDGETS ####
 
@@ -369,10 +369,6 @@ screens = [
                        padding = 10,
                        foreground = colors[0],
                        background = colors[5]
-                       ),
-              widget.Systray(
-                       background = colors[0],
-                       padding = 5
                        ),
                 ],
             24,

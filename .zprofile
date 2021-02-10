@@ -7,11 +7,10 @@
 
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
-unsetopt PROMPT_SP
 # Default programs:
 export EDITOR="nvim"
-export TERMINAL="st"
-export BROWSER="librewolf"
+export TERMINAL="alacritty"
+export BROWSER="chromium"
 export READER="zathura"
 
 # ~/ Clean-up:
@@ -21,7 +20,7 @@ export XMONAD_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.local/share}/xmonad"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
+#export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
@@ -40,6 +39,7 @@ export ANSIBLE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ansible/ansible.cfg"
 export UNISON="${XDG_DATA_HOME:-$HOME/.local/share}/unison"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export TRASHDIR="$HOME/.local/Trash"
+export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
@@ -113,8 +113,8 @@ ex=🎯:\
 *.zip=📦:\
 *.rar=📦:\
 *.7z=📦:\
-*.tar.gz=📦:\
-*.tar.xz=📦:\
+*.gz=📦:\
+*.xz=📦:\
 *.z64=🎮:\
 *.v64=🎮:\
 *.n64=🎮:\
@@ -133,8 +133,25 @@ ex=🎯:\
 *.torrent=🔽:\
 *.jar=♨:\
 *.java=♨:\
+*.lua=:\
+*.py=:\
+*.vimrc=:\
+*.viminfo=:\
+*.gitignore=:\
+*.gitconfig=:\
+*.gitsubmodules=:\
+*.cc=:\
+*.c=:\
+*.cpp=:\
+*.vim=:\
+*.hs=:\
+.z*=🐚:\
+.bash*=🐚:\
+*.deb=:\
+*.rpm=:\
+*.ebuild=:\
+*.xbps=📦:\
 "
-
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ] && shortcuts >/dev/null 2>&1 &
 
 [ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec dbus-launch --exit-with-session startx

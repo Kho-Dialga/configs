@@ -3,5 +3,5 @@
 # Simulate the window swallowing dwm patch in other window managers. Shouldn't run when dwm is being used. Relies on the devour script.
 
 # Checks if dwm is launched, crashes otherwise.
-[ -f $(pgrep -x dwm) ] || echo "dwm is launched"
+#[ -f $(pgrep -x dwm) ] || echo "dwm is launched"
 devour xdg-open "$1"

@@ -31,8 +31,11 @@ import socket
 import subprocess
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, widget, hook
 from typing import List  # noqa: F401
+
+#### OTHER IMPORTS ####
+import psutil
 
 #### DEFINING VARIABLES ##
 
@@ -178,17 +181,38 @@ prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 #### WIDGETS DEFAULT SETTINGS ####
 widget_defaults = dict(
-    font="Fantasque Sans Mono",
+    font="Fira Code Nerd Font",
     fontsize = 15,
     padding = 2,
     background=colors[2]
 )
 extension_defaults = widget_defaults.copy()
 
-#### MOUSE CALLBACKS ####
+#### WINDOW SWALLOWING ####
 
-def cpu_hogs(qtile):
-    qtile.cmd_spawn('notify-send "🖥 CPU hogs" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)\\n(100% per core)"')
+@hook.subscribe.client_new
+def _swallow(window):
+    pid = window.window.get_net_wm_pid()
+    ppid = psutil.Process(pid).ppid()
+    cpids = {c.window.get_net_wm_pid(): wid for wid, c in window.qtile.windows_map.items()}
+    for i in range(5):
+        if not ppid:
+            return
+        if ppid in cpids:
+            parent = window.qtile.windows_map.get(cpids[ppid])
+            if parent.window.get_wm_class()[0] != "Alacritty":
+                return
+            if parent.window.get_wm_class()[0] != "St":
+                return
+            parent.minimized = True
+            window.parent = parent
+            return
+        ppid = psutil.Process(ppid).ppid()
+
+@hook.subscribe.client_killed
+def _unswallow(window):
+    if hasattr(window, 'parent'):
+        window.parent.minimized = False
 
 #### BAR AND WIDGETS ####
 
@@ -216,7 +240,7 @@ screens = [
                        borderwidth = 3,
                        active = colors[2],
                        inactive = colors[2],
-                       rounded = False,
+                       rounded = True,
                        highlight_color = colors[1],
                        highlight_method = "line",
                        this_current_screen_border = colors[3],
@@ -246,8 +270,16 @@ screens = [
                        padding = 0,
                        fontsize = 49
                        ),
+            widget.GenPollText(
+                    update_interval=1,
+                    func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/torrent")),
+                    background = colors[5],
+                    foreground = colors[2],
+                    font = 'Fira Code',
+                    fontsize = 12
+                    ),
             widget.TextBox(
-                    text = '🖥',
+                    text = '🚀',
                     background = colors[5],
                     foreground = colors[2],
                     fontsize = 12
@@ -285,7 +317,7 @@ screens = [
                        fontsize = 49
                        ),
               widget.TextBox(
-                       text = "🌡",
+                       text = "🌡️",
                        padding = 2,
                        foreground = colors[2],
                        background = colors[5],
@@ -369,10 +401,6 @@ screens = [
                        padding = 10,
                        foreground = colors[0],
                        background = colors[5]
-                       ),
-              widget.Systray(
-                       background = colors[0],
-                       padding = 5
                        ),
                 ],
             24,

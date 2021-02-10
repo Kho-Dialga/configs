@@ -52,7 +52,7 @@ alias \
 	gst="git status"
 # Aliases for a bare config repo
 alias \
-	gc="/usr/bin/git --git-dir=$HOME/.local/src/configs --work-tree=$HOME" \
+	gc="git --git-dir=$HOME/.local/src/configs --work-tree=$HOME" \
 	gcaa="gc add" \
 	gcau="gc add -u" \
 	gcps="gc push" \

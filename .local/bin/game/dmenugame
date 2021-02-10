@@ -25,8 +25,16 @@ Touhou 15: Legacy of Lunatic Kingdom			2hu 15
 Touhou 15.5: Antimony of Common Flowers			2hu 155
 Touhou 16: Hidden Star in Four Seasons			2hu 16
 Touhou 16.5: Violet Detector				2hu 165
-Touhou 17: Wily Beast and Weakest Creature		2hu 17"
+Touhou 17: Wily Beast and Weakest Creature		2hu 17
+Touhou 18: Unconnected Marketeers			steam steam://rungameid/1566410
+osu!							osu
+osu!Lazer						osu-lazer
+Geometry Dash						steam steam://rungameid/322170
+VRChat							steam steam://rungameid/438100
+War Thunder						steam steam://rungameid/236390
+NitoriInc.						steam steam://rungameid/772660
+Left 4 Dead 2						steam steam://rungameid/550"
 
-choice="$(echo "$vidya" | cut -d'	' -f 1 | dmenu -c -l 20)" || exit 1
+choice="$(echo "$vidya" | cut -d'	' -f 1 | dmenu -i)" || exit 1
 
 `echo "$vidya" | grep "^$choice	" | cut -d '	' -f2-`

@@ -10,7 +10,7 @@ set ignorecase true
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
-        video/*|image/*/application/pdf) dv-open "$f";;
+        video/*|image/*/application/pdf) xdg-open "$f";;
 	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" | sxiv -aio 2>/dev/null | lf-select ;;
         *) dv-open "$f" ;;
     esac
@@ -81,22 +81,24 @@ cmd dragon-individual %dragon-drag-and-drop "$fx"
 
 # Archive functions
 # Pretty self-explanatory
-cmd unarchive ${{
-  case "$f" in
-      *.zip) unzip "$f" ;;
-      *.tar.gz) tar -xzvf "$f" ;;
-      *.tar.bz2) tar -xjvf "$f" ;;
-      *.tar.xz) tar -xvf "$f" ;;
-      *.tar) tar -xvf "$f" ;;
-      *.rar) unrar x "$f" ;;
-      *) echo "Unsupported format" ;;
-  esac
-}}
+#cmd unarchive ${{
+#  case "$f" in
+#      *.zip) unzip "$f" ;;
+#      *.tar.gz) tar -xzvf "$f" ;;
+#      *.tar.bz2) tar -xjvf "$f" ;;
+#      *.tar.xz) tar -xvf "$f" ;;
+#      *.tar) tar -xvf "$f" ;;
+#      *.rar) unrar x "$f" ;;
+#      *) echo "Unsupported format" ;;
+#  esac
+#}}
+
+cmd unarchive %ext "$f"
 
 cmd zip %zip -r "$f" "$f"
-cmd tar %tar cvf "$f.tar.xz" "$f"
-cmd targz %tar cvzf "$f.tar.gz" "$f"
-cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+cmd tar %tar cJf "$f.tar.xz" "./$f"
+cmd targz %tar czf "$f.tar.gz" "./$f"
+cmd tarbz2 %tar cjsf "$f.tar.bz2" "./$f"
 cmd rar %rar a "$f.rar" "$f"
 
 # Trash cli functions
@@ -128,7 +130,7 @@ cmd restore_trash ${{
   %trash-restore
 }}
 
-cmd stripspace %stripspace "$f"
+cmd setbg "$1"
 
 # Bindings
 # Remove some defaults
@@ -164,7 +166,7 @@ map dr dragon
 map ds dragon-stay
 map di dragon-individual
 
-map ss stripspace
+map bg $setbg $f
 
 # Basic Functions
 map . set hidden!
@@ -224,8 +226,9 @@ map gsc cd ~/.local/bin/cron
 map gsg cd ~/.local/bin/game
 
 map gw. cd ~/.local/share/wineprefixes
-map gwt cd ~/.local/share/wineprefixes/touhou
+map gwt cd ~/.local/share/wineprefixes/touhou/pfx
 map gwp cd ~/.local/share/wineprefixes/tpdp
+map gwo cd ~/.local/share/wineprefixes/osu/pfx
 map gwd cd ~/.local/share/wineprefixes/default
 
 map gP. cd /etc/portage

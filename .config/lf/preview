@@ -11,7 +11,7 @@ numc=$(printf "%0.f\n" "`echo "$(tput lines) - 2" | bc`")
 case "$1" in
 	*.tgz|*.tar.gz) tar tzf "$1";;
 	*.tar.bz2|*.tbz2) tar tjf "$1";;
-	*.tar.txz|*.txz) xz --list "$1";;
+	*.tar.xz|*.txz) atool --list "$1";;
 	*.tar) tar tf "$1";;
 	*.zip|*.jar|*.war|*.ear|*.oxt) unzip -l "$1";;
 	*.rar) unrar l "$1";;

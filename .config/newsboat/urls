@@ -29,7 +29,6 @@ https://voidlinux.org/atom.xml
 https://artixlinux.org/feed.php
 https://www.kernel.org/feeds/kdist.xml
 ">PKG UPDATES"
-https://github.com/brave/brave-browser/releases.atom
 https://github.com/mwh/dragon/releases.atom
 https://github.com/seebye/ueberzug/releases.atom
 https://github.com/gokcehan/lf/releases.atom
@@ -43,6 +42,8 @@ https://github.com/zsh-users/zsh-history-substring-search/releases.atom
 https://github.com/zdharma/fast-syntax-highlighting/releases.atom
 https://github.com/cdemoulins/pamixer/releases.atom
 https://github.com/andreafrancia/trash-cli/releases.atom
+"---CURRENTLY READING---"
+https://mangadex.org/rss/caYvXewhQyUnrF9M6dz2qZstNHpx53gB/manga_id/42565
 ---PEOPLE---
 >BLOGS
 https://lukesmith.xyz/rss.xml

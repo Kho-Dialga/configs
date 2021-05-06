@@ -3,12 +3,20 @@
 # Small script for launching Touhou games. Used in the dmenugame script. Requires proton-caller.
 
 export LANG=ja_JP.UTF-8
+<<<<<<< HEAD
 export STEAM_COMPAT_DATA_PATH=~/.local/share/wineprefixes/touhou/
+=======
+export STEAM_COMPAT_DATA_PATH=~/.local/share/wineprefixes/touhou
+>>>>>>> 6a95c9106e0d4756a08cac23bf97a3f53daaef22
 export PC_COMMON=~/.local/share/Steam/steamapps/common/
 
 export WINEPREFIX=~/.local/share/wineprefixes/touhou/pfx
 
 cd $STEAM_COMPAT_DATA_PATH/pfx/drive_c/2hu/th$1
+<<<<<<< HEAD
 #cd $WINEPREFIX/drive_c/2hu/th$1
 proton-call 6.3 Touhou$1.lnk
 #wine start Touhou$1.lnk
+=======
+proton-call 6.3 Touhou$1.lnk
+>>>>>>> 6a95c9106e0d4756a08cac23bf97a3f53daaef22

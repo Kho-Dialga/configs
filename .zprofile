@@ -10,7 +10,11 @@ export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="alacritty"
+<<<<<<< HEAD
 export BROWSER="chromium"
+=======
+export BROWSER="librewolf"
+>>>>>>> 6a95c9106e0d4756a08cac23bf97a3f53daaef22
 export READER="zathura"
 
 # ~/ Clean-up:

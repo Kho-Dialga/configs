@@ -1,5 +1,4 @@
 #!/bin/sh
-#!/usr/bin/env bash
 
 # Calculate where the image should be placed on the screen.
 num="$(printf "%0.f\n" "$(printf "%s\n" "$(tput cols) / 2" | bc)")"
@@ -18,15 +17,14 @@ image() {
 }
 
 CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
-
-case "$(printf "%s\n" "$1" | awk '{print tolower($0)}')" in
-	*.tgz|*.tar.gz) tar tzf "$1" ;;
-	*.tar.bz2|*.tbz2) tar tjf "$1" ;;
-	*.tar.txz|*.txz) xz --list "$1" ;;
-	*.tar) tar tf "$1" ;;
-	*.zip|*.jar|*.war|*.ear|*.oxt) unzip -l "$1" ;;
-	*.rar) unrar l "$1" ;;
-	*.7z) 7z l "$1" ;;
+case "$1" in
+	*.tgz|*.tar.gz) tar tzf "$1";;
+	*.tar.bz2|*.tbz2) tar tjf "$1";;
+	*.tar.xz|*.txz) atool --list "$1";;
+	*.tar) tar tf "$1";;
+	*.zip|*.jar|*.war|*.ear|*.oxt) unzip -l "$1";;
+	*.rar) unrar l "$1";;
+	*.7z) 7z l "$1";;
 	*.[1-8]) man "$1" | col -b ;;
 	*.o) nm "$1" | less ;;
 	*.torrent) transmission-show "$1" ;;

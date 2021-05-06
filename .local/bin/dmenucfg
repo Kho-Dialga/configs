@@ -8,6 +8,7 @@ alacritty			$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/alacritty/alacritty.yml
 awesome				$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/awesome/rc.lua
 bspwm				$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/bspwm/bspwmrc
 dunst				$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/dunst/dunstrc
+dunst				$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/dunst/dunst
 i3				$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/i3/config
 kitty				$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/kitty/kitty.conf
 lf				$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/lf/lfrc
@@ -29,6 +30,11 @@ xob				$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/xob/styles.cfg
 zsh				$TERMINAL -e $EDITOR $ZDOTDIR/.zshrc
 xmonad				$TERMINAL -e $EDITOR $HOME/.xmonad/xmonad.hs
 xmobar				$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/xmobar/xmobarrc
+aliasrc				$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/aliasrc
+shortcutrc			$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/shortcutrc
+xprofile			$TERMINAL -e $EDITOR $HOME/.xprofile
+xob				$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/xob/$TERMINALyles.cfg
+zsh				$TERMINAL -e $EDITOR $ZDOTDIR/.zshrc
 aliasrc				$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/aliasrc
 shortcutrc			$TERMINAL -e $EDITOR $XDG_CONFIG_HOME/shortcutrc
 xprofile			$TERMINAL -e $EDITOR $HOME/.xprofile

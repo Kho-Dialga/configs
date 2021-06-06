@@ -28,3 +28,4 @@ x-scheme-handler/http=chromium-browser.desktop
 x-scheme-handler/https=chromium-browser.desktop
 x-scheme-handler/about=chromium-browser.desktop
 x-scheme-handler/unknown=chromium-browser.desktop
+x-scheme-handler/discord-529050037532098580=discord-529050037532098580.desktop

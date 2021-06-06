@@ -51,7 +51,7 @@ beautiful.init(theme_path)
 awesome.set_preferred_icon_size(32)
 
 -- Enable gaps to please Yukari-sama
-beautiful.useless_gap = 5
+beautiful.useless_gap = 10
 beautiful.gap_single_client = true
 
 -- This is used later as the default terminal and editor to run.
@@ -136,18 +136,6 @@ local tasklist_buttons = gears.table.join(
                                               awful.client.focus.byidx(-1)
                                           end))
 
-local function set_wallpaper(s)
-    -- Wallpaper
-    if beautiful.wallpaper then
-        local wallpaper = beautiful.wallpaper
-        -- If wallpaper is a function, call it with the screen
-        if type(wallpaper) == "function" then
-            wallpaper = wallpaper(s)
-        end
-        gears.wallpaper.maximized(wallpaper, s, true)
-    end
-end
-
 -- Custom widgets and functions for updating the status bar
 
 -- Volume
@@ -216,6 +204,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             s.mytaglist,
+            s.mylayoutbox,
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
@@ -228,22 +217,20 @@ awful.screen.connect_for_each_screen(function(s)
 	    awful.widget.watch('forecast',900),
 	    news_widget,
 	    mailbox_widget,
-	    awful.widget.watch('cpubars',1),
+	    awful.widget.watch('cpu',1),
 	    wibox.widget.textbox(' '),
 	    awful.widget.watch('memory',1),
 	    wibox.widget.textbox(' '),
-	    awful.widget.watch('cpu',1),
 	    wibox.widget.textbox(' '),
 	    awful.widget.watch('disk /', 180),
 	    wibox.widget.textbox(' '),
 	    awful.widget.watch('disk /home', 180),
 	    wibox.widget.textbox(' '),
-	    awful.widget.watch('disk ~/.local/share', 180),
+	    awful.widget.watch('disk /home/dialga/.local/share', 180),
 	    volume_widget,
 	    wibox.widget.textbox(' '),
             awful.widget.watch('clock',1),
 	    wibox.widget.textbox(' '),
-            s.mylayoutbox,
         },
     }
 end)
@@ -256,8 +243,6 @@ root.buttons(gears.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
-
--- Signals
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
@@ -287,6 +272,20 @@ globalkeys = gears.table.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift" }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
+    awful.key({ modkey,         }, "o",     function () awful.tag.incnmaster( 1, nil, true) end,
+              {description = "increase the number of master clients", group = "layout"}),
+    awful.key({ modkey, "Shift" }, "o",     function () awful.tag.incnmaster(-1, nil, true) end,
+              {description = "decrease the number of master clients", group = "layout"}),
+    -- Show/Hide Wibox
+    awful.key({ modkey }, "b", function ()
+            for s in screen do
+                s.mywibox.visible = not s.mywibox.visible
+                if s.mybottomwibox then
+                    s.mybottomwibox.visible = not s.mybottomwibox.visible
+                end
+            end
+        end,
+        {description = "toggle wibox", group = "awesome"}),
     -- Standard program
     awful.key({ modkey,         }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
@@ -301,10 +300,23 @@ globalkeys = gears.table.join(
               {description = "increase master width factor", group = "layout"}),
     awful.key({ modkey,         }, "h",     function () awful.tag.incmwfact(-0.05)          end,
               {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey,         }, "space", function () awful.layout.inc( 1)                end,
+    awful.key({ modkey,         }, "Tab", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift" }, "space", function () awful.layout.inc(-1)                end,
-              {description = "select previous", group = "layout"})
+    awful.key({ modkey, "Shift" }, "Tab", function () awful.layout.inc(-1)                end,
+              {description = "select previous", group = "layout"}),
+    awful.key({ modkey,        }, "a",
+        function (c)
+            -- The client currently has the input focus, so it cannot be
+            -- minimized, since minimized clients can't have the focus.
+            c.minimized = true
+        end ,
+        {description = "minimize", group = "client"}),
+    awful.key({ modkey,           }, "t",
+        function (c)
+            c.maximized = not c.maximized
+            c:raise()
+        end ,
+        {description = "maximize", group = "client"})
 )
 
 clientkeys = gears.table.join(
@@ -314,30 +326,12 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey,      	  }, "q",      function (c) c:kill()                         end,
+    awful.key({ modkey,           }, "q",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
-    awful.key({ modkey,		  }, "space",  awful.client.floating.toggle                     ,
+    awful.key({ modkey, "Shift"	  }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "space", function (c) c:swap(awful.client.getmaster()) end,
+    awful.key({ modkey,           }, "space", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"})
-	-- AAAAA
--- awful.key(
--- {modkey},
--- "equal",
--- function()
---        awful.spawn("pamixer --allow-boost -i 5")
---        volume_timer:emit_signal("timeout")
--- end,
--- {description = "increase volume", group = "control"}
--- ),
--- awful.key(
--- {modkey},
--- "minus",
--- function()
---        awful.spawn("pamixer --allow-boost -d 5")
---        volume_timer:emit_signal("timeout")
--- end,
--- {description = "decrease volume", group = "control"}
 )
 
 

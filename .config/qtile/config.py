@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright (c) 2010 Aldo Cortesi
 # Copyright (c) 2010, 2014 dequis
 # Copyright (c) 2012 Randall Ma
@@ -40,7 +41,7 @@ import psutil
 #### DEFINING VARIABLES ##
 
 mod = "mod4"
-myTerm = "st"
+myTerm = "alacritty"
 
 #### KEYBINDINGS ####
 
@@ -131,38 +132,14 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 #### DEFAULT LAYOUTS SETTINGS #####
 layout_theme = {"border_width": 2,
                 "margin": 17,
-                "border_focus": "#123a75",
-                "border_normal": "#ffffff"
+                "border_focus": "#89333b",
+                "border_normal": "#3262df"
                 }
 
 #### LAYOUTS ####
 layouts = [
-    #layout.Bsp(**layout_theme),
-    #layout.Stack(stacks=2, **layout_theme),
-    #layout.Columns(**layout_theme),
-    #layout.RatioTile(**layout_theme),
-    #layout.VerticalTile(**layout_theme),
-    #layout.Matrix(**layout_theme),
-    #layout.Zoomy(**layout_theme),
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
-    layout.Max(**layout_theme),
-    layout.Tile(shift_windows=True, **layout_theme),
-    layout.Stack(num_stacks=2),
-    layout.TreeTab(
-         font = "Fantasque Sans Mono",
-         fontsize = 10,
-         sections = ["FIRST", "SECOND"],
-         section_fontsize = 11,
-         bg_color = "141414",
-         active_bg = "90C435",
-         active_fg = "000000",
-         inactive_bg = "384323",
-         inactive_fg = "a0a0a0",
-         padding_y = 5,
-         section_top = 10,
-         panel_width = 320
-         ),
     layout.Floating(**layout_theme)
 ]
 
@@ -181,7 +158,7 @@ prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 #### WIDGETS DEFAULT SETTINGS ####
 widget_defaults = dict(
-    font="Fira Code Nerd Font",
+    font="FiraCode Nerd Font",
     fontsize = 15,
     padding = 2,
     background=colors[2]
@@ -189,6 +166,7 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 #### WINDOW SWALLOWING ####
+import psutil
 
 @hook.subscribe.client_new
 def _swallow(window):
@@ -200,9 +178,7 @@ def _swallow(window):
             return
         if ppid in cpids:
             parent = window.qtile.windows_map.get(cpids[ppid])
-            if parent.window.get_wm_class()[0] != "Alacritty":
-                return
-            if parent.window.get_wm_class()[0] != "St":
+            if parent.window.get_wm_class()[0] != "alacritty":
                 return
             parent.minimized = True
             window.parent = parent
@@ -213,7 +189,6 @@ def _swallow(window):
 def _unswallow(window):
     if hasattr(window, 'parent'):
         window.parent.minimized = False
-
 #### BAR AND WIDGETS ####
 
 screens = [
@@ -249,7 +224,8 @@ screens = [
                        other_screen_border = colors[0],
                        foreground = colors[2],
                        background = colors[0],
-                       hide_unused = True
+                       hide_unused = True,
+                       disable_drag = True
                        ),
               widget.Sep(
                        linewidth = 0,
@@ -263,21 +239,49 @@ screens = [
                        padding = 0,
                        fontsize = 15
                        ),
-            widget.TextBox(
+              widget.Mpd2(
+                       update_interval = 0.1,
+                       idle_message = "",
+                       foreground = colors[6],
+                       background = colors[0],
+                       padding = 0,
+                       fontsize = 15
+                  ),
+              widget.TextBox(
                        text = '',
                        background = colors[0],
                        foreground = colors[5],
-                       padding = 0,
+                       padding = -8,
+                       fontsize = 49
+                       ),
+            widget.GenPollText(
+                    update_interval=180,
+                    func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/forecast")).decode("utf-8"),
+                    background = colors[5],
+                    foreground = colors[2],
+                    fontsize = 13
+                    ),
+            widget.TextBox(
+                       text = '',
+                       background = colors[5],
+                       foreground = colors[4],
+                       padding = -8,
                        fontsize = 49
                        ),
             widget.GenPollText(
                     update_interval=1,
-                    func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/torrent")),
-                    background = colors[5],
+                    func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/torrent")).decode("utf-8"),
+                    background = colors[4],
                     foreground = colors[2],
-                    font = 'Fira Code',
-                    fontsize = 12
+                    fontsize = 13
                     ),
+            widget.TextBox(
+                       text = '',
+                       background = colors[4],
+                       foreground = colors[5],
+                       padding = -8,
+                       fontsize = 49
+                       ),
             widget.TextBox(
                     text = '🚀',
                     background = colors[5],
@@ -294,80 +298,63 @@ screens = [
                        text = '',
                        background = colors[5],
                        foreground = colors[4],
-                       padding = 0,
+                       padding = -8,
                        fontsize = 49
                        ),
-              widget.TextBox(
-                       text = '🧠',
-                       background = colors[4],
-                       foreground = colors[5],
-                       fontsize = 12
-                       ),
-              widget.Memory(
-                      fontsize = 12,
-                      background = colors[4],
-                      foreground = colors[6],
-                      format = '{MemUsed}M'
-                      ),
+            widget.GenPollText(
+                    update_interval=1,
+                    func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/memory")).decode("utf-8"),
+                    background = colors[4],
+                    foreground = colors[2],
+                    fontsize = 13
+                    ),
               widget.TextBox(
                        text = '',
                        background = colors[4],
                        foreground = colors[5],
-                       padding = 0,
+                       padding = -8,
                        fontsize = 49
                        ),
-              widget.TextBox(
-                       text = "🌡️",
-                       padding = 2,
-                       foreground = colors[2],
-                       background = colors[5],
-                       fontsize = 11
-                       ),
-              widget.ThermalSensor(
-                       foreground = colors[2],
-                       background = colors[5],
-                       threshold = 90,
-                       padding = 5,
-                       fontsize = 12
-                       ),
+            widget.GenPollText(
+                    update_interval=1,
+                    func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/temp")).decode("utf-8"),
+                    background = colors[1],
+                    foreground = colors[2],
+                    fontsize = 13
+                    ),
               widget.TextBox(
                        text='',
                        background = colors[5],
                        foreground = colors[4],
-                       padding = 0,
+                       padding = -8,
                        fontsize = 49
                        ),
-              widget.TextBox(
-                       text = "📦",
-                       padding = 2,
-                       foreground = colors[2],
-                       background = colors[4],
-                       fontsize = 14
-                       ),
+            widget.GenPollText(
+                    update_interval=180,
+                    func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/disk")).decode("utf-8"),
+                    background = colors[4],
+                    foreground = colors[2],
+                    fontsize = 13
+                    ),
               widget.TextBox(
                        text = '',
                        background = colors[4],
                        foreground = colors[5],
-                       padding = 0,
+                       padding = -8,
                        fontsize = 49
                        ),
-              widget.TextBox(
-                      text = "🔊",
-                       foreground = colors[2],
-                       background = colors[5],
-                       padding = 0
-                       ),
-              widget.PulseVolume(
-                       foreground = colors[2],
-                       background = colors[5],
-                       padding = 5,
-                       fontsize = 12
-                       ),
+            widget.GenPollText(
+                    update_interval=0.1,
+                    func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/volume")).decode("utf-8"),
+                    background = colors[5],
+                    foreground = colors[2],
+                    fontsize = 13
+                    ),
               widget.TextBox(
                        text = '',
                        background = colors[5],
                        foreground = colors[4],
-                       padding = 0,
+                       padding = -8,
                        fontsize = 49
                        ),
               widget.CurrentLayoutIcon(
@@ -387,15 +374,16 @@ screens = [
                        text = '',
                        background = colors[4],
                        foreground = colors[5],
-                       padding = 0,
+                       padding = -8,
                        fontsize = 49
                        ),
-              widget.Clock(
-                       foreground = colors[2],
-                       background = colors[5],
-                       fontsize = 12,
-                       format = "%Y/%m/%d %H:%M:%S"
-                       ),
+            widget.GenPollText(
+                    update_interval=1,
+                    func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/clock")).decode("utf-8"),
+                    background = colors[5],
+                    foreground = colors[2],
+                    fontsize = 13
+                    ),
               widget.Sep(
                        linewidth = 0,
                        padding = 10,
@@ -444,7 +432,13 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass':'Wine'},
     {'wmclass':'Steam'},
     {'wmclass':'Galculator'},
-    {'wmclass':'Dragon-drag-and-drop'}
+    {'wmclass':'Dragon-drag-and-drop'},
+    {'wmclass':'dragon'},
+    {'wmclass':'steam_proton'},
+    {'wname':'mpvfloat'},
+    {'wmclass':'droidcam'},
+    {'wmclass':'Gcr-prompter'},
+    {'wname':'Steam'}
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

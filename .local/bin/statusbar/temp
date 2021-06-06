@@ -6,4 +6,9 @@ case $BLOCK_BUTTON in
 - Click to show htop." ;;
 esac
 
+icon()
+{
 sensors | awk '/edge/ {print "🌡" $2}' | sed 's/+//g'
+}
+
+printf %s $(icon)

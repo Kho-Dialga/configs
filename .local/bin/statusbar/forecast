@@ -32,4 +32,4 @@ esac
 [ "$(stat -c %y "$weatherreport" 2>/dev/null | cut -d' ' -f1)" = "$(date '+%Y-%m-%d')" ] ||
 	getforecast
 
-showweather
+printf %s $(showweather)

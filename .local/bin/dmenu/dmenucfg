@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# Small dmenu script for editing the config files of programs that I use
+
+# Program			# Command to edit file
+cfg="\
+alacritty			            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/alacritty/alacritty.yml
+awesome				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/awesome/rc.lua
+awesome (themes)				$TERMINAL -e lf $XDG_CONFIG_HOME/awesome/themes
+bspwm				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/bspwm/bspwmrc
+dunst				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/dunst/dunstrc
+i3				                $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/i3/config
+kitty				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/kitty/kitty.conf
+lf				                $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/lf/lfrc
+mpd				                $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/mpd/mpd.conf
+mpv				                $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/mpv/mpv.conf
+mpv (key bindings)		        $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/mpv/input.conf
+ncmpcpp				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/ncmpcpp/config
+ncmpcpp (keybindings)		    $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/ncmpcpp/bindings
+newsboat			            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/newsboat/config
+newsboat (feeds)		        $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/newsboat/urls
+nvim				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/nvim/init.vim
+picom				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/picom/picom.conf
+polybar				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/polybar/config
+qtile				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/qtile/config.py
+rofi				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/rofi/config.rasi
+spacevim				        $TERMINAL -e $EDITOR $HOME/.SpaceVim.d/init.toml
+spacevim (autoload)				$TERMINAL -e $EDITOR $HOME/.SpaceVim.d/autoload/myspacevim.vim
+sxhkd				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/sxhkd/sxhkdrc
+transmission-daemon		        $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/transmission-daemon/settings.json
+xob				                $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/xob/styles.cfg
+xmonad				            $TERMINAL -e $EDITOR $HOME/.xmonad/xmonad.hs
+xmobar				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/xmobar/xmobarrc
+xob				                $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/xob/$TERMINALyles.cfg
+aliasrc				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/shell/aliasrc
+shortcutrc			            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/shell/shortcutrc
+xprofile			            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/x11/xprofile
+xresources			            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/x11/Xresources
+xinitrc				            $TERMINAL -e $EDITOR $XDG_CONFIG_HOME/x11/xinitrc
+zsh				                $TERMINAL -e $EDITOR $ZDOTDIR/.zshrc
+zprofile						$TERMINAL -e $EDITOR $HOME/.zprofile"
+
+choice="$(echo "$cfg" | cut -d'	' -f 1 | dmenu -l 10 -p Config:)" || exit 1
+`echo "$cfg" | grep "^$choice	" | cut -d '	' -f2-`

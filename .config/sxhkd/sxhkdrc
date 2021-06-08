@@ -44,13 +44,11 @@ super + r
 super + shift + h
 	$TERMINAL -e v
 super + e
-	$TERMINAL -e neomutt; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook; polybar-msg -p "$(pidof "polybar")" hook mailbox 1; echo 'mailbox()' | awesome-client
-super + shift + e
-	$TERMINAL -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook
+	$TERMINAL -e neomutt; refblock mailbox 12
 super + m
 	$TERMINAL -e ncmpcpp
 super + n
-	$TERMINAL -e newsboat; pkill -RTMIN+6 dwmblocks; polybar-msg -p "$(pidof "polybar")" hook news 1; killall newsboat; echo 'news()' | awesome-client
+	$TERMINAL -e newsboat; refblock news 6
 super + c
 	dmenucfg
 super + w
@@ -104,14 +102,14 @@ super + {_,shift +} bracketleft
 	mpc seek -{10,60}
 # Increase volume
 super + equal
-	pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks); echo 'volume()' | awesome-client | awesome-client; echo $(pamixer --get-volume) > /tmp/xobpulse
+	pamixer --allow-boost -i 5; refblock volume 44; echo $(pamixer --get-volume) > /tmp/xobpulse
 # Decrease volume
 super + minus
-	pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks); echo 'volume()' | awesome-client | awesome-client; echo $(pamixer --get-volume) > /tmp/xobpulse
+	pamixer --allow-boost -d 5; refblock volume 44; echo $(pamixer --get-volume) > /tmp/xobpulse
 
 # Mute audio
 super + shift + m
-	pamixer --toggle; kill -44 $(pidof dwmblocks); echo 'volume()' | awesome-client
+	pamixer --toggle; refblock volume 44
 # Function keys
 
 # F2 is unbound
@@ -140,7 +138,7 @@ super + F7
 	td-toggle
 # sync email
 super + F8
-	mailsync; pkill -RTMIN+12 dwmblocks
+	mailsync; refblock mailbox 12
 # Mount a USB drive or Android device
 super + {F9,F10}
 	{dmenuusb -m,dmenuusb -u}

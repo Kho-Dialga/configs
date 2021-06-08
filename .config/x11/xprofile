@@ -1,0 +1,20 @@
+#!/bin/sh
+[[ -f ~/.zprofile ]] && source ~/.zprofile
+eval $(dbus-launch --sh-syntax --exit-with-x11)						# Ensures dbus is launched along witn the X session.
+xrandr --output HDMI-A-0 --mode 1920x1080 --rate 144				# Set the screen resolution
+sxhkd &								                                # Creates the keyboard shortcuts.
+picom --experimental-backends &					                    # Launches picom for transparency.
+mpd &								                                # Launches mpd for using alongside ncmpcpp.
+xset r rate 300 50 &						                        # Speeds up the xrate.
+dunst &												                # Launches dunst for notifications.
+setbg ~/pix/wallpaper &					                            # Sets the wallpaper, change the directory to the path to your image.
+redshift &														    # Launches redshift for adjusting the color temperature.
+xrdb ~/.config/x11/Xresources &					                    # Reloads the Xresources file.
+transmission-daemon												    # Starts up the transmission daemon.
+dwmblocks &							                                # Start the statusbar.
+mkfifo /tmp/xobpulse &											    # Makes xob work.
+xset -dpms; xset s off						                        # Removes the screensaver.
+tail -f /tmp/xobpulse | xob &				                        # Starts xob for a pulseaudio volume bar.
+otd-daemon &							                            # Start the opentabletdriver daemon
+emacs --daemon &						                            # Start the emacs daemon
+#monerod --data-dir "$XDG_DATA_HOME"/bitmonero --detach &

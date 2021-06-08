@@ -284,6 +284,13 @@ myStartupHook = ewmhDesktopsStartup >> setWMName "LG3D"
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
+
+-- AUTOSTART
+
+myAutostartHook :: X ()
+myAutostartHook = do
+    spawnOnce "kill $(pidof dwmblocks)"
+
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
@@ -302,6 +309,7 @@ main = do
         , mouseBindings      = myMouseBindings
         , terminal           = myTerminal
         , startupHook        = myStartupHook
+        , autostartHook      = myAutostartHook
         , layoutHook         = showWName' myShowWNameTheme $ myLayout
         , workspaces         = myWorkspaces
         , borderWidth        = myBorderWidth

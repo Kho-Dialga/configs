@@ -10,4 +10,4 @@ sudo pacman -Syuw --noconfirm
 #sudo layman -S
 
 #Check your internet connection, if pacman is already running, or run update manually to see errors."
-pkill -RTMIN+8 "${STATUSBAR:-dwmblocks}"
+refblock pacpackages 8

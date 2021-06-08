@@ -144,6 +144,12 @@ function volume()
  end
 volume_widget, volume_timer = awful.widget.watch('volume', 5)
 
+-- Music
+function music()
+        music_timer:emit_signal("timeout")
+ end
+music_widget, music_timer = awful.widget.watch('music', 999999)
+
 -- News
 function news()
         news_timer:emit_signal("timeout")
@@ -210,17 +216,20 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-	    awful.widget.watch('music',0),
+	    awful.widget.watch('music',1),
+	    wibox.widget.textbox(' '),
 	    pacpackages_widget,
 	    torrent_widget,
 	    wibox.widget.textbox(' '),
 	    awful.widget.watch('forecast',900),
+	    wibox.widget.textbox(' '),
 	    news_widget,
 	    mailbox_widget,
 	    awful.widget.watch('cpu',1),
 	    wibox.widget.textbox(' '),
 	    awful.widget.watch('memory',1),
 	    wibox.widget.textbox(' '),
+	    awful.widget.watch('temp',1),
 	    wibox.widget.textbox(' '),
 	    awful.widget.watch('disk /', 180),
 	    wibox.widget.textbox(' '),
@@ -520,3 +529,49 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- Window Swallowing
+
+function is_terminal(c)
+    return (c.class and c.class:match("St")) and true or false
+end
+
+function copy_size(c, parent_client)
+    if not c or not parent_client then
+        return
+    end
+    if not c.valid or not parent_client.valid then
+        return
+    end
+    c.x=parent_client.x;
+    c.y=parent_client.y;
+    c.width=parent_client.width;
+    c.height=parent_client.height;
+end
+function check_resize_client(c)
+    if(c.child_resize) then
+        copy_size(c.child_resize, c)
+    end
+end
+
+client.connect_signal("property::size", check_resize_client)
+client.connect_signal("property::position", check_resize_client)
+client.connect_signal("manage", function(c)
+    if is_terminal(c) then
+        return
+    end
+    local parent_client=awful.client.focus.history.get(c.screen, 1)
+    if parent_client and is_terminal(parent_client) then
+        parent_client.child_resize=c
+        parent_client.minimized = true
+
+        c:connect_signal("unmanage", function() parent_client.minimized = false end)
+        
+        -- c.floating=true
+        copy_size(c, parent_client)
+    end
+end)
+
+-- Auto start section
+
+awful.spawn.with_shell("kill $(pidof dwmblocks)")

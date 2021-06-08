@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Shell script for refreshing the statusbar blocks. Requires wmctrl.
+
+# $1 needs to be the name of the command being refreshed in awesomewm.
+# $2 needs to be the refresh signal of the block on dwmblocks.
+
+# Find out which window manager you are running, and its respective
+# refresh command
+case "$(wmctrl -m | awk '/Name/ {print $2}')" in
+  dwm) export refcmd=refdwm ;;
+  awesome) export refcmd=refawesome ;;
+  qtile) exit ;;
+  xmonad) exit ;; # I haven't figured out how to refresh blocks on xmonad and qtile
+esac
+
+# awesomewm refresh command
+[ $refcmd = refawesome ] && echo $1\(\) | awesome-client
+
+# dwm refresh command
+[ $refcmd = refdwm ] && pkill -RTMIN+$2 dwmblocks

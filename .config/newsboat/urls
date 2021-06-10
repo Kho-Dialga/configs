@@ -29,6 +29,7 @@ https://voidlinux.org/atom.xml
 https://artixlinux.org/feed.php
 https://www.kernel.org/feeds/kdist.xml
 ">PKG UPDATES"
+https://github.com/caverym/proton-caller/releases.atom
 https://github.com/mwh/dragon/releases.atom
 https://github.com/seebye/ueberzug/releases.atom
 https://github.com/gokcehan/lf/releases.atom

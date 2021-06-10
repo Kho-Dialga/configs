@@ -64,8 +64,14 @@
   # Configuring Xorg
   services.xserver.enable = true;
   services.xserver.displayManager.startx.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
-  services.xserver.modules = [ pkgs.xf86_input_wacom ];
+  services.xserver.libinput = {
+	enable = true;
+	mouse = {
+		accelProfile = "flat";
+	};
+  };
   services.xserver.wacom.enable = true;
   services.xserver.windowManager = {
     dwm.enable = true;
@@ -91,23 +97,34 @@
   # Enable udisks for easier USB mounting
    services.udisks2.enable = true;
 
-  # Enable udisks for easier USB mounting
+  # Enable steam
    programs.steam.enable = true;
 
   # Enable neovim and the emacs
    programs.neovim.enable = true;
    services.emacs.enable = true;
 
+  # OpenRGB udev
+    services.udev.packages = with pkgs; [
+    openrgb
+  ];
+  
+  # ratbag
+	services.ratbagd.enable = true;
+
   # Enable pam_gnupg
-  security.pam.services.login.gnupg.enable = true;
-  security.pam.services.login.gnupg.storeOnly = true;
+	security.pam.services.login.gnupg.enable = true;
+	security.pam.services.login.gnupg.storeOnly = true;
+
+  # Enable opentabletdriver
+	hardware.opentabletdriver.enable = true;
 
     # Enable cron service
   services.cron = {
     enable = true;
         systemCronJobs = [
-      "*/15 * * * *      dialga    /home/dialga/.local/bin/cron/newsup"
-      "*/15 * * * *      dialga    ${pkgs.mutt-wizard}/bin/mailsync; /run/current-system/sw/bin/echo 'mailbox()' | ${pkgs.awesome}/bin/awesome-client"
+      "*/15 * * * *      dialga    . ~/.zprofile; /home/dialga/.local/bin/cron/newsup"
+      "*/15 * * * *      dialga    . ~/.zprofile; ${pkgs.mutt-wizard}/bin/mailsync; /home/dialga/.local/bin/statusbar/refblock mailbox 12"
         ];
   };
 
@@ -116,25 +133,26 @@
   noto-fonts-emoji
   noto-fonts
   noto-fonts-cjk
-  twitter-color-emoji
   symbola
+  twitter-color-emoji
   corefonts
+  libertine
+  dejavu_fonts
   (nerdfonts.override { fonts = [ "FiraCode" ]; })
 ];
 
   # Enable sound.
    sound.enable = false;
+   hardware.pulseaudio.enable = false;
   # Pipewire
-  security.rtkit.enable = true;
-  services.pipewire = {
-  enable = true;
-  alsa.enable = true;
-  alsa.support32Bit = true;
-  pulse.enable = true;
-  jack.enable = true;
+	security.rtkit.enable = true;
+	services.pipewire = {
+	enable = true;
+	alsa.enable = true;
+	alsa.support32Bit = true;
+	pulse.enable = true;
+	jack.enable = true;
 };
-  # Enable touchpad support (enabled default in most desktopManager).
-   services.xserver.libinput.enable = true;
 
   # Users
    users.users.dialga = {
@@ -177,7 +195,7 @@
    environment.systemPackages = with pkgs; [
      # suckless utils
     (st.overrideAttrs (oldAttrs: rec {
-     buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
+    buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
      patches = [ ./st-dialga-0.8.4.patch ];
      })
      )
@@ -212,6 +230,7 @@
      linuxHeaders
      xclip
      bc
+     wmctrl
      # useful
      brave
      slock
@@ -251,20 +270,21 @@
      redshift
      transmission
      tremc
-     xorg_sys_opengl
      xcb-util-cursor
      youtube-dl
      # others
      discord
-     whatsapp-for-linux
+	 gamemode
+	 pkgsi686Linux.gamemode
      flat-remix-gtk
      flat-remix-icon-theme
      neofetch
-     opentabletdriver
-     openrgb
+	 openrgb
+	 piper
      steam-run
      proton-caller
      wineWowPackages.stable
+     groff
    ];
 
    # OpenGL
@@ -272,13 +292,15 @@
    hardware.opengl.driSupport32Bit = true;
    hardware.opengl.setLdLibraryPath = true;
    hardware.opengl.extraPackages = with pkgs; [
-   amdvlk
+	   mesa
    ];
 
 # For 32 bit applications
 # Only available on unstable
-hardware.opengl.extraPackages32 = with pkgs; [
-  driversi686Linux.amdvlk
+hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [
+  amdvlk
+  mesa
+  pipewire
 ];
   # Some programs need SUID wrappers, can be configured further or are
   # tarted in user sessions.

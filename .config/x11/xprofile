@@ -17,4 +17,5 @@ xset -dpms; xset s off						                        # Removes the screensaver.
 tail -f /tmp/xobpulse | xob &				                        # Starts xob for a pulseaudio volume bar.
 otd-daemon &							                            # Start the opentabletdriver daemon
 emacs --daemon &						                            # Start the emacs daemon
+openrgb --profile g203												# Start up openrgb and select profile
 #monerod --data-dir "$XDG_DATA_HOME"/bitmonero --detach &

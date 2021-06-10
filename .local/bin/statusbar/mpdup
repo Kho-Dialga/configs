@@ -4,5 +4,5 @@
 # music player's status. mpd must be running on X's start for this to work.
 
 while : ; do
-	mpc idle >/dev/null && refblock music 45 || break
+	mpc idle >/dev/null && refblock music 11 || break
 done

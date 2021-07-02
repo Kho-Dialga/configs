@@ -12,9 +12,8 @@
 
   # Bootloader and kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-  boot.kernelModules = [ "v4l2loopback" ];
-  boot.loader = {
+  boot.kernelParams = [ "sysrq_always_enabled=1" ];
+    boot.loader = {
     efi = {
       canTouchEfiVariables = true;
       efiSysMountPoint = "/boot/efi";
@@ -67,11 +66,11 @@
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
   services.xserver.libinput = {
-	enable = true;
+	enable = false;
 	mouse = {
 		accelProfile = "flat";
 	};
-  };
+ };
   services.xserver.wacom.enable = true;
   services.xserver.windowManager = {
     dwm.enable = true;
@@ -110,40 +109,45 @@
   ];
   
   # ratbag
-	services.ratbagd.enable = true;
-
+	services.ratbagd.enable = false;
+  
+  # Enable libvirt
+	virtualisation.libvirtd.enable = true;
+	programs.dconf.enable = true;
+  
   # Enable pam_gnupg
 	security.pam.services.login.gnupg.enable = true;
 	security.pam.services.login.gnupg.storeOnly = true;
 
   # Enable opentabletdriver
 	hardware.opentabletdriver.enable = true;
-
+  # Enable droidcam
+	programs.droidcam.enable = true;
     # Enable cron service
   services.cron = {
     enable = true;
-        systemCronJobs = [
-      "*/15 * * * *      dialga    . ~/.zprofile; /home/dialga/.local/bin/cron/newsup"
-      "*/15 * * * *      dialga    . ~/.zprofile; ${pkgs.mutt-wizard}/bin/mailsync; /home/dialga/.local/bin/statusbar/refblock mailbox 12"
-        ];
+	systemCronJobs = [
+		"*/15 * * * * dialga export DISPLAY=:0; export XAUTHORITY=/run/user/1000/Xauthority; ~/.local/bin/cron/newsup"
+		"*/15 * * * * dialga export DISPLAY=:0; export XAUTHORITY=/run/user/1000/Xauthority; ${pkgs.mutt-wizard}/bin/mailsync; ~/.local/bin/statusbar/refblock mailbox 12"
+	];
   };
 
   # Fonts
   fonts.fonts = with pkgs; [
+  twitter-color-emoji
+  noto-fonts-cjk
   noto-fonts-emoji
   noto-fonts
-  noto-fonts-cjk
-  symbola
-  twitter-color-emoji
   corefonts
   libertine
-  dejavu_fonts
+  symbola
+  fira-code
   (nerdfonts.override { fonts = [ "FiraCode" ]; })
 ];
 
   # Enable sound.
-   sound.enable = false;
-   hardware.pulseaudio.enable = false;
+    sound.enable = false;   
+	#hardware.pulseaudio.enable = true;
   # Pipewire
 	security.rtkit.enable = true;
 	services.pipewire = {
@@ -158,7 +162,7 @@
    users.users.dialga = {
      isNormalUser = true;
      shell = pkgs.zsh;
-     extraGroups = [ "wheel" "audio" "video" "lpadmin" "scanner" "storage" ];
+     extraGroups = [ "wheel" "audio" "video" "lpadmin" "scanner" "storage" "libvirtd" ];
    };
 
   # Enable unfree software, RMS doesn't approve of this...
@@ -178,18 +182,28 @@
     { command = "/run/current-system/sw/bin/nix-channel --update"; options = ["NOPASSWD"]; }
     { command = "/run/current-system/sw/bin/nix-collect-garbage"; options = ["NOPASSWD"]; }
     { command = "/run/current-system/sw/bin/nix-collect-garbage -d"; options = ["NOPASSWD"]; }
+	{ command = "/run/current-system/sw/bin/nvim -u ~/.config/nvim/init.vim /etc/nixos/configuration.nix"; options = ["NOPASSWD"]; }
     { command = "/run/current-system/sw/bin/poweroff"; options = ["NOPASSWD"]; }
     { command = "/run/current-system/sw/bin/reboot"; options = ["NOPASSWD"]; } ]; }
   ];
-  # Patched dwm build
+  # Overlay for patched dwm and picom
   nixpkgs.overlays = [
     (self: super: {
     dwm = super.dwm.overrideAttrs (oldAttrs: rec {
     patches = [ ./dwm-dialga-6.2.patch ];
     });
     })
+	(self: super: {
+	picom = super.picom.overrideAttrs (old: {
+		src = super.fetchFromGitHub {
+		owner = "jonaburg";
+		repo = "picom";
+		rev = "d08c9b8c493d24c9df77f46147f4839849873a83";
+		sha256 = "114y3y4651aihcj6impszk3rp9ljpfh2af3w1m4ffbd4c3ydgnhf";
+		};
+		});
+	})
   ];
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
    environment.systemPackages = with pkgs; [
@@ -210,7 +224,6 @@
      # essentials
      ungoogled-chromium
      sxhkd
-     alacritty
      dunst
      libnotify
      lf
@@ -232,19 +245,26 @@
      bc
      wmctrl
      # useful
+	 virt-manager
+	 patchage
+	 libva1
+     alacritty
+	 libvdpau-va-gl
+	 file
+	 pciutils
+	 picom
+	 ueberzug
+	 imagemagick
      brave
      slock
      lm_sensors
      git
-     droidcam
      gnome3.simple-scan
      mpd
      mpc_cli
      ncmpcpp
      mpv
-     devour
      dragon-drop
-     picom
      ffmpeg
      newsboat
      neomutt
@@ -252,6 +272,7 @@
      msmtp
      mutt-wizard
      notmuch
+	 lynx
      pinentry
      pinentry-gnome
      pass
@@ -262,7 +283,6 @@
      zathura
      poppler
      atool
-     fzf
      highlight
      xob
      trash-cli
@@ -272,19 +292,21 @@
      tremc
      xcb-util-cursor
      youtube-dl
-     # others
-     discord
-	 gamemode
-	 pkgsi686Linux.gamemode
      flat-remix-gtk
      flat-remix-icon-theme
+	 xorg.xdpyinfo
+     # others
+     discord
      neofetch
-	 openrgb
-	 piper
+     openrgb
+     piper
      steam-run
      proton-caller
      wineWowPackages.stable
      groff
+	 libreoffice
+	 xournal
+	 obs-studio
    ];
 
    # OpenGL
@@ -293,6 +315,9 @@
    hardware.opengl.setLdLibraryPath = true;
    hardware.opengl.extraPackages = with pkgs; [
 	   mesa
+	   vaapiVdpau
+	   libva1
+	   libvdpau-va-gl
    ];
 
 # For 32 bit applications
@@ -311,17 +336,6 @@ hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [
      enableSSHSupport = true;
    };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -329,5 +343,4 @@ hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "unstable"; # Did you read the comment?
-
 }

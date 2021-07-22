@@ -48,7 +48,7 @@ G,https://github.com/Kho-Dialga/st-dialga.git,is my custom build of suckless's t
 ,trash-cli,is a command line trash can interface.
 ,neofetch,a CLI system information tool.
 ,xcb-util-cursor,is the XCB cursor library.
-,starship,"is a minimal, fast and customizable cross-shell prompt".
+,starship,"is a minimal, fast and customizable cross-shell prompt."
 ,font-firacode,is a monospaced font with programming ligatures.
 ,redshift,adjusts the color temperature of your screen according to your surroundings.
 ,noto-fonts,is the Google Noto TTF fonts.

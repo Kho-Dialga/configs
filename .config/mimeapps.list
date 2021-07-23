@@ -16,17 +16,9 @@ x-scheme-handler/lbry=lbry.desktop
 inode/directory=file.desktop
 video/x-msvideo=vid.desktop
 video/mpeg=vid.desktop
+audio/mpeg=vid.desktop
+audio/mpegapplication/octet-stream=vid.desktop
 video/mp4=vid.desktop
 audio/flac=vid.desktop
 inode/x-empty=text.desktop
-text/html=chromium-browser.desktop
-x-scheme-handler/http=xfce4-web-browser.desktop
-x-scheme-handler/https=xfce4-web-browser.desktop
-x-scheme-handler/about=chromium-browser.desktop
-x-scheme-handler/unknown=chromium-browser.desktop
 x-scheme-handler/discord-529050037532098580=discord-529050037532098580.desktop
-
-[Added Associations]
-x-scheme-handler/http=xfce4-web-browser.desktop;
-x-scheme-handler/https=xfce4-web-browser.desktop;
-

@@ -1,0 +1,20 @@
+#!/bin/sh
+export WINEPREFIX=~/.local/share/wineprefixes/osu/pfx
+
+
+# Set tablet area
+
+xsetwacom set 10 area 5000 1000 10040 5120
+
+# Go into game dir
+cd ~/.local/share/wineprefixes/osu/pfx/drive_c/osu
+
+# Enable Discord Rich Presence (From https://github.com/0e4ef622/wine-discord-ipc-bridge)
+wine winediscordipcbridge.exe &
+
+# Run the game itself
+wine osu\!.exe
+
+# Reset tablet area
+
+#xsetwacom set 19 ResetArea

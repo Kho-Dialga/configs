@@ -15,7 +15,7 @@ case "$(wmctrl -m | awk '/Name/ {print $2}')" in
 esac
 
 # awesomewm refresh command
-[ $refcmd = refawesome ] && echo $1\(\) | awesome-client
+[ "$refcmd" = refawesome ] && echo $1\(\) | awesome-client
 
 # dwm refresh command
-[ $refcmd = refdwm ] && pkill -RTMIN+$2 dwmblocks
+[ "$refcmd" = refdwm ] && pkill -RTMIN+$2 dwmblocks

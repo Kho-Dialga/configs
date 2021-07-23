@@ -1,6 +1,6 @@
 set previewer ~/.config/lf/preview
 set cleaner ~/.config/lf/cleaner
-set ratios 1:2:3
+#set ratios 1:2:3
 # Basic Settings
 set preview true
 set hidden true
@@ -11,9 +11,9 @@ set ignorecase true
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
-        video/*|image/*/application/pdf) dv-open "$f";;
+        video/*|image/*/application/pdf) xdg-open "$f";;
 	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" | sxiv -aio 2>/dev/null | lf-select ;;
-        *) dv-open "$f" ;;
+        *) xdg-open "$f" ;;
     esac
 }}
 

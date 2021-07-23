@@ -14,7 +14,7 @@ local themes_path = gfs.get_themes_dir()
 local theme = dofile(themes_path.."default/theme.lua")
 -- load vector assets' generators for this theme
 
-theme.font          = "Fira Code 10"
+theme.font          = "monospace 10"
 
 theme.bg_normal     = xrdb.color4
 theme.bg_focus      = xrdb.background
@@ -22,8 +22,8 @@ theme.bg_urgent     = xrdb.color1
 theme.bg_minimize   = xrdb.color8
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = xrdb.foreground
-theme.fg_focus      = xrdb.foreground
+theme.fg_normal     = "#ffffff"
+theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = theme.foreground
 theme.fg_minimize   = theme.foreground
 

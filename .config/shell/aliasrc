@@ -13,7 +13,7 @@ alias \
 	ytv="yt -f best" \
 	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner" \
-#	nvim="nvim -u ~/.config/nvim/init.vim" \
+	nvim="nvim -u ~/.config/nvim/init.vim" \
 	fe="fzf | xargs nvim"
 
 # Image previews in lf and vifm
@@ -51,18 +51,6 @@ alias \
 	gbr="git branch" \
 	gck="git checkout" \
 	gst="git status"
-# Aliases for a bare config repo
-alias \
-	gc="git --git-dir=$HOME/.local/src/configs --work-tree=$HOME" \
-	gcaa="gc add" \
-	gcau="gc add -u" \
-	gcps="gc push" \
-	gcpl="gc pull" \
-	gccm="gc commit -m" \
-	gcft="gc fetch" \
-	gcbr="gc branch" \
-	gcck="gc checkout" \
-	gcst="gc status"
 # Pacman aliases
  alias \
 	 psi="sudo pacman -S" \
@@ -86,3 +74,11 @@ alias \
 	emq="eix -I" \
 	emu="sudo emerge -uavDN @world" \
 	eeu="sudo dispatch-conf"
+# xbps aliases
+alias \
+	xbi="sudo xbps-install" \
+	xbu="xbi -Su" \
+	xbs="xbps-query -Rs" \
+	xbq="xbps-query" \
+	xbr="sudo xbps-remove -RFf"
+	xbo="sudo xbps-remove -o"

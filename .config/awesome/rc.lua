@@ -161,7 +161,7 @@ news_widget, news_timer = awful.widget.watch('news', 999999)
 function pacpackages()
 	pacpackages_timer:emit_signal("timeout")
 end
-pacpackages_widget, pacpackages_timer = awful.widget.watch('pacpackages', 999999)
+pacpackages_widget, pacpackages_timer = awful.widget.watch('xbpspackages', 999999)
 
 -- Torrent
 function torrent()
@@ -216,31 +216,23 @@ awful.screen.connect_for_each_screen(function(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-	    awful.widget.watch('music',1),
-	    wibox.widget.textbox(' '),
+        layout = wibox.layout.fixed.horizontal,
+	    music_widget,
+	    wibox.widget.textbox(''),
 	    pacpackages_widget,
 	    torrent_widget,
-	    wibox.widget.textbox(' '),
 	    awful.widget.watch('forecast',900),
-	    wibox.widget.textbox(' '),
 	    news_widget,
 	    mailbox_widget,
 	    awful.widget.watch('cpu',1),
-	    wibox.widget.textbox(' '),
 	    awful.widget.watch('memory',1),
-	    wibox.widget.textbox(' '),
 	    awful.widget.watch('temp',1),
-	    wibox.widget.textbox(' '),
 	    awful.widget.watch('disk /', 180),
-	    wibox.widget.textbox(' '),
 	    awful.widget.watch('disk /home', 180),
-	    wibox.widget.textbox(' '),
 	    awful.widget.watch('disk /home/dialga/.local/share', 180),
 	    volume_widget,
-	    wibox.widget.textbox(' '),
-            awful.widget.watch('clock',1),
-	    wibox.widget.textbox(' '),
+        awful.widget.watch('clock',1),
+	    wibox.widget.textbox(''),
         },
     }
 end)
@@ -326,13 +318,13 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey,         }, "q",      function (c) c:kill()                         end,
+    awful.key({ modkey,				}, "q",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
-    awful.key({ modkey, "Shift"	}, "space",  awful.client.floating.toggle                     ,
+    awful.key({ modkey, "Shift"		}, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
-    awful.key({ modkey,         }, "space", function (c) c:swap(awful.client.getmaster()) end,
+    awful.key({ modkey,				}, "space", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
-    awful.key({ modkey,			}, "z",
+    awful.key({ modkey, "Control"	}, "z",
         function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
@@ -461,7 +453,9 @@ awful.rules.rules = {
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
       }, properties = { floating = true }},
-
+	{ rule = { class = "mpv" },
+      properties = { screen = 1, fullscreen = true }
+    },
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
@@ -534,46 +528,48 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Window Swallowing
 
-function is_terminal(c)
-    return (c.class and c.class:match("St")) and true or false
-end
+--function is_terminal(c)
+--    return (c.class and c.class:match("St")) and true or false
+--end
 
-function copy_size(c, parent_client)
-    if not c or not parent_client then
-        return
-    end
-    if not c.valid or not parent_client.valid then
-        return
-    end
-    c.x=parent_client.x;
-    c.y=parent_client.y;
-    c.width=parent_client.width;
-    c.height=parent_client.height;
-end
-function check_resize_client(c)
-    if(c.child_resize) then
-        copy_size(c.child_resize, c)
-    end
-end
+--function copy_size(c, parent_client)
+--    if not c or not parent_client then
+--        return
+--    end
+--    if not c.valid or not parent_client.valid then
+--        return
+--    end
+--   c.x=parent_client.x;
+--    c.y=parent_client.y;
+--    c.width=parent_client.width;
+--    c.height=parent_client.height;
+--end
+--function check_resize_client(c)
+--    if(c.child_resize) then
+--        copy_size(c.child_resize, c)
+--    end
+--end
 
-client.connect_signal("property::size", check_resize_client)
-client.connect_signal("property::position", check_resize_client)
-client.connect_signal("manage", function(c)
-    if is_terminal(c) then
-        return
-    end
-    local parent_client=awful.client.focus.history.get(c.screen, 1)
-    if parent_client and is_terminal(parent_client) then
-        parent_client.child_resize=c
-        parent_client.minimized = true
+--client.connect_signal("property::size", check_resize_client)
+--client.connect_signal("property::position", check_resize_client)
+--client.connect_signal("manage", function(c)
+--    if is_terminal(c) then
+--        return
+--    end
+--    local parent_client=awful.client.focus.history.get(c.screen, 1)
+--    if parent_client and is_terminal(parent_client) then
+--        parent_client.child_resize=c
+--        parent_client.minimized = true
 
-        c:connect_signal("unmanage", function() parent_client.minimized = false end)
+--        c:connect_signal("unmanage", function() parent_client.minimized = false end)
         
       -- c.floating=true
-        copy_size(c, parent_client)
-    end
-end)
+--        copy_size(c, parent_client)
+--    end
+--end)
 
 -- Auto start section
 
 awful.spawn.with_shell("kill $(pidof dwmblocks)")
+awful.spawn.with_shell("xrdb ~/.config/x11/Xresources")
+awful.spawn.with_shell("picom")

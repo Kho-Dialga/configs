@@ -573,3 +573,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.spawn.with_shell("kill $(pidof dwmblocks)")
 awful.spawn.with_shell("xrdb ~/.config/x11/Xresources")
 awful.spawn.with_shell("picom")
+
+-- Stop memory leaks maybe
+gears.timer.start_new(10, function() collectgarbage("step", 20000) return true end)

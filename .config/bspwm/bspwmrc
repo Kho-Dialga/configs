@@ -1,5 +1,7 @@
 #! /bin/sh
 
+bspc config focus_follows_pointer false
+
 # Auto start
 
 killall sxhkd; while pgrep -u $UID -x sxhkd >/dev/null; do sleep 1; done; sxhkd -c ~/.config/sxhkd/sxhkdrc-bsp &

@@ -2,11 +2,12 @@
 
 printf "Beginning upgrade.\\n"
 
-paru -Syu
+#paru -Syu
 #sudo emerge -uavDN @world
-pkill -RTMIN+8 "${STATUSBAR:-dwmblocks}"
-echo 'pacpackages()' | awesome-client
+
+sudo xbps-install -Su
+
+refblock pacpackages 8
 
 printf "\\nUpgrade complete.\\nPress <Enter> to exit window.\\n\\n"
-read -r
-exit
+read -r _

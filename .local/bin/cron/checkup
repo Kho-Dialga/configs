@@ -4,10 +4,11 @@
 
 ping -q -c 3 gnu.org > /dev/null || exit
 
-sudo pacman -Syuw --noconfirm
+#sudo pacman -Syuw --noconfirm
+
+sudo xbps-install -S
 
 #sudo emerge --sync || notify-send "Error downloading updates."
 #sudo layman -S
 
-#Check your internet connection, if pacman is already running, or run update manually to see errors."
-refblock pacpackages 8
+~/.local/bin/statusbar/refblock pacpackages 8

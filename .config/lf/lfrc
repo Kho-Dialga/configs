@@ -1,6 +1,5 @@
 set previewer ~/.config/lf/preview
 set cleaner ~/.config/lf/cleaner
-#set ratios 1:2:3
 # Basic Settings
 set preview true
 set hidden true

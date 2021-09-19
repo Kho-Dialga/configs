@@ -4,6 +4,7 @@
 
 export LANG=ja_JP.UTF-8
 export pfx=~/.local/share/wineprefixes/touhou/
+export WINEPREFIX=~/.local/share/wineprefixes/touhou/pfx
 
 cd $pfx/pfx/drive_c/2hu/th$1
-steam-run ~/.nix-profile/bin/proton-call -p 5.13 -r Touhou$1.lnk
+proton-call -r Touhou$1.lnk

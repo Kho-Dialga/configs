@@ -8,9 +8,11 @@
 # screen) and so they are needed there. To prevent doubling up commands, I
 # source them here with the line below.
 
+dbus-daemon --address="/run/user/$(id -u)/bus" --system --nopidfile
+
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile" ]; then
 	. "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"
 else
 	. "$HOME/.xprofile"
 fi
-ssh-agent awesome 
+ssh-agent bspwm

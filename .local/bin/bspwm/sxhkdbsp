@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Terminate already running Polybar instances
+killall -q sxhkd
+
+# Wait until the processes have been shut down
+while pgrep -u $UID -x sxhkd >/dev/null; do sleep 1; done
+
+# Launch bars
+
+sxhkd -c ~/.config/sxhkd/sxhkdrc-bsp &
+
+
+echo "sxhkd launched..."

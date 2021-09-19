@@ -8,7 +8,7 @@ ping -q -c 1 example.org > /dev/null || exit
 pgrep -f newsboat$ && /usr/bin/xdotool key --window "$(/usr/bin/xdotool search --name newsboat)" R && exit
 
 echo 🔃 > /tmp/newsupdate
-refblock news 6
+~/.local/bin/statusbar/refblock news 6
 newsboat -x reload
 rm -f /tmp/newsupdate
-refblock news 6
+~/.local/bin/statusbar/refblock news 6

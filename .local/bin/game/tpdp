@@ -1,9 +1,7 @@
 #!/bin/sh
 
-export STEAM_COMPAT_DATA_PATH=~/.local/share/wineprefixes/tpdp
 export LANG=ja_JP.UTF-8
-export PC_COMMON=~/.local/share/Steam/steamapps/common/
 export WINEPREFIX=~/.local/share/wineprefixes/tpdp
 
-cd ~/.local/share/wineprefixes/tpdp/drive_c/game/FocasLens/幻想人形演舞/幻想人形演舞-ユメノカケラ-
+cd ~/.local/share/wineprefixes/tpdp/drive_c/game/FocasLens/幻想人形演舞-ユメノカケラ-
 wine 幻想人形演舞-ユメノカケラ-.exe

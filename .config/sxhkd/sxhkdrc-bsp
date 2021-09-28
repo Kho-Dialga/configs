@@ -130,7 +130,7 @@ super + F5
 	setbg ~/pix/wallpaper
 # Change wallpaper to a specific image
 super + shift + F5
-	sxiv -r -q -o ~/pix/wallpaper/* | xargs setbg
+	nsxiv -r -q -o ~/pix/wallpaper/* | xargs setbg
 # Start torrent daemon/open interface
 super + F6
 	torwrap

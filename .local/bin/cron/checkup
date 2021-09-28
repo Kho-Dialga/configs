@@ -11,4 +11,4 @@ sudo xbps-install -S
 #sudo emerge --sync || notify-send "Error downloading updates."
 #sudo layman -S
 
-~/.local/bin/statusbar/refblock pacpackages 8
+~/.local/src/configs/.local/bin/statusbar/refblock pacpackages 8

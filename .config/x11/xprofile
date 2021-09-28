@@ -19,4 +19,7 @@ otd-daemon &							                            # Start the opentabletdriver daem
 emacs --daemon &						                            # Start the emacs daemon.
 openrgb --profile fuck												# Start up openrgb and select profile.
 sxhkd &								                                # Creates the keyboard shortcuts.
+mailsync && refblock mailbox 12 &
+newsup &
+checkup &
 #monerod --data-dir "$XDG_DATA_HOME"/bitmonero --detach &

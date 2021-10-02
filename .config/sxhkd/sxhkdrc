@@ -49,6 +49,8 @@ super + m
 	$TERMINAL -e ncmpcpp
 super + n
 	$TERMINAL -e newsboat; refblock news 6
+super + shift + n
+	$TERMINAL -e nmtui
 super + c
 	dmenucfg
 super + w

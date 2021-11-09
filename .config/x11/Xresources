@@ -18,41 +18,41 @@ rofi.font: Fira Code 13
 /* white	7	15 */
 
 ! special
-*.foreground: #ffffff
-*.background:   #191919
-*.cursorColor:  #ffffff
+!*.foreground: #ffffff
+!*.background:   #191919
+!*.cursorColor:  #ffffff
 
 ! black
-*.color0:       #202738
-*.color8:       #2b344a
+!*.color0:       #202738
+!*.color8:       #2b344a
 
 ! red
-*.color1:       #89333b
-*.color9:       #e78c73
+!*.color1:       #89333b
+!*.color9:       #e78c73
 
 ! green
-*.color2:       #42ea72
-*.color10:      #82f684
+!*.color2:       #42ea72
+!*.color10:      #82f684
 
 ! yellow
-*.color3:       #f1da54
-*.color11:      #faf380
+!*.color3:       #f1da54
+!*.color11:      #faf380
 
 ! blue
-*.color4:       #3262df
-*.color12:      #5c94d4
+!*.color4:       #3262df
+!*.color12:      #5c94d4
 
 ! magenta
-*.color5:       #A94AA7
-*.color13:      #D574D1
+!*.color5:       #A94AA7
+!*.color13:      #D574D1
 
 ! cyan
-*.color6:       #47b7e9
-*.color14:      #6ac4de
+!*.color6:       #47b7e9
+!*.color14:      #6ac4de
 
 ! white
-*.color7:       #eaeaea
-*.color15:      #ffffff
+!*.color7:       #eaeaea
+!*.color15:      #ffffff
 
 /* !! custom theme: */
 !*.background: 	#191919
@@ -74,26 +74,26 @@ rofi.font: Fira Code 13
 !*.color15: 	#e0e3e7
 
 /* nord */
-!! *.background:   #2e3440
-!! *.fading: 35
-!! *.fadeColor: #4c566a
+! *.background:   #2e3440
+! *.fading: 35
+! *.fadeColor: #4c566a
 
-!! *.color0:  #3b4252
-!! *.color1:  #bf616a
-!! *.color2:  #a3be8c
-!! *.color3:  #ebcb8c
-!! *.color4:  #81a1c1
-!! *.color5:  #b48ead
-!! *.color6:  #88c0d0
-!! *.color7:  #e5e9f0
-!! *.color8:  #4c566a
-!! *.color9:  #bf616a
-!! *.color10: #a3be8c
-!! *.color11: #ebcb8c
-!! *.color12: #81a1c1
-!! *.color13: #b48ead
-!! *.color14: #8fbcbb
-!! *.color15: #eceff4
+! *.color0:  #3b4252
+! *.color1:  #bf616a
+! *.color2:  #a3be8c
+! *.color3:  #ebcb8c
+! *.color4:  #81a1c1
+! *.color5:  #b48ead
+! *.color6:  #88c0d0
+! *.color7:  #e5e9f0
+! *.color8:  #4c566a
+! *.color9:  #bf616a
+! *.color10: #a3be8c
+! *.color11: #ebcb8c
+! *.color12: #81a1c1
+! *.color13: #b48ead
+! *.color14: #8fbcbb
+! *.color15: #eceff4
 
 /* !! gruvbox: */
 /* *.color0: #1d2021 */
@@ -212,25 +212,24 @@ rofi.font: Fira Code 13
 /* *.background:   #000000 */
 
 /* ! Dracula Xresources palette */
-/* *.foreground: #F8F8F2 */
-/* *.background: #282A36 */
-/* *.color0:     #000000 */
-/* *.color8:     #4D4D4D */
-/* *.color1:     #FF5555 */
-/* *.color9:     #FF6E67 */
-/* *.color2:     #50FA7B */
-/* *.color10:    #5AF78E */
-/* *.color3:     #F1FA8C */
-/* *.color11:    #F4F99D */
-/* *.color4:     #BD93F9 */
-/* *.color12:    #CAA9FA */
-/* *.color5:     #FF79C6 */
-/* *.color13:    #FF92D0 */
-/* *.color6:     #8BE9FD */
-/* *.color14:    #9AEDFE */
-/* *.color7:     #BFBFBF */
-/* *.color15:    #E6E6E6 */
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
 
-/* *.background: .color0 */
-/* *.color256: 0#1d2021 */
-/* *.color257: 15#ebdbb2 */
+*.color256: 0#1d2021 
+*.color257: 15#ebdbb2

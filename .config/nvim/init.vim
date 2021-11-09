@@ -12,6 +12,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'RRethy/vim-hexokinase'
 Plug 'tomasiser/vim-code-dark'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 set title
@@ -26,7 +27,7 @@ set laststatus=0
 set noshowcmd
 
 " Some basics:
-	colorscheme codedark
+	colorscheme dracula
 	set termguicolors
 	nnoremap c "_c
 	set nocompatible

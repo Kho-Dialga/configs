@@ -16,9 +16,9 @@ local theme = dofile(themes_path.."default/theme.lua")
 
 theme.font          = "monospace 9"
 
-theme.bg_normal     = xrdb.color4
+theme.bg_normal     = xrdb.color1
 theme.bg_focus      = xrdb.background
-theme.bg_urgent     = xrdb.color1
+theme.bg_urgent     = xrdb.color6
 theme.bg_minimize   = xrdb.color8
 theme.bg_systray    = theme.bg_normal
 
@@ -29,7 +29,7 @@ theme.fg_minimize   = theme.foreground
 
 theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(2)
-theme.border_normal = xrdb.color4
+theme.border_normal = xrdb.color6
 theme.border_focus  = xrdb.color1
 theme.border_marked = xrdb.color10
 

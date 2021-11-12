@@ -22,3 +22,26 @@ video/mp4=vid.desktop
 audio/flac=vid.desktop
 inode/x-empty=text.desktop
 x-scheme-handler/discord-529050037532098580=discord-529050037532098580.desktop
+x-scheme-handler/http=userapp-Firefox-58D490.desktop
+x-scheme-handler/https=userapp-Firefox-58D490.desktop
+x-scheme-handler/chrome=userapp-Firefox-58D490.desktop
+text/html=userapp-Firefox-58D490.desktop
+application/x-extension-htm=userapp-Firefox-58D490.desktop
+application/x-extension-html=userapp-Firefox-58D490.desktop
+application/x-extension-shtml=userapp-Firefox-58D490.desktop
+application/xhtml+xml=userapp-Firefox-58D490.desktop
+application/x-extension-xhtml=userapp-Firefox-58D490.desktop
+application/x-extension-xht=userapp-Firefox-58D490.desktop
+x-scheme-handler/discord-712465656758665259=discord-712465656758665259.desktop
+
+[Added Associations]
+x-scheme-handler/http=userapp-Firefox-58D490.desktop;
+x-scheme-handler/https=userapp-Firefox-58D490.desktop;
+x-scheme-handler/chrome=userapp-Firefox-58D490.desktop;
+text/html=userapp-Firefox-58D490.desktop;
+application/x-extension-htm=userapp-Firefox-58D490.desktop;
+application/x-extension-html=userapp-Firefox-58D490.desktop;
+application/x-extension-shtml=userapp-Firefox-58D490.desktop;
+application/xhtml+xml=userapp-Firefox-58D490.desktop;
+application/x-extension-xhtml=userapp-Firefox-58D490.desktop;
+application/x-extension-xht=userapp-Firefox-58D490.desktop;

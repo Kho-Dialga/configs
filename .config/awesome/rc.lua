@@ -11,7 +11,7 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
-local naughty = require("naughty")
+-- local naughty = require("naughty")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -562,7 +562,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --        parent_client.minimized = true
 
 --        c:connect_signal("unmanage", function() parent_client.minimized = false end)
-        
+
       -- c.floating=true
 --        copy_size(c, parent_client)
 --    end

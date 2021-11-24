@@ -13,11 +13,8 @@ for x in $displays; do
 	export DISPLAY=$x
 done;
 
-# dbus
-export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
-
 # xauthority
-export XAUTHORITY=/run/user/1000/Xauthority
+export XAUTHORITY=$XDG_RUNTIME_DIR/Xauthority
 
 
 # Find out which window manager you are running, and its respective

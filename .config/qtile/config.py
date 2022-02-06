@@ -158,7 +158,7 @@ prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 #### WIDGETS DEFAULT SETTINGS ####
 widget_defaults = dict(
-    font="FiraCode Nerd Font",
+    font="monospace",
     fontsize = 15,
     padding = 2,
     background=colors[2]

@@ -22,4 +22,4 @@ sxhkd &									# Creates the keyboard shortcuts.
 mailsync && refblock mailbox 12 &
 newsup &
 checkup &
-#monerod --data-dir "$XDG_DATA_HOME"/bitmonero --detach &
+monerod --data-dir "$XDG_DATA_HOME"/bitmonero --detach &

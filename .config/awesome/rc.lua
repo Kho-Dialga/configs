@@ -130,12 +130,12 @@ local tasklist_buttons = gears.table.join(
                      awful.button({ }, 3, function()
                                               awful.menu.client_list({ theme = { width = 250 } })
                                           end),
-                     awful.button({ }, 4, function ()
+                    awful.button({ }, 4, function ()
                                               awful.client.focus.byidx(1)
                                           end),
                      awful.button({ }, 5, function ()
                                               awful.client.focus.byidx(-1)
-                                          end))
+                                         end))
 
 -- Custom widgets and functions for updating the status bar
 
@@ -174,6 +174,12 @@ function mailbox()
 	mailbox_timer:emit_signal("timeout")
 end
 mailbox_widget, mailbox_timer = awful.widget.watch('mailbox', 999999)
+
+-- Price
+function price()
+	mailbox_timer:emit_signal("timeout")
+end
+price_widget, price_timer = awful.widget.watch('price xmr Monero 🪙', 300)
 
 awful.screen.connect_for_each_screen(function(s)
 
@@ -219,6 +225,7 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.fixed.horizontal,
 	    music_widget,
 	    wibox.widget.textbox(''),
+	    price_widget,
 	    pacpackages_widget,
 	    torrent_widget,
 	    awful.widget.watch('forecast',900),
@@ -528,51 +535,60 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Window Swallowing
 
---function is_terminal(c)
---    return (c.class and c.class:match("St")) and true or false
---end
+function is_terminal(c)
+    return (c.class and c.class:match("St")) and true or false
+end
 
---function copy_size(c, parent_client)
---    if not c or not parent_client then
---        return
---    end
---    if not c.valid or not parent_client.valid then
---        return
---    end
---   c.x=parent_client.x;
---    c.y=parent_client.y;
---    c.width=parent_client.width;
---    c.height=parent_client.height;
---end
---function check_resize_client(c)
---    if(c.child_resize) then
---        copy_size(c.child_resize, c)
---    end
---end
+function copy_size(c, parent_client)
+    if not c or not parent_client then
+        return
+    end
+    if not c.valid or not parent_client.valid then
+        return
+    end
+   c.x=parent_client.x;
+    c.y=parent_client.y;
+    c.width=parent_client.width;
+    c.height=parent_client.height;
+end
+function check_resize_client(c)
+    if(c.child_resize) then
+        copy_size(c.child_resize, c)
+    end
+end
 
---client.connect_signal("property::size", check_resize_client)
---client.connect_signal("property::position", check_resize_client)
---client.connect_signal("manage", function(c)
---    if is_terminal(c) then
---        return
---    end
---    local parent_client=awful.client.focus.history.get(c.screen, 1)
---    if parent_client and is_terminal(parent_client) then
---        parent_client.child_resize=c
---        parent_client.minimized = true
+client.connect_signal("property::size", check_resize_client)
+client.connect_signal("property::position", check_resize_client)
+client.connect_signal("manage", function(c)
+    if is_terminal(c) then
+        return
+    end
+    local parent_client=awful.client.focus.history.get(c.screen, 1)
+    if parent_client and is_terminal(parent_client) then
+        parent_client.child_resize=c
+        parent_client.minimized = true
 
---        c:connect_signal("unmanage", function() parent_client.minimized = false end)
+        c:connect_signal("unmanage", function() parent_client.minimized = false end)
 
-      -- c.floating=true
---        copy_size(c, parent_client)
---    end
---end)
+    -- c.floating=true
+        copy_size(c, parent_client)
+    end
+end)
 
 -- Auto start section
 
 awful.spawn.with_shell("kill $(pidof dwmblocks)")
-awful.spawn.with_shell("xrdb ~/.config/x11/Xresources")
+-- awful.spawn.with_shell("xrdb ~/.config/x11/Xresources")
 awful.spawn.with_shell("picom")
 
+-- Force minimized clients to unminimize.
+client.connect_signal("property::minimized", function(c)
+  c.minimized = false
+end)
+
+-- Force minimized clients to unminimize.
+--client.connect_signal("property::fullscreen", function(c)
+--  c.fullscreen = true
+--end)
 -- Stop memory leaks maybe
 gears.timer.start_new(10, function() collectgarbage("step", 20000) return true end)

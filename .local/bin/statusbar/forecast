@@ -14,7 +14,7 @@ getforecast() { curl -sf "wttr.in/Pozos" > "$weatherreport" || exit 1 ;}
 # Some very particular and terse stream manipulation. We get the maximum
 # precipitation chance and the daily high and low from the downloaded file and
 # display them with coresponding emojis.
-showweather() { curl -s wttr.in/Pozos?format=3 | awk '{print $2" "$3}' || exit 1 ;}
+showweather() { curl -s wttr.in/?format=3 | awk '{print $5" "$6}' || exit 1 ;}
 
 case $BLOCK_BUTTON in
 	1) setsid -f "$TERMINAL" -e less -Srf "$weatherreport" ;;

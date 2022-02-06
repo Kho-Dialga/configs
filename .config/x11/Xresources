@@ -4,7 +4,7 @@
 Xcursor.theme: Adwaita
 
 !! Set a default font and font size as below:
-*.font: Fira Code:size=13:spacing=2
+*.font: monospace:size=13:spacing=2
 rofi.font: Fira Code 13
 !! URxvt.font: xft:JetBrains Mono Medium:size=12
 /* name		dark	light */

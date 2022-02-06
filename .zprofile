@@ -9,8 +9,8 @@
 export PATH="$PATH:$(du "$HOME/.local/src/configs/.local/bin" | cut -f2 | paste -sd ':')"
 # Default programs:
 export EDITOR="nvim"
-export TERMINAL="st"
-export BROWSER="firefox"
+export TERMINAL="alacritty"
+export BROWSER="ungoogled-chromium"
 
 # ~/ Clean-up:
 export XMONAD_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/xmonad"
@@ -59,6 +59,7 @@ export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 export COLORTERM="truecolor"
+export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0
 
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\

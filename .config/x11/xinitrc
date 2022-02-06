@@ -16,4 +16,6 @@ fi
 
 dbus-daemon --session --nofork --nopidfile --address=unix:path=$XDG_RUNTIME_DIR/bus &
 
+#export DESKTOP_SESSION=plasma
+
 ssh-agent awesome

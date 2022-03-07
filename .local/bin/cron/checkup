@@ -4,9 +4,9 @@
 
 ping -q -c 3 gnu.org > /dev/null || exit
 
-#sudo pacman -Syuw --noconfirm
+sudo pacman -Syuw --noconfirm
 
-sudo xbps-install -S
+#sudo xbps-install -S
 
 #sudo emerge --sync || notify-send "Error downloading updates."
 #sudo layman -S

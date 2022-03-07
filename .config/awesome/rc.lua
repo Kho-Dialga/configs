@@ -161,7 +161,7 @@ news_widget, news_timer = awful.widget.watch('news', 999999)
 function pacpackages()
 	pacpackages_timer:emit_signal("timeout")
 end
-pacpackages_widget, pacpackages_timer = awful.widget.watch('xbpspackages', 999999)
+pacpackages_widget, pacpackages_timer = awful.widget.watch('pacpackages', 999999)
 
 -- Torrent
 function torrent()

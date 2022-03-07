@@ -90,5 +90,3 @@ bindkey '^[[1;5B' history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_FUZZY
 # Load syntax highlighting
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
-
-

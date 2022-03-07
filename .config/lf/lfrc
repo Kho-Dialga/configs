@@ -75,9 +75,9 @@ cmd chmod %{{
 # Dragon RAWR UwU
 # This is used to be able to
 # Drag and drop files to other GUI apps
-cmd dragon %dragon -a -x "$fx"
-cmd dragon-stay %dragon -a "$fx"
-cmd dragon-individual %dragon "$fx"
+cmd dragon %dragon-drag-and-drop -a -x "$fx"
+cmd dragon-stay %dragon-drag-and-drop -a "$fx"
+cmd dragon-individual %dragon-drag-and-drop "$fx"
 
 # Archive functions
 # Pretty self-explanatory

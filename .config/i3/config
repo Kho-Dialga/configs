@@ -58,7 +58,7 @@ client.urgent			$urgent-bg-color	$urgent-bg-color	$text-color		#00ff00
 # Gaps!
 
 gaps inner 17
-gaps outer 17 
+gaps outer 17
 
 bindsym $mod+z			gaps outer current plus 5
 bindsym $mod+Shift+z		gaps outer current minus 5
@@ -68,7 +68,7 @@ bindsym $mod+Shift+s		gaps inner current minus 5
 
 # Round corners ooooo
 
-border_radius 25
+#border_radius 25
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -235,7 +235,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # MORE VARIABLES
 
-set $TERMINAL kitty
+set $TERMINAL alacritty
 set $BROWSER  firefox
 set $FILEMGR  thunar
 set $MUSIC    ncmpcpp

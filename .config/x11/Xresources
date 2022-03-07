@@ -17,62 +17,6 @@ rofi.font: Fira Code 13
 /* cyan		6	14 */
 /* white	7	15 */
 
-! special
-!*.foreground: #ffffff
-!*.background:   #191919
-!*.cursorColor:  #ffffff
-
-! black
-!*.color0:       #202738
-!*.color8:       #2b344a
-
-! red
-!*.color1:       #89333b
-!*.color9:       #e78c73
-
-! green
-!*.color2:       #42ea72
-!*.color10:      #82f684
-
-! yellow
-!*.color3:       #f1da54
-!*.color11:      #faf380
-
-! blue
-!*.color4:       #3262df
-!*.color12:      #5c94d4
-
-! magenta
-!*.color5:       #A94AA7
-!*.color13:      #D574D1
-
-! cyan
-!*.color6:       #47b7e9
-!*.color14:      #6ac4de
-
-! white
-!*.color7:       #eaeaea
-!*.color15:      #ffffff
-
-/* !! custom theme: */
-!*.background: 	#191919
-!*.color0:  	#313539
-!*.color1:  	#b02626
-!*.color2:  	#40a626
-!*.color3:  	#f2e635
-!*.color4:  	#314ad0
-!*.color5:  	#b30ad0
-!*.color6:  	#32d0fc
-!*.color7:  	#ffffff
-!*.color8:  	#676f78
-!*.color9:  	#b55454
-!*.color10: 	#78a670
-!*.color11: 	#faf380
-!*.color12: 	#707fd0
-!*.color13: 	#c583d0
-!*.color14: 	#8adaf1
-!*.color15: 	#e0e3e7
-
 /* nord */
 ! *.background:   #2e3440
 ! *.fading: 35
@@ -234,9 +178,9 @@ rofi.font: Fira Code 13
 !*.color256: 0#1d2021
 !*.color257: 15#ebdbb2
 
-/* Tomorrow Night */
-!*.foreground:   #c5c8c6
-!*.background:   #1d1f21
+/* Tommorrow Night Bright */
+!*.foreground:   #eaeaea
+!*.background:   #000000
 !*.cursorColor:  #aeafad
 !*.color0:       #000000
 !*.color1:       #912226
@@ -255,23 +199,43 @@ rofi.font: Fira Code 13
 !*.color14:      #8abeb7
 !*.color15:      #ecebec
 
-/* Tommorrow Night Bright */
-*.foreground:   #eaeaea
-*.background:   #000000
-*.cursorColor:  #aeafad
-*.color0:       #000000
-*.color1:       #912226
-*.color2:       #778900
-*.color3:       #ae7b00
-*.color4:       #1d2594
-*.color5:       #682a9b
-*.color6:       #2b6651
-*.color7:       #929593
-*.color8:       #666666
-*.color9:       #cc6666
-*.color10:      #b5bd68
-*.color11:      #f0c674
-*.color12:      #81a2be
-*.color13:      #b294bb
-*.color14:      #8abeb7
-*.color15:      #ecebec
+/* KDE Breeze*/
+!*.background: #232627
+!*.foreground: #fcfcfc
+!*.color0: #232627
+!*.color1: #ed1515
+!*.color2: #11d116
+!*.color3: #f67400
+!*.color4: #1d99f3
+!*.color5: #9b59b6
+!*.color6: #1abc9c
+!*.color7: #fcfcfc
+!*.color8: #31363b
+!*.color9: #783228
+!*.color10: #17a262
+!*.color11: #b65619
+!*.color12: #1b668f
+!*.color13: #614a73
+!*.color14: #186c60
+!*.color15: #63686d
+
+/* Campbell (Windows 10 default) */
+*.background: #0c0c0c
+*.foreground: #cccccc
+
+*.color0: #0c0c0c
+*.color1: #c50f1f
+*.color2: #13a10e
+*.color3: #c19c00
+*.color4: #0037da
+*.color5: #682a9b
+*.color6: #3a96dd
+*.color7: #cccccc
+*.color8: #767676
+*.color9: #e74856
+*.color10: #16c60c
+*.color11: #f9f1a5
+*.color12: #3b78ff
+*.color13: #b4009e
+*.color14: #61d6d6
+*.color15: #f2f2f2

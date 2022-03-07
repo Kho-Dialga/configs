@@ -14,8 +14,10 @@ for x in $displays; do
 done;
 
 # xauthority
-export XAUTHORITY=$XDG_RUNTIME_DIR/Xauthority
+#export XAUTHORITY=$XDG_RUNTIME_DIR/Xauthority
 
+# dbus session
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
 
 # Find out which window manager you are running, and its respective
 # refresh command

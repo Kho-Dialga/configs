@@ -16,6 +16,6 @@ fi
 
 dbus-daemon --session --nofork --nopidfile --address=unix:path=$XDG_RUNTIME_DIR/bus &
 
-#export DESKTOP_SESSION=plasma
+export DESKTOP_SESSION=Budgie:GNOME
 
-ssh-agent awesome
+exec budgie-desktop

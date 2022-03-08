@@ -161,7 +161,7 @@ news_widget, news_timer = awful.widget.watch('news', 999999)
 function pacpackages()
 	pacpackages_timer:emit_signal("timeout")
 end
-pacpackages_widget, pacpackages_timer = awful.widget.watch('pacpackages', 999999)
+pacpackages_widget, pacpackages_timer = awful.widget.watch('xbpspackages', 999999)
 
 -- Torrent
 function torrent()
@@ -236,7 +236,7 @@ awful.screen.connect_for_each_screen(function(s)
 	    awful.widget.watch('temp',1),
 	    awful.widget.watch('disk /', 180),
 	    awful.widget.watch('disk /home', 180),
-	    awful.widget.watch('disk /home/dialga/.local/share', 180),
+	    awful.widget.watch('disk /media/dialga', 180),
 	    volume_widget,
         awful.widget.watch('clock',1),
 	    wibox.widget.textbox(''),

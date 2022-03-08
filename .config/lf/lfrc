@@ -75,25 +75,11 @@ cmd chmod %{{
 # Dragon RAWR UwU
 # This is used to be able to
 # Drag and drop files to other GUI apps
-cmd dragon %dragon-drag-and-drop -a -x "$fx"
-cmd dragon-stay %dragon-drag-and-drop -a "$fx"
-cmd dragon-individual %dragon-drag-and-drop "$fx"
+cmd dragon %dragon-drag-and-drop || dragon -a -x "$fx"
+cmd dragon-stay %dragon-drag-and-drop || dragon -a "$fx"
+cmd dragon-individual %dragon-drag-and-drop || dragon "$fx"
 
-# Archive functions
-# Pretty self-explanatory
-#cmd unarchive ${{
-#  case "$f" in
-#      *.zip) unzip "$f" ;;
-#      *.tar.gz) tar -xzvf "$f" ;;
-#      *.tar.bz2) tar -xjvf "$f" ;;
-#      *.tar.xz) tar -xvf "$f" ;;
-#      *.tar) tar -xvf "$f" ;;
-#      *.rar) unrar x "$f" ;;
-#      *) echo "Unsupported format" ;;
-#  esac
-#}}
-
-cmd unarchive %ext "$f"
+cmd unarchive %atool -x "$f"
 
 cmd zip %zip -r "$f" "$f"
 cmd tar %tar cJf "$f.tar.xz" "./$f"
@@ -158,8 +144,8 @@ map au unarchive
 
 # Trash Mappings
 map dd trash
-map tc clear_trash --trash-dir=$HOME/.local/Trash
-map tr restore_trash --trash-dir=$HOME/.local/Trash
+map tc clear_trash
+map tr restore_trash
 
 # Dragon Mapping
 map dr dragon
@@ -206,8 +192,8 @@ map gp. cd ~/pix
 map gps cd ~/pix/scrot
 map gpw cd ~/pix/wallpaper
 
-map gm. cd ~/.local/share/music
-map gmp cd ~/.local/share/mpd/playlists
+map gm. cd /media/dialga/music
+map gmp cd /media/dialga/mpd/playlists
 
 map gd. cd ~/dox
 map gds cd ~/dox/school
@@ -216,9 +202,12 @@ map gdh cd ~/dox/school/hw
 map gdp cd ~/dox/school/projects
 map gb. cd ~/dox/bak
 
-map gD. cd ~/.local/share/dl
-map gDi cd ~/.local/share/dl/iso
-map gDt cd ~/.local/share/dl/torrent
+map gD. cd /media/dialga/dl
+map gDi cd /media/dialga/dl/iso
+map gDt cd /media/dialga/dl/torrent
+
+map gM. cd /media/dialga
+map gsh cd ~/.local/share
 
 map gs. cd ~/.local/bin
 map gss cd ~/.local/bin/statusbar

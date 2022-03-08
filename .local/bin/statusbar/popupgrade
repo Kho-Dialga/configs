@@ -2,10 +2,10 @@
 
 printf "Beginning upgrade.\\n"
 
-paru
+#paru
 #sudo emerge -uavDN @world
 
-#sudo xbps-install -Su
+sudo xbps-install -Su
 
 refblock pacpackages 8
 

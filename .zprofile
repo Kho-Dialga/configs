@@ -10,7 +10,7 @@ export PATH="$PATH:$(du "$HOME/.local/src/configs/.local/bin" | cut -f2 | paste 
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="brave-browser-stable"
 
 # ~/ Clean-up:
 export XMONAD_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/xmonad"
@@ -59,6 +59,7 @@ export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 export COLORTERM="truecolor"
 export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
 
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\
@@ -153,4 +154,6 @@ ex=🎯:\
 "
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ] && shortcuts >/dev/null 2>&1 &
 
-[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec sx sh "$XINITRC"
+#exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &
+
+[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && sx sh "$XINITRC"

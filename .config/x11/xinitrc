@@ -14,8 +14,6 @@ else
 	. "$HOME/.xprofile"
 fi
 
-dbus-daemon --session --nofork --nopidfile --address=unix:path=$XDG_RUNTIME_DIR/bus &
+dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus" &
 
-export DESKTOP_SESSION=Budgie:GNOME
-
-exec budgie-desktop
+ssh-agent awesome

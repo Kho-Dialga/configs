@@ -3,8 +3,8 @@
 # Small script for launching Touhou games. Used in the dmenugame script. Requires proton-caller.
 
 export LANG=en_US.UTF-8
-export pfx="/media/dialga/wineprefixes/2hu/"
-export WINEPREFIX=~/.local/share/wineprefixes/2hu/pfx
+export pfx="/media/dialga/wineprefixes/2hu"
+export WINEPREFIX=/media/dialga/wineprefixes/touhou/pfx
 export STEAM_COMPAT_DATA_PATH=$pfx
 export STEAM_COMPAT_CLIENT_INSTALL_PATH=$pfx
 

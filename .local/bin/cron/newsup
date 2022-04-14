@@ -5,7 +5,7 @@
 ping -q -c 1 example.org > /dev/null || exit
 
 echo 🔃 > /tmp/newsupdate
-~/.local/bin/statusbar/refblock news 6
+/home/dialga/.local/src/configs/.local/bin/statusbar/refblock news
 newsboat -x reload
 rm -f /tmp/newsupdate
-~/.local/bin/statusbar/refblock news 6
+/home/dialga/.local/src/configs/.local/bin/statusbar/refblock news

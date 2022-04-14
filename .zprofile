@@ -154,6 +154,4 @@ ex=🎯:\
 "
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ] && shortcuts >/dev/null 2>&1 &
 
-#exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &
-
-[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && sx sh "$XINITRC"
+[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec sx sh "$XINITRC"

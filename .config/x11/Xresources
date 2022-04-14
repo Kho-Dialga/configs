@@ -1,7 +1,7 @@
 !! Transparency (0-1):
 *.alpha: 0.9
 
-Xcursor.theme: Adwaita
+Xcursor.theme: Sanae
 
 !! Set a default font and font size as below:
 *.font: monospace:size=13:spacing=2

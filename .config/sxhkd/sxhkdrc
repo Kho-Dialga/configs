@@ -45,6 +45,8 @@ super + shift + h
 	$TERMINAL -e v
 super + e
 	$TERMINAL -e neomutt; refblock mailbox 12
+super + shift + e
+	$TERMINAL -e abook
 super + m
 	$TERMINAL -e ncmpcpp
 super + n

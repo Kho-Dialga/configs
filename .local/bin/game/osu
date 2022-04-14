@@ -1,16 +1,16 @@
 #!/bin/sh
-export WINEPREFIX=~/.local/share/wineprefixes/osu/pfx
+export WINEPREFIX=/media/dialga/wineprefixes/osu
 
 
 # Set tablet area
 
-xsetwacom set 10 area 5000 1000 10040 5120
+#xsetwacom set 10 area 5000 1000 10040 5120
 
 # Go into game dir
-cd ~/.local/share/wineprefixes/osu/pfx/drive_c/osu
+cd /media/dialga/wineprefixes/osu/drive_c/users/dialga/AppData/Local/osu\!
 
 # Enable Discord Rich Presence (From https://github.com/0e4ef622/wine-discord-ipc-bridge)
-wine winediscordipcbridge.exe &
+#wine winediscordipcbridge.exe &
 
 # Run the game itself
 wine osu\!.exe

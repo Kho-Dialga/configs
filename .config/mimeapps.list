@@ -21,3 +21,12 @@ audio/mpegapplication/octet-stream=vid.desktop
 video/mp4=vid.desktop
 audio/flac=vid.desktop
 inode/x-empty=text.desktop
+x-scheme-handler/osu=osu-url-handler.desktop
+application/x-osu-skin-archive=osu-file-extensions-handler.desktop
+application/x-osu-replay=osu-file-extensions-handler.desktop
+application/x-osu-beatmap-archive=osu-file-extensions-handler.desktop
+application/x-osu-beatmap=osu-file-extensions-handler.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-8I2HM1.desktop
+
+[Added Associations]
+x-scheme-handler/tg=userapp-Telegram Desktop-8I2HM1.desktop;

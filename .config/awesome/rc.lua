@@ -161,7 +161,7 @@ news_widget, news_timer = awful.widget.watch('news', 999999)
 function pacpackages()
 	pacpackages_timer:emit_signal("timeout")
 end
-pacpackages_widget, pacpackages_timer = awful.widget.watch('xbpspackages', 999999)
+pacpackages_widget, pacpackages_timer = awful.widget.watch('pacpackages', 999999)
 
 -- Torrent
 function torrent()
@@ -444,6 +444,7 @@ awful.rules.rules = {
           "Kruler",
           "MessageWin",  -- kalarm.
           "Sxiv",
+          "Nsxiv",
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
@@ -459,13 +460,25 @@ awful.rules.rules = {
           "ConfigManager",  -- Thunderbird's about:config.
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
-      }, properties = { floating = true }},
+      }, properties = { floating = false }},
 	{ rule = { class = "mpv" },
-      properties = { screen = 1, fullscreen = true }
+      properties = { screen = 1, fullscreen = false }
     },
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
+
+    -- Steam games
+    	{
+		rule_any = { class = { "Steam" } },
+		properties = {
+			titlebars_enabled = false,
+			floating = true,
+			border_width = 0,
+			border_color = 0,
+			size_hints_honor = false,
+		},
+	},
 }
 -- }}}
 
@@ -536,8 +549,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Auto start section
 
 awful.spawn.with_shell("kill $(pidof dwmblocks)")
--- awful.spawn.with_shell("xrdb ~/.config/x11/Xresources")
-awful.spawn.with_shell("picom")
+-- awful.spawn.with_shell("xrdb ~/.config/x11/Xresources && awesome-client 'awesome.restart()'")
 
 -- Force minimized clients to unminimize.
 client.connect_signal("property::minimized", function(c)

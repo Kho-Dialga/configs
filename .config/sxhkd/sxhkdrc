@@ -41,8 +41,6 @@ super + d
 	dmenu_run
 super + r
 	$TERMINAL -e lfrun
-super + shift + h
-	$TERMINAL -e v
 super + e
 	$TERMINAL -e neomutt; refblock mailbox 12
 super + shift + e

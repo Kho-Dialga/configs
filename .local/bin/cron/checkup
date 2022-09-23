@@ -1,15 +1,12 @@
 #!/bin/sh
 
-PATH=/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/dialga/.local/src/configs/.local/bin/statusbar:/home/dialga/.local/src/configs/.local/bin/cron
-
-
 # Syncs repositories and downloads updates, meant to be run as a cronjob.
 
 ping -q -c 3 gnu.org > /dev/null || exit
 
-#sudo pacman -Syuw --noconfirm
+sudo pacman -Syuw --noconfirm
 
-sudo xbps-install -S
+#sudo xbps-install -S
 
 #sudo emerge --sync || notify-send "Error downloading updates."
 #sudo layman -S

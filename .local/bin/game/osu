@@ -1,6 +1,8 @@
 #!/bin/sh
+export pfx=/media/dialga/wineprefixes/osu/
 export WINEPREFIX=/media/dialga/wineprefixes/osu
-
+export STEAM_COMPAT_DATA_PATH=$pfx
+export STEAM_COMPAT_CLIENT_INSTALL_PATH=$pfx
 
 # Set tablet area
 
@@ -13,6 +15,7 @@ cd /media/dialga/wineprefixes/osu/drive_c/users/dialga/AppData/Local/osu\!
 #wine winediscordipcbridge.exe &
 
 # Run the game itself
+#~/.steam/steam/steamapps/common/Proton\ 7.0/proton run osu\!.exe
 wine osu\!.exe
 
 # Reset tablet area

@@ -75,9 +75,9 @@ cmd chmod %{{
 # Dragon RAWR UwU
 # This is used to be able to
 # Drag and drop files to other GUI apps
-cmd dragon %dragon-drag-and-drop || dragon -a -x "$fx"
-cmd dragon-stay %dragon-drag-and-drop || dragon -a "$fx"
-cmd dragon-individual %dragon-drag-and-drop || dragon "$fx"
+cmd dragon %dragon-drop "$fx" || %dragon -a -x "$fx"
+cmd dragon-stay %dragon-drop "$fx" || %dragon -a "$fx"
+cmd dragon-individual %dragon-drop "$fx" || %dragon "$fx"
 
 cmd unarchive %atool -x "$f"
 
@@ -209,16 +209,16 @@ map gDt cd /media/dialga/dl/torrent
 map gM. cd /media/dialga
 map gsh cd ~/.local/share
 
-map gs. cd ~/.local/bin
-map gss cd ~/.local/bin/statusbar
-map gsc cd ~/.local/bin/cron
-map gsg cd ~/.local/bin/game
+map gs. cd ~/.local/src/configs/.local/bin
+map gss cd ~/.local/src/configs/.local/bin/statusbar
+map gsc cd ~/.local/src/configs/.local/bin/cron
+map gsg cd ~/.local/src/configs/.local/bin/game
 
-map gw. cd ~/.local/share/wineprefixes
-map gwt cd ~/.local/share/wineprefixes/touhou/pfx
-map gwp cd ~/.local/share/wineprefixes/tpdp
-map gwo cd ~/.local/share/wineprefixes/osu/pfx
-map gwd cd ~/.local/share/wineprefixes/default
+map gw. cd /media/dialga/wineprefixes
+map gwt cd /media/dialga/wineprefixes/touhou/pfx
+map gwp cd /media/dialga/wineprefixes/tpdp
+map gwo cd /media/dialga/wineprefixes/osu
+map gwd cd /media/dialgawineprefixes/default
 
 map gP. cd /etc/portage
 

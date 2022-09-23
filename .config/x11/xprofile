@@ -1,25 +1,20 @@
 #!/bin/sh
-[[ -f ~/.zprofile ]] && source ~/.zprofile
-xrandr --output HDMI-A-0 --mode 1920x1080 --rate 144			# Set the screen resolution
-setxkbmap us intl							# Set up an international US keyboard layout.
-picom -b --experimental-backend &					# Launches picom for transparency.
-#pulseaudio --kill; pipewire &
-mpd &									# Launches mpd for using alongside ncmpcpp.
-xset r rate 300 50 &							# Speeds up the xrate.
-dunst &									# Launches dunst for notifications.
-setbg									# Sets the wallpaper, change the directory to the path to your image.
-redshift &								# Launches redshift for adjusting the color temperature.
-xrdb ~/.config/x11/Xresources &						# Reloads the Xresources file.
-transmission-daemon &							# Starts up the transmission daemon.
-dwmblocks &								# Start the statusbar.
-mkfifo /tmp/xobpulse &							# Makes xob work.
-xset -dpms; xset s off							# Removes the screensaver.
-tail -f /tmp/xobpulse | xob &						# Starts xob for a pulseaudio volume bar.
-otd-daemon &								# Start the opentabletdriver daemon.
-emacs --daemon &							# Start the emacs daemon.
-openrgb --profile fuck							# Start up openrgb and select profile.
-sxhkd &									# Creates the keyboard shortcuts.
-mailsync && refblock mailbox 12 &
-newsup &
-checkup &
-monerod --data-dir "$XDG_DATA_HOME"/bitmonero --detach &
+
+export LANG=C
+
+# This file runs when a DM logs you into a graphical session.
+# If you use startx/xinit like a Chad, this file will also be sourced.
+
+xrandr --dpi 96		# Set DPI. User may want to use a larger number for larger screens.
+setbg &			# set the background with the `setbg` script
+xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
+/usr/lib/polkit-gnome/polkit-gnome-authentcation-agent-1
+
+autostart="mpd picom dunst fcitx sxhkd"
+
+for program in $autostart; do
+	pidof -s "$program" || "$program" &
+done >/dev/null 2>&1
+
+# Ensure that xrdb has finished running before moving on to start the WM/DE.
+[ -n "$xrdbpid" ] && wait "$xrdbpid"

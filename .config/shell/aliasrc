@@ -9,7 +9,7 @@ alias \
 	mv="mv -iv" \
 	rm='echo "This is not the command you are looking for, retard."; false' \
 	mkd="mkdir -pv" \
-	yt="youtube-dl --add-metadata -i" \
+	yt="yt-dlp --add-metadata -i" \
 	ytv="yt -f best" \
 	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner" \

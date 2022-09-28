@@ -1,3 +1,0 @@
-#!/bin/sh
-
-xbps-install -Sun | grep -Fcv "[ignored]" | sed "s/^/📦/;s/^📦0$//g"

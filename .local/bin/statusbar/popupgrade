@@ -2,10 +2,10 @@
 
 printf "Beginning upgrade.\\n"
 
-paru
-#sudo emerge -uavDN @world
+distro=$(cat /etc/issue | awk '{print $1}')
 
-#sudo xbps-install -Su
+[ $distro = Arch ] && sudo paru
+[ $distro = Void ] && sudo xbps-install -Su
 
 refblock pacpackages 8
 

@@ -158,10 +158,10 @@ function news()
 news_widget, news_timer = awful.widget.watch('news', 999999)
 
 -- Pacpackages
-function pacpackages()
+function packages()
 	pacpackages_timer:emit_signal("timeout")
 end
-pacpackages_widget, pacpackages_timer = awful.widget.watch('pacpackages', 999999)
+packages_widget, packages_timer = awful.widget.watch('packages', 999999)
 
 -- Torrent
 function torrent()
@@ -226,7 +226,7 @@ awful.screen.connect_for_each_screen(function(s)
 	    music_widget,
 	    wibox.widget.textbox(''),
 	    price_widget,
-	    pacpackages_widget,
+	    packages_widget,
 	    torrent_widget,
 	    awful.widget.watch('forecast',900),
 	    news_widget,
@@ -549,7 +549,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Auto start section
 
 awful.spawn.with_shell("kill $(pidof dwmblocks)")
--- awful.spawn.with_shell("xrdb ~/.config/x11/Xresources && awesome-client 'awesome.restart()'")
 
 -- Force minimized clients to unminimize.
 client.connect_signal("property::minimized", function(c)

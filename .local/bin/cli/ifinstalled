@@ -5,7 +5,12 @@
 # it informs the user that they need that command to continue. This is used in
 # various other scripts for clarity's sake.
 
+distro=$(cat /etc/issue | awk '{print $1}')
+
+[ distro = Arch ] && checkcmd=pacman -Qq
+[ distro = Void ] && checkcmd=xbps-query -s
+
 for x in "$@";do
-	pacman -Qq "$x" 2>/dev/null ||
+	$checkcmd "$x" 2>/dev/null ||
 		{ notify-send "📦 $x" "must be installed for this function." && exit 1 ;}
 done

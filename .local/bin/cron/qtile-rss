@@ -1,7 +1,0 @@
-#!/bin/sh
-UPDATE="$(newsboat -x reload print-unread | awk '{print $1}')"
-if [ "$UPDATE" = '0' ]; then
-	cat /dev/null;
-else
-	notify-send "📰 $UPDATE RSS update(s)";
-fi

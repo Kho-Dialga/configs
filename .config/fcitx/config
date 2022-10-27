@@ -1,0 +1,147 @@
+[Hotkey]
+# Eingabemethode aktivieren
+#TriggerKey=CTRL_SPACE
+# Extra Triggertaste nur benutzen, wenn sie vorher zum Inaktivieren benutzt wurde
+# Mögliche Werte:
+# True False
+#UseExtraTriggerKeyOnlyWhenUseItToInactivate=True
+# Extrataste zum Aktivieren der Eingabemethode
+# Mögliche Werte:
+# R_CTRL
+# R_SHIFT
+# L_SHIFT
+# L_CTRL
+# ALT_L_SHIFT
+# ALT_R_SHIFT
+# CTRL Both
+# SHIFT Both
+# L_ALT
+# R_ALT
+# ALT Both
+# Left Super
+# Right Super
+# Super Both
+# Ctrl+Left Super
+# Ctrl+Right Super
+# Super+Left Ctrl
+# Super+Right Ctrl
+# Disabled
+# Custom
+#SwitchKey=L_SHIFT
+# Eingestellte Taste zum Wechseln
+#CustomSwitchKey=
+# Eingabemethode aktivieren
+#ActivateKey=
+# Eingabemethode deaktivieren
+#InactivateKey=
+# Hotkey aktivieren, um durch die Eingabemethoden zu scrollen
+# Mögliche Werte:
+# True False
+#IMSwitchKey=True
+# "Deaktiviert" einschließen, wenn durch die Eingabemethoden gescrollt wird
+# Mögliche Werte:
+# True False
+#IMSwitchIncludeInactive=False
+# Durch Eingabemethoden scrollen
+# Mögliche Werte:
+# CTRL_SHIFT
+# ALT_SHIFT
+# CTRL_SUPER
+# ALT_SUPER
+#IMSwitchHotkey=CTRL_SHIFT
+# Konfiguration erneut laden
+#ReloadConfig=CTRL_5
+# Tastenwiederholung/Sekunde
+#TimeInterval=250
+# Wechsel der Virtuellen Tastatur
+#VKSwitchKey=CTRL_ALT_B
+# Erinnerungsmodus wechseln
+#RemindSwitchKey=
+# Wechsel zum Modus Vollbreite Zeichen
+#FullWidthSwitchKey=
+# Wechsel zum Modus Vollbreite Interpunktion
+#PuncSwitchKey=CTRL_.
+# Taste vorherige Kandidaten
+#PrevPageKey=- UP
+# Taste für weitere Kanditaten
+#NextPageKey== DOWN
+# Zweiten und dritten Kandidaten auswählen
+#SecondThirdCandWordKey=
+# Konfiguration und Eingabeverlauf sichern
+#SaveAllKey=CTRL_ALT_S
+# Wechsel zum eingebetteten Preedit
+#SwitchPreedit=CTRL_ALT_P
+# Vorheriger Kandidat (Wort)
+#PrevWord=SHIFT_TAB
+# Nächster Kandidat (Wort)
+#NextWord=TAB
+
+[Program]
+# Warten, bevor fcitx started (sec.)
+#DelayStart=0
+# Eingabemethode beibehalten
+# Mögliche Werte:
+# No
+# All
+# PerProgram
+#ShareStateAmongWindow=No
+# Standard Status Eingabemethode
+# Mögliche Werte:
+# Inactive
+# Active
+#DefaultInputMethodState=Inactive
+
+[Output]
+# Halbweite Interpunktion nach Zahlen
+# Mögliche Werte:
+# True False
+#HalfPuncAfterNumber=True
+# Paging im Erinnerungsmodus ausschalten
+# Mögliche Werte:
+# True False
+#RemindModeDisablePaging=True
+# Bestätigen, wenn der Status verändert wird
+# Mögliche Werte:
+# True False
+#SendTextWhenSwitchEng=True
+# Anzahl Zeichenvorschläge
+#CandidateWordNumber=5
+# Phrasenvorschläge aktivieren
+# Mögliche Werte:
+# True False
+#PhraseTips=True
+# Preedittext nicht eingeben, wenn das Fenster den Fokus verliert
+# Mögliche Werte:
+# True False
+#DontCommitPreeditWhenUnfocus=False
+
+[Appearance]
+# Hinweis zur Eingabemethode zeigen, nachdem sie gewechselt wurde
+# Mögliche Werte:
+# True False
+#ShowInputWindowAfterTriggering=True
+# Hinweis zur Eingabemethode zeigen, nachdem sie gewechselt wurde und Fokus auf
+# Mögliche Werte:
+# True False
+#ShowInputWindowWhenFocusIn=False
+# Hinweis auf die Eingabemethode wird nur angezeigt, wenn der Status AKTIV ist
+# Mögliche Werte:
+# True False
+#ShowInputWindowOnlyWhenActive=True
+# Eingabegeschwindigkeit zeigen
+# Mögliche Werte:
+# True False
+#ShowInputSpeed=False
+# Version zeigen
+# Mögliche Werte:
+# True False
+#ShowVersion=False
+# Fcitx Fenster nicht anzeigen, wenn es nur einen Vorschlag gibt
+# Mögliche Werte:
+# True False
+#HideInputWindowWhenOnlyPreeditString=False
+# Eingabefenster nicht zeigen, wenn nur ein Kandidat und der Preeditstring vorhanden sind
+# Mögliche Werte:
+# True False
+#HideInputWindowWhenOnlyOneCandidate=False
+

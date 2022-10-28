@@ -134,7 +134,7 @@ super + shift + F5
 	nsxiv -r -q -o ~/pix/wallpaper/* | xargs setbg
 # Start torrent daemon/open interface
 super + F6
-	torwrap
+	$TERMINAL -e tremc
 # toggle torrent daemon
 super + F7
 	td-toggle

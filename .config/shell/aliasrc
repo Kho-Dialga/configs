@@ -57,7 +57,7 @@ alias \
 	 pss="pacman -Ss" \
 	 psu="sudo pacman -Syu" \
 	 prm="sudo pacman -Rns" \
-	 pro="sudo pacman -Qttdq | sudo pacman -Rns - " \
+	 pro="pacman -Qttdq | sudo pacman -Rns - " \
 	 pqa="pacman -Q" \
 	 pqs="pacman -Qs" \
 	 pqe="pacman -Qqe" \

@@ -9,4 +9,6 @@ distro=$(cat /etc/issue | awk '{print $1}')
 [ $distro = Arch ] && refreshcmd="sudo pacman -Syuw --noconfirm"
 [ $distro = Void ] && refreshcmd="sudo xbps-install -S"
 
+$refreshcmd
+
 refblock packages 8

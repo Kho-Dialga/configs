@@ -159,7 +159,7 @@ news_widget, news_timer = awful.widget.watch('news', 999999)
 
 -- Pacpackages
 function packages()
-	pacpackages_timer:emit_signal("timeout")
+	packages_timer:emit_signal("timeout")
 end
 packages_widget, packages_timer = awful.widget.watch('packages', 999999)
 
@@ -549,6 +549,8 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Auto start section
 
 awful.spawn.with_shell("kill $(pidof dwmblocks)")
+awful.spawn.with_shell("dbus-update-activation-environment --all")
+awful.spawn.with_shell("gnome-keyring-daemon --start --components=secrets")
 
 -- Force minimized clients to unminimize.
 client.connect_signal("property::minimized", function(c)

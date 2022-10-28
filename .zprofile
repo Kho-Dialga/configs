@@ -157,6 +157,4 @@ ex=🎯:\
 *.ebuild=:\
 *.xbps=📦:\
 "
-[ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ] && shortcuts >/dev/null 2>&1 &
-
 [ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec sx sh "$XINITRC"

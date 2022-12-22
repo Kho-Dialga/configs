@@ -11,7 +11,7 @@ xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment t
 tail -f /tmp/xobpulse | xob
 xset m 0 0
 
-autostart="picom dunst fcitx sxhkd transmission-daemon checkup newsup mailsync mpd"
+autostart="redshift picom dunst fcitx sxhkd transmission-daemon checkup newsup mailup mpd"
 
 for program in $autostart; do
 	pidof -s "$program" || "$program" &

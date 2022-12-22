@@ -27,6 +27,10 @@ application/x-osu-replay=osu-file-extensions-handler.desktop
 application/x-osu-beatmap-archive=osu-file-extensions-handler.desktop
 application/x-osu-beatmap=osu-file-extensions-handler.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-8I2HM1.desktop
+x-scheme-handler/webcal=chromium.desktop
+x-scheme-handler/http=chromium.desktop
+x-scheme-handler/https=chromium.desktop
+text/html=chromium.desktop
 
 [Added Associations]
 x-scheme-handler/tg=userapp-Telegram Desktop-8I2HM1.desktop;

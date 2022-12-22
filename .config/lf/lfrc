@@ -1,6 +1,8 @@
 set previewer ~/.config/lf/preview
 set cleaner ~/.config/lf/cleaner
 # Basic Settings
+set shellopts '-eu'
+set ifs "\n"
 set preview true
 set hidden true
 set icons true

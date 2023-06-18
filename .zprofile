@@ -157,5 +157,9 @@ ex=🎯:\
 *.ebuild=:\
 *.xbps=📦:\
 "
+
+# when the
+
+export SHELL_MOMMYS_LITTLE="child"
 [ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec sx sh "$XINITRC"
 #[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && startplasma-wayland

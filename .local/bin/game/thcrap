@@ -10,4 +10,4 @@ export STEAM_COMPAT_CLIENT_INSTALL_PATH=$pfx
 
 cd "$pfx"/pfx/drive_c/2hu/th$1
 
-~/.steam/steam/steamapps/common/Proton\ 7.0/proton run ../thcrap/thcrap_loader.exe C:/2hu/th$1/th$1.exe de.js
+~/.steam/steam/steamapps/common/Proton\ 7.0/proton run ../thcrap/thcrap.exe

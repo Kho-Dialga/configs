@@ -7,14 +7,14 @@
 # You could set up a shell alias to view the full file in a pager in the
 # terminal if desired. This function will only be run once a day when needed.
 weatherreportfull="${XDG_DATA_HOME:-$HOME/.local/share}/weatherreportfull"
-getforecastfull() { curl -sf "wttr.in/Pozos" > "$weatherreportfull" || exit 1 ;}
+getforecastfull() { curl -sf "wttr.in/" > "$weatherreportfull" || exit 1 ;}
 weatherreport="${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport"
-getforecast() { curl -sf "wttr.in/Pozos" > "$weatherreport" || exit 1 ;}
+getforecast() { curl -sf "wttr.in/" > "$weatherreport" || exit 1 ;}
 
 # Some very particular and terse stream manipulation. We get the maximum
 # precipitation chance and the daily high and low from the downloaded file and
 # display them with coresponding emojis.
-showweather() { curl -s wttr.in/Pozos?format=3 | awk '{print $2" "$3}' || exit 1 ;}
+showweather() { curl -s wttr.in/?format=2 | awk '{print $1" "$2}' || exit 1 ;}
 
 case $BLOCK_BUTTON in
 	1) setsid -f "$TERMINAL" -e less -Srf "$weatherreport" ;;

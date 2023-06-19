@@ -4,7 +4,7 @@ printf "Beginning upgrade.\\n"
 
 distro=$(cat /etc/issue | awk '{print $1}')
 
-[ $distro = Arch ] && sudo paru
+[ $distro = Arch ] && sudo yay
 [ $distro = Void ] && sudo xbps-install -Su
 
 refblock packages 8

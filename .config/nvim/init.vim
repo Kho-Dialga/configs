@@ -13,7 +13,6 @@ Plug 'tpope/vim-commentary'
 Plug 'RRethy/vim-hexokinase'
 Plug 'tomasiser/vim-code-dark'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'thomkeh/vim-tomorrow-night-bright'
 call plug#end()
 
 set title
@@ -28,7 +27,7 @@ set laststatus=0
 set noshowcmd
 
 " Some basics:
-	colorscheme Tomorrow-Night-Bright
+	colorscheme codedark
 	set termguicolors
 	nnoremap c "_c
 	set nocompatible

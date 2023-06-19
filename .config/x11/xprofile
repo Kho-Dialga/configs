@@ -4,14 +4,14 @@
 # If you use startx/xinit like a Chad, this file will also be sourced.
 
 xrandr --dpi 96		# Set DPI. User may want to use a larger number for larger screens.
-xset r rate 300 50
 setbg &			# set the background with the `setbg` script
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
 /usr/lib/polkit-gnome/polkit-gnome-authentcation-agent-1
 tail -f /tmp/xobpulse | xob
-xset m 0 0
+xset -dpms
+xset r rate 300 50
 
-autostart="redshift picom dunst fcitx sxhkd transmission-daemon checkup newsup mailup mpd"
+autostart="redshift picom dunst fcitx5 sxhkd transmission-daemon checkup newsup mailup mpd"
 
 for program in $autostart; do
 	pidof -s "$program" || "$program" &

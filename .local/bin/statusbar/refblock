@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# Shell script for refreshing the statusbar blocks. Requires wmctrl.
+
+# $1 needs to be the name of the command being refreshed in awesomewm.
+# $2 needs to be the refresh signal of the block on dwmblocks.
+
+# Setting some environment variables...
+
+# The display also required for awesome-client
+displays="$(pgrep -a X\(org\|wayland\) | grep -wo "[0-9]*:[0-9]\+" | sort -u)"
+for x in $displays; do
+	export DISPLAY=$x
+done;
+
+# xdg
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+# xauthority
+#export XAUTHORITY=$XDG_RUNTIME_DIR/Xauthority
+
+# dbus session
+export DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus
+
+# Find out which window manager you are running, and its respective
+# refresh command
+case "$(wmctrl -m | awk '/Name/ {print $2}')" in
+  dwm) export refcmd=refdwm ;;
+  awesome) export refcmd=refawesome ;;
+  bspwm) export refcmd=refpoly ;;
+  qtile) exit ;;
+  xmonad) exit ;; # I haven't figured out how to refresh blocks on xmonad and qtile
+esac
+
+# awesomewm refresh command
+[ "$refcmd" = refawesome ] && echo "$1()" | awesome-client
+
+# dwm refresh command
+[ "$refcmd" = refdwm ] && pkill -RTMIN+$2 dwmblocks
+
+# polybar refresh command (used by bspwm)
+[ "$refcmd" = refpoly ] && polybar-msg hook $1 1

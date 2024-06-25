@@ -1,0 +1,7 @@
+#!/bin/sh
+
+export LANG=ja_JP.UTF-8
+export WINEPREFIX=/media/dialga/wineprefixes/tpdp
+
+cd /media/dialga/wineprefixes/tpdp/drive_c/game/FocasLens/幻想人形演舞-ユメノカケラ-
+wine 幻想人形演舞-ユメノカケラ-.exe

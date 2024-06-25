@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# Displays the current weather.
+# Usually intended for the statusbar.
+
+# If we have internet, get a weather report from wttr.in and store it locally.
+# You could set up a shell alias to view the full file in a pager in the
+# terminal if desired. This function will only be run once a day when needed.
+weatherreportfull="${XDG_DATA_HOME:-$HOME/.local/share}/weatherreportfull"
+getforecastfull() { curl -sf "wttr.in/" > "$weatherreportfull" || exit 1 ;}
+weatherreport="${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport"
+getforecast() { curl -sf "wttr.in/" > "$weatherreport" || exit 1 ;}
+
+# Some very particular and terse stream manipulation. We get the maximum
+# precipitation chance and the daily high and low from the downloaded file and
+# display them with coresponding emojis.
+showweather() { curl -s wttr.in/?format=2 | awk '{print $1" "$2}' || exit 1 ;}
+
+case $BLOCK_BUTTON in
+	1) setsid -f "$TERMINAL" -e less -Srf "$weatherreport" ;;
+	2) getforecastfull && getforecast && showweather ;;
+	3) notify-send "🌈 Weather module" "\- Left click for full forecast.
+- Middle click to update forecast.
+☔: Chance of rain/snow
+🥶: Daily low
+🌞: Daily high" ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+# The test if our forcecast is updated to the day. If it isn't download a new
+# weather report from wttr.in with the above function.
+[ "$(stat -c %y "$weatherreport" 2>/dev/null | cut -d' ' -f1)" = "$(date '+%Y-%m-%d')" ] ||
+	getforecast
+
+printf %s $(showweather)

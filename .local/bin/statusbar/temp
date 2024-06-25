@@ -1,0 +1,14 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+	1) setsid -f "$TERMINAL" -e htop ;;
+	2) notify-send "🌡Temperature module " "\- Shows CPU temperature.
+- Click to show htop." ;;
+esac
+
+icon()
+{
+sensors | awk '/edge/ {print "🌡" $2}' | sed 's/+//g'
+}
+
+printf %s $(icon)

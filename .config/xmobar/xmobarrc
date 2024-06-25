@@ -1,0 +1,38 @@
+-- http://projects.haskell.org/xmobar/
+-- install xmobar with these flags: --flags="with_alsa" --flags="with_mpd" --flags="with_xft"  OR --flags="all_extensions"
+-- you can find weather location codes here: http://weather.noaa.gov/index.html
+
+Config { font    = "xft:FiraCode:weight=bold:pixelsize=11:antialias=true:hinting=true"
+       , additionalFonts = [ "xft:NotoColorEmoji:style=Regular:pixelsize=13:antialias=true:hinting=true" ]
+       , bgColor = "#282c34"
+       , fgColor = "#ff6c6b"
+       , position = Static { xpos = 0 , ypos = 0, width = 1920, height = 24 }
+       , lowerOnStart = True
+       , hideOnStart = False
+       , allDesktops = True
+       , persistent = True
+       , commands = [
+                      -- Time and date
+                      Run Com "clock" [] "clock" 1
+                      -- Cpu usage in percent
+                    , Run Com "cpu" [] "load" 1
+                      -- Ram used number and percent
+                    , Run Com "memory" [] "memory" 1
+		      -- CPU Temperature
+                    , Run Com "temp" [] "temp" 1
+                      -- Disk usage
+                    , Run Com "disk" [] "diskr" 180
+                    , Run Com "disk" ["/home"] "" 180
+                    , Run Com "disk" ["/home/dialga/.local/share"] "diskl" 180
+                      -- Volume
+                    , Run Com "volume" [] "volume" 1
+                      -- Weather forecast
+                    , Run Com "forecast" [] "forecast" 3600
+                      -- Prints out the left side items such as workspaces, layout, etc.
+                      -- The workspaces are 'clickable' in my configs.
+                    , Run UnsafeStdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%UnsafeStdinReader% }{ <fc=#ecbe7b> %forecast% </fc> <fc=#ecbe7b> %cpu% </fc><fc=#666666> </fc> <fc=#ff6c6b> %memory% </fc><fc=#666666> </fc> <fc=#51afef> %temp% </fc><fc=#666666> </fc> <fc=#98be65> %diskr% </fc><fc=#666666> </fc>  <fc=#98be65> %disk% </fc><fc=#666666> </fc>  <fc=#98be65> %diskl% </fc><fc=#666666> </fc> <fc=#46d9ff> %volume%  </fc> <fc=#666666> </fc> <fc=#46d9ff> %clock%  </fc>"
+       }

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Small script for launching Touhou games. Used in the dmenugame script.
+
+#export LANG=en_US.UTF-8
+export pfx="/media/dialga/wineprefixes/2hu"
+export WINEPREFIX=/media/dialga/wineprefixes/2hu/pfx
+export STEAM_COMPAT_DATA_PATH=$pfx
+export STEAM_COMPAT_CLIENT_INSTALL_PATH=$pfx
+
+cd "$pfx"/pfx/drive_c/2hu/th$1
+
+~/.steam/steam/steamapps/common/Proton\ 7.0/proton run ../thcrap/thcrap.exe

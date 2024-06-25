@@ -1,0 +1,50 @@
+#!/bin/sh
+
+# Small dmenu script that launches games.
+# Game title						# Command for launching the game
+vidya="\
+Touhou Puppet Dance Performance				tpdp
+Touhou 06: Embodiment of Scarlet Devil			2hu 06
+Touhou 07: Perfect Cherry Blossom			2hu 07
+Touhou 07.5: Inmaterial and Missing Power		2hu 075
+Touhou 08: Imperishable Night				2hu 08
+Touhou 09: Phantasmagoria of Flower View		2hu 09
+Touhou 09.5: Shoot the Bullet				2hu 095
+Touhou 10: Mountain of Faith				2hu 10
+Touhou 10.5: Scarlet Weather Rhapsody			2hu 105
+Touhou 11: Subterranean Animism				2hu 11
+Touhou 12: Undefined Fantastic Object			2hu 12
+Touhou 12.3: Hisotensoku				2hu 123
+Touhou 12.5: Double Spoiler				2hu 125
+Touhou 12.8: Fairy Wars					2hu 128
+Touhou 13: Ten Desires					2hu 13
+Touhou 13.5: Hopeless Masquerade			2hu 135
+Touhou 14: Double Dealing Character			2hu 14
+Touhou 14.5: Urban Legend in Limbo			2hu 145
+Touhou 15: Legacy of Lunatic Kingdom			2hu 15
+Touhou 15.5: Antimony of Common Flowers			2hu 155
+Touhou 16: Hidden Star in Four Seasons			2hu 16
+Touhou 16.5: Violet Detector				2hu 165
+Touhou 17: Wily Beast and Weakest Creature		2hu 17
+Touhou 18: Unconnected Marketeers			steam steam://rungameid/1566410
+Genshin Impact						an-anime-game-launcher
+Honkai Impact 3rd					honkers-launcher
+PS1							epsxe
+PS2							pcsx2-qt
+PS3							rpcs3
+3DS							citra-qt
+osu!							osu-wine
+osu!Lazer						osu-lazer
+Geometry Dash						steam steam://rungameid/322170
+Ace Combat 7						steam steam://rungameid/502500
+Europa Universalis IV					steam steam://rungameid/236850
+Yakuza 0						steam steam://rungameid/638970
+Persona 5 Royal						steam steam://rungameid/1687950
+OMORI							steam steam://rungameid/1150690
+FEZ							steam steam://rungameid/224760
+Celeste							steam steam://rungameid/504230
+Super Meat Boy						steam steam://rungameid/40800
+"
+choice="$(echo "$vidya" | cut -d'	' -f 1 | dmenu -l 10 -p "Gaming time 😎🥱" -i)" || exit 1
+
+`echo "$vidya" | grep "^$choice	" | cut -d '	' -f2-`

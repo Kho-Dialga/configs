@@ -1,0 +1,13 @@
+#!/bin/sh
+
+printf "Beginning upgrade.\\n"
+
+distro=$(cat /etc/issue | awk '{print $1}')
+
+[ $distro = Arch ] && sudo yay
+[ $distro = Void ] && sudo xbps-install -Su
+
+refblock packages 8
+
+printf "\\nUpgrade complete.\\nPress <Enter> to exit window.\\n\\n"
+read -r _

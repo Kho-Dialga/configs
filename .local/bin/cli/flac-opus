@@ -1,0 +1,3 @@
+#!/bin/sh
+
+mkdir opus && for x in *.flac; do ffmpeg -i "$x" "$(basename "${x/.flac}")".opus; done && mv *.opus opus

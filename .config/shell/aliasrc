@@ -1,0 +1,84 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm='echo "This is not the command you are looking for, retard."; false' \
+	mkd="mkdir -pv" \
+	yt="yt-dlp --add-metadata -i" \
+	ytv="yt -f best" \
+	yta="yt -x -f bestaudio/best" \
+	ffmpeg="ffmpeg -hide_banner" \
+	nvim="nvim -u ~/.config/nvim/init.vim" \
+	fe="fzf | xargs nvim"
+
+# Image previews in lf and vifm
+alias \
+	lf="lfrun" \
+	vifm="vifmrun"
+
+# Colorize commands when possible.
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi"
+
+# These common commands are just too long! Abbreviate them.
+alias \
+	ka="killall" \
+	trem="transmission-remote" \
+	e="$EDITOR" \
+	se="sudoedit" \
+	z="zathura" \
+	nvd-set="nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings"
+
+alias \
+	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
+
+# Git aliases
+alias \
+	gau="git add -u" \
+	gaa="git add" \
+	gps="git push" \
+	gpl="git pull" \
+	gcm="git commit -m" \
+	gft="git fetch" \
+	gbr="git branch" \
+	gck="git checkout" \
+	gst="git status"
+# Pacman aliases
+ alias \
+	 psi="sudo pacman -S" \
+	 pss="pacman -Ss" \
+	 psu="sudo pacman -Syu" \
+	 prm="sudo pacman -Rns" \
+	 pro="pacman -Qttdq | sudo pacman -Rns - " \
+	 pqa="pacman -Q" \
+	 pqs="pacman -Qs" \
+	 pqe="pacman -Qqe" \
+	 pqo="pacman -Qtdq" \
+	 asi="paru -S" \
+	 ass="paru -Ss" \
+	 asu="paru -Syu"
+# Portage aliases
+alias \
+	emi="sudo emerge -a" \
+	emr="sudo emerge --depclean" \
+	ems="emerge -s" \
+	emp="emerge -pv" \
+	emq="eix -I" \
+	emu="sudo emerge -uavDN @world" \
+	eeu="sudo dispatch-conf"
+# xbps aliases
+alias \
+	xbi="sudo xbps-install" \
+	xbu="sudo xbps-install -Su" \
+	xbs="xbps-query -Rs" \
+	xbq="xbps-query" \
+	xbr="sudo xbps-remove -RFf"
+	xbo="sudo xbps-remove -o"

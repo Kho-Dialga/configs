@@ -1,0 +1,152 @@
+# The Simple X Hotkey Daemon is the program used by LARBS to map most of the
+# dwm-independent commands.  This file is pretty readable, so I'll let you read
+# it.
+
+# The keys NOT bound here by sxhkd, but by dwm or i3 are:
+# The q, t, y, and i keys on the top row
+# The f and h thru ; keys on the home row
+# The b key on the bottom row (hides the bar in either case)
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# bspwm stuff
+
+# Restart bspwm
+#super + shift + r
+#  bspc wm -r
+# Focus on window in direction
+#super + {h,j,k,l}
+#	bspc node -f {west,south,north,east}
+# Kill window
+#super + q
+#	bspc node -c
+# focus or send to the given desktop
+#super + {_,shift + }{1-9,0}
+#	bspc {desktop -f,node -d} focused:'^{1-9,10}'
+# Toggle floating on and off
+#super + shift + f
+#	bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+# Swap window with direction
+#super + shift + {h,j,k,l}
+#	bspc node -s {west,south,north,east}
+# Quit bspwm
+#super + shift + q
+#	bspc quit
+# Basic binds
+super + Return
+	$TERMINAL
+super + d
+	dmenu_run
+super + r
+	$TERMINAL -e lfrun
+super + e
+	$TERMINAL -e neomutt; refblock mailbox 12
+super + shift + e
+	$TERMINAL -e abook
+super + m
+	$TERMINAL -e ncmpcpp
+super + n
+	$TERMINAL -e newsboat; refblock news 6
+super + shift + n
+	$TERMINAL -e nmtui
+super + c
+	dmenucfg
+super + w
+	$BROWSER
+super + g
+	dmenugame
+super + x
+	dm-kill
+
+# Et cetera...
+super + dead_grave
+	dmenuunicode
+super + Scroll_Lock
+	killall screenkey || screenkey
+super + Insert
+	notify-send "📋 Clipboard contents:" "$(xclip -o -selection clipboard)"
+super + shift + BackSpace
+	sysact
+super + apostrophe
+	galculator
+
+# Recording
+# Take screenshot
+Print
+	maim pic-full-$(date '+%y%m%d-%H%M-%S').png && mv pic-full* ~/pix/scrot/full
+# Pick screenshot type
+shift + Print
+	maimpick
+# Print: Record audio or video; Del: kill recording
+super + Print
+	dmenurecord
+super + Delete
+	dmenurecord kill
+
+# Pause audio
+super + p
+	mpc toggle
+super + shift + p
+	mpc pause; pauseallmpv
+# Changes to next/previous tracks
+super + {comma,period}
+	mpc {prev,next}
+# Restart track
+super + shift + less
+	mpc seek 0%
+# Seek foward in song
+super + {_,shift +} bracketright
+	mpc seek +{10,60}
+# Seek backward in song
+super + {_,shift +} bracketleft
+	mpc seek -{10,60}
+# Increase volume
+super + equal
+	pamixer --allow-boost -i 5; refblock volume 44; echo $(pamixer --get-volume) > /tmp/xobpulse
+# Decrease volume
+super + minus
+	pamixer --allow-boost -d 5; refblock volume 44; echo $(pamixer --get-volume) > /tmp/xobpulse
+
+# Mute audio
+super + shift + m
+	pamixer --toggle; refblock volume 44
+# Function keys
+
+# F2 is unbound
+super + F1
+	droidcam
+# F2 is unbound.
+super + F2
+	$TERMINAL -e popupgrade
+# Change display
+super + F3
+	xrandr --output HDMI-A-0 --mode 1920x1080 --rate 144
+# Hibernate
+super + F4
+	$TERMINAL -e pulsemixer; kill -44 $(pidof dwmblocks)
+# Change wallpaper
+super + F5
+	setbg ~/pix/wallpaper
+# Change wallpaper to a specific image
+super + shift + F5
+	nsxiv -r -q -o ~/pix/wallpaper/* | xargs setbg
+# Start torrent daemon/open interface
+super + F6
+	$TERMINAL -e tremc -X
+# toggle torrent daemon
+super + F7
+	td-toggle
+# sync email
+super + F8
+	mailsync; refblock mailbox 12
+# Mount a USB drive or Android device
+super + {F9,F10}
+	{dm-usbmount -m,dm-usbmount -u}
+# Show the webcam
+super + F11
+	camtoggle
+# Start an Xbox controller
+super + F12
+	xboxdrv --detach-kernel-driver --no-uinput

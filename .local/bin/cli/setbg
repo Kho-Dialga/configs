@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# This script does the following:
+#	Run by itself, set the wallpaper (at X start).
+#	If given a file, set that as the new wallpaper.
+#	If given a directory, choose random file in it.
+
+# Location of link to wallpaper link.
+bgloc="${XDG_DATA_HOME:-$HOME/.local/share/}/bg"
+
+[ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$bgloc" && notify-send -i "$bgloc" "Changing wallpaper..."
+
+[ -d "$1" ] && ln -sf "$(find "$(readlink -f "$1")" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$bgloc" && notify-send -i "$bgloc" "Random Wallpaper chosen."
+
+# Display
+#displays="$(pgrep -a X\(org\|wayland\) | grep -wo "[0-9]*:[0-9]\+" | sort -u)"
+#for x in $displays; do
+#	export DISPLAY=$x
+#done;
+
+# Other variables
+#export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+#export XAUTHORITY=/run/user/$(id -u)/Xauthority
+xwallpaper --zoom "$bgloc"

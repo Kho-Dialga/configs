@@ -1,0 +1,231 @@
+set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
+# Basic Settings
+set shellopts '-eu'
+set ifs "\n"
+set preview true
+set hidden true
+set icons true
+set ignorecase true
+
+# Custom Functions
+cmd open ${{
+    case $(file --mime-type "$f" -bL) in
+        text/*|application/json) $EDITOR "$f";;
+        video/*|image/*/application/pdf) xdg-open "$f";;
+	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" | nsxiv -aio 2>/dev/null | lf-select ;;
+        *) xdg-open "$f" ;;
+    esac
+}}
+
+cmd bulk-rename ${{
+	index=$(mktemp /tmp/lf-bulk-rename-index.XXXXXXXXXX)
+	if [ -n "${fs}" ]; then
+		echo "$fs" > $index
+	else
+		echo "$(ls "$(dirname $f)" | tr ' ' "\n")" > $index
+	fi
+	index_edit=$(mktemp /tmp/lf-bulk-rename.XXXXXXXXXX)
+	cat $index > $index_edit
+	$EDITOR $index_edit
+	if [ $(cat $index | wc -l) -eq $(cat $index_edit | wc -l) ]; then
+		max=$(($(cat $index | wc -l)+1))
+		counter=1
+		while [ $counter -le $max ]; do
+			a="$(cat $index | sed "${counter}q;d")"
+			b="$(cat $index_edit | sed "${counter}q;d")"
+			counter=$(($counter+1))
+
+			[ "$a" = "$b" ] && continue
+			[ -e "$b" ] && echo "File exists: $b" && continue
+			mv "$a" "$b"
+		done
+	else
+		echo "Number of lines must stay the same"
+	fi
+	rm $index $index_edit
+}}
+
+cmd mkdir %{{
+  printf "Directory name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile %{{
+  printf "File name: "
+  read ans
+  touch $ans
+}}
+
+cmd sudomkfile %{{
+	printf "File name: "
+	read ans
+	sudoedit $ans
+}}
+
+cmd chmod %{{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+}}
+
+# Dragon RAWR UwU
+# This is used to be able to
+# Drag and drop files to other GUI apps
+cmd dragon %dragon-drop "$fx" || %dragon -a -x "$fx"
+cmd dragon-stay %dragon-drop "$fx" || %dragon -a "$fx"
+cmd dragon-individual %dragon-drop "$fx" || %dragon "$fx"
+
+cmd unarchive %atool -x "$f"
+
+cmd zip %zip -r "$f" "$f"
+cmd tar %tar cJf "$f.tar.xz" "./$f"
+cmd targz %tar czf "$f.tar.gz" "./$f"
+cmd tarbz2 %tar cjsf "$f.tar.bz2" "./$f"
+cmd rar %rar a "$f.rar" "$f"
+
+# Trash cli functions
+# These will save your ass in case
+# You delete something important like
+# A fucking retard (Has happened)
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    # extract the substring from start of string up to delimiter.
+    # this is the first "element" of the string.
+    file=${files%%;*}
+
+    trash-put "$(basename "$file")"
+    # if there's only one element left, set `files` to an empty string.
+    # this causes us to exit this `while` loop.
+    # else, we delete the first "element" of the string from files, and move onto the next.
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+}}
+
+cmd clear_trash %trash-empty
+
+cmd restore_trash ${{
+  %trash-restore
+}}
+
+cmd setbg "$1"
+
+# Bindings
+# Remove some defaults
+map m
+map o
+map n
+map "'"
+map '"'
+map d
+map c
+map e
+map f
+map gh
+
+# Keybindings down below
+# vvvvvvvvvvvv
+
+# Archive Mappings
+map az zip
+map ar rar
+map at tar
+map ag targz
+map ab tarbz2
+map au unarchive
+
+# Trash Mappings
+map dd trash
+map tc clear_trash
+map tr restore_trash
+
+# Dragon Mapping
+map dr dragon
+map ds dragon-stay
+map di dragon-individual
+
+map bg $setbg $f
+
+# Basic Functions
+map . set hidden!
+map p paste
+map x cut
+map y copy
+map <enter> open
+map mf mkfile
+map mr sudomkfile
+map md mkdir
+map ms $mkscript
+map ch chmod
+map r rename
+map gg top
+map G bottom
+map C clear
+map u unselect
+map br bulk-rename
+
+# Movement
+# Woah! Cool keyboard
+# shortcuts for moving!
+map gtr cd ~/.local/share/Trash/files
+map gus cd /run/media/kho
+map ght cd /home/.Trash-1000
+map gh. cd ~
+
+map gr. cd ~/.local/src
+map grc cd ~/.local/src/configs
+map grd cd ~/.local/src/dwm-kho
+map grs cd ~/.local/src/st-kho
+map grb cd ~/.local/src/dwmblocks-kho
+
+map gv. cd ~/vid
+
+map gp. cd ~/pix
+map gps cd ~/pix/scrot
+map gpw cd ~/pix/wallpaper
+
+map gm. cd /media/kho/music
+map gmp cd /media/kho/mpd/playlists
+
+map gd. cd ~/dox
+map gds cd ~/dox/school
+map gdc cd ~/dox/school/class
+map gdh cd ~/dox/school/hw
+map gdp cd ~/dox/school/projects
+map gb. cd ~/dox/bak
+
+map gD. cd /media/kho/dl
+map gDi cd /media/kho/dl/iso
+map gDt cd /media/kho/dl/torrent
+
+map gM. cd /media/kho
+map gsh cd ~/.local/share
+
+map gs. cd ~/.local/src/configs/.local/bin
+map gss cd ~/.local/src/configs/.local/bin/statusbar
+map gsc cd ~/.local/src/configs/.local/bin/cron
+map gsg cd ~/.local/src/configs/.local/bin/game
+
+map gw. cd /media/kho/wineprefixes
+map gwt cd /media/kho/wineprefixes/touhou/pfx
+map gwp cd /media/kho/wineprefixes/tpdp
+map gwo cd /media/kho/wineprefixes/osu
+map gwd cd /media/khowineprefixes/default
+
+map gP. cd /etc/portage
+
+map gcf cd ~/.config
+map gca cd ~/.cache
+map gE. cd /etc
+map gU. cd /usr
+map gUs cd /usr/share

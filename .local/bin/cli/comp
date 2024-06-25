@@ -1,0 +1,18 @@
+#!/bin/sh
+
+dir=$1
+type=$2
+
+case $type in
+	tar.bz2) tar cvjf "$dir.tar.bz2" "./$dir" ;;
+	tar.xz) tar cvJf "$dir.tar.xz" "./$dir" ;;
+	tar.gz) tar cvzf "$dir.tar.gz" "./$dir" ;;
+	lzma) lzma -a "$dir.lzma" "./$dir" ;;
+	bz2) bzip2 "$dir.bz2" "./$dir" ;;
+	rar) rar a -ad "$dir.rar" "./$dir" ;;
+	gz) gzip "$dir.gzip" "./$dir" ;;
+	tar) tar cvf "$dir.tar" "./$dir" ;;
+	zip) zip "$dir.zip" "./$dir" ;;
+	7z) 7z a "$dir.7z" "./$dir" ;;
+	*) printf "compress: '%s' - unknown archive method\\n" "$type" ;;
+esac

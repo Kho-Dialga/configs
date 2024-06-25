@@ -1,0 +1,267 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+background = ${xrdb:background}
+background-alt = ${xrdb:color0}
+foreground = ${xrdb:color7}
+foreground-alt = ${xrdb:color7}
+primary = ${xrdb:color4}
+secondary = ${xrdb:color6}
+alert = ${xrdb:color1}
+
+[bar/master]
+monitor = ${env:MONITOR:HDMI-A-0}
+width = 100%
+height = 27
+offset-x = 0
+offset-y = 0
+radius = 0
+fixed-center = false
+enable-ipc = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = monospace:size=10;
+font-1 = Noto Color Emoji:fontformat=truetype:scale=12:antialias=false;
+font-1 = Twitter Color Emoji:fontformat=truetype:scale=12:antialias=false;
+font-2 = Noto Sans CJK JP:scale=10:antialias=true;
+
+modules-left = bspwm xwindow
+modules-center =
+modules-right = music pacpackages torrent forecast news mail cpu memory temp disk1 disk2 disk3 volume clock
+
+tray-position = none
+tray-padding = 2
+tray-background = ${colors.background-alt}
+
+wm-restack = bspwm
+
+override-redirect = false
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/pacpackages]
+type = custom/ipc
+hook-0 = xbpspackages
+format-background = ${colors.primary}
+format-padding = 0
+initial = 0
+
+[module/torrent]
+type = custom/script
+exec = torrent
+tail = true
+format-background = ${colors.primary}
+format-padding = 0
+
+[module/music]
+type = custom/ipc
+hook-0 = music
+format-background = ${colors.primary}
+format-padding = 0
+initial = 0
+
+[module/news]
+type = custom/ipc
+hook-0 = news
+format-background = ${colors.primary}
+format-padding = 0
+initial = 0
+
+[module/mailbox]
+type = custom/ipc
+hook-0 = mailbox
+format-background = ${colors.primary}
+format-padding = 0
+initial = 0
+
+
+[module/clock]
+type = custom/script
+exec = clock
+tail = true
+interval = 1
+format-background = ${colors.primary}
+format-padding = 0
+
+[module/volume]
+type = custom/ipc
+hook-0 = volume
+format-background = ${colors.primary}
+format-padding = 0
+initial = 0
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/disk1]
+type = custom/script
+exec = disk
+tail = true
+format-background = ${colors.primary}
+format-padding = 1
+
+[module/disk2]
+type = custom/script
+exec = disk /home
+tail = true
+format-background = ${colors.primary}
+format-padding = 1
+
+[module/disk3]
+type = custom/script
+exec = disk ~/.local/share
+tail = true
+format-background = ${colors.primary}
+format-padding = 1
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.primary}
+label-focused-padding = 1
+
+label-occupied = %index%
+label-occupied-padding = 1
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 1
+
+pin-workspaces = true
+inline-mode = true
+enable-scroll = false
+reverse-scroll = false
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format-prefix = "🚀"
+label = %percentage:2%%
+format-background = ${colors.primary}
+format-padding = 0
+
+[module/memory]
+type = internal/memory
+interval = 0.5
+format-prefix = "🧠"
+label = %gb_used%
+format-background = ${colors.primary}
+format-padding = 1
+
+[module/temp]
+type = custom/script
+exec = temp
+tail = true
+format-background = ${colors.primary}
+format-padding = 1
+
+[module/forecast]
+type = custom/script
+exec = forecast
+tail = true
+format-background = ${colors.primary}
+format-padding = 1
+
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini

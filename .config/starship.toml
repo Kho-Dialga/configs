@@ -1,0 +1,41 @@
+# format
+format = '''
+\[$username[@](green)$hostname $directory\]$character
+'''
+
+right_format = """
+$cmd_duration
+"""
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+# command timeout
+command_timeout = 10000
+
+# Make prompt a single line instead of two lines
+[line_break]
+disabled = true
+
+# user module
+[username]
+format = '[$user](yellow)'
+disabled = false
+show_always = true
+
+# hostname module
+[hostname]
+ssh_only = false
+format = "[$hostname](blue)"
+disabled = false
+
+# directory module
+[directory]
+truncation_length = 8
+truncation_symbol = ""
+style = "purple"
+format = '[$path]($style)[$read_only]($read_only_style)'
+
+# command duration module
+[cmd_duration]
+min_time = 2
+format = "[took](bold yellow) [$duration](bold yellow)"

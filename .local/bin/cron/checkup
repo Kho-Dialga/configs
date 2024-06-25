@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Syncs repositories and downloads updates, meant to be run as a cronjob.
+
+ping -q -c 3 gnu.org > /dev/null || exit
+
+distro=$(cat /etc/issue | awk '{print $1}')
+
+[ $distro = Arch ] && refreshcmd="sudo pacman -Syuw --noconfirm"
+[ $distro = Void ] && refreshcmd="sudo xbps-install -S"
+
+$refreshcmd
+
+refblock packages 8
